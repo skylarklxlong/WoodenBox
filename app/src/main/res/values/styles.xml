@@ -1,0 +1,115 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Activity.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="style_common_text">
+        <item name="android:text">@string/str_name</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <!--
+        TextView中可以设置一个ellipsize属性,作用是当文字长度超过textview宽度时的显示方式:
+        Android:ellipsize=”start”—–省略号显示在开头 "...pedia"
+        android:ellipsize=”end”——省略号显示在结尾  "encyc..."
+        android:ellipsize=”middle”—-省略号显示在中间 "en...dia"
+        android:ellipsize=”marquee”–以横向滚动方式显示(需获得当前焦点时)
+        -->
+    </style>
+
+    <style name="style_common_bottom_text_view" parent="style_common_text">
+        <item name="android:layout_width">@dimen/bottom_button_width</item>
+        <item name="android:layout_height">@dimen/bottom_button_height</item>
+        <item name="android:text">@string/str_has_selected</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_bottom_text_next</item>
+    </style>
+
+    <style name="style_home_big_text_view" parent="style_common_text">
+        <item name="android:layout_width">@dimen/dp_196</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:text">@string/str_has_selected</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_home_text_view_big</item>
+    </style>
+
+    <style name="style_transfer_unit_text_view" parent="style_common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">@string/str_unit_mb</item>
+        <item name="android:padding">@dimen/dp_4</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_transfer_large_text_view" parent="style_common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_40</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">@string/str_0</item>
+    </style>
+
+    <style name="CustomeTabIndicator" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">2dp</item>
+    </style>
+
+    <style name="style_web_transfer_text">
+        <item name="android:text">@string/str_name</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">@dimen/dp_12</item>
+    </style>
+
+    <style name="WebTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ViaTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#bdbdbd</item>
+    </style>
+
+    <style name="CollapsingToolbarTitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1467CD</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black">@android:color/black</color>
+    <color name="darker_gray">@android:color/darker_gray</color>
+    <color name="white">@android:color/white</color>
+    <color name="transparent_white">#44ffffff</color>
+
+    <color name="holo_blue_light">@android:color/holo_blue_light</color>
+    <color name="hole_gray_blue">#cc81d4fa</color>
+
+    <color name="color_device">#5496E9</color>
+    <color name="color_file">#D6B02E</color>
+    <color name="color_storage">#11DE0A</color>
+    <color name="color_default_bg">#F2F2F2</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="color_yellow">#d5de85</color>
+    <color name="ripple_dark">@color/mid_grey</color>
+    <color name="mid_grey">#40808080</color>
+
+    <color name="gank_meizhi_bg">#faf1f1f1</color>
+
+    <color name="theme_primary">#432e2a</color>
+    <color name="theme_primary_darker">#2d1e1b</color>
+    <color name="theme_primary_dark">#231714</color>
+    <color name="refresh_progress_1">#e91e63</color>
+    <color name="refresh_progress_2">#00b0ff</color>
+    <color name="refresh_progress_3">@color/theme_primary</color>
+    <color name="background_gank">@color/white</color>
+    <color name="about_header_background">@color/theme_primary_darker</color>
+
+    <color name="lite_blue">#ff359ff2</color>
+</resources>

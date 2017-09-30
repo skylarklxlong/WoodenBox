@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    clipToPadding就是说控件的绘制区域是否在padding里面的，
+    true的情况下如果你设置了padding那么绘制的区域就往里缩,
+    clipChildren是指子控件是否超过padding区域，这两个属性默认是true的,
+    当这两个属性为false时控件就可以绘制到padding里面了。
+
+    在Android API21，新添加了一个属性：
+    android:elevation，用以在xml定义View的深度(高度)，也即z方向的值。
+    -->
+    <online.himakeit.skylark.view.MultiSwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_topnews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="1dp"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"/>
+    </online.himakeit.skylark.view.MultiSwipeRefreshLayout>
+    <!--
+    ProgressBar分为确定的和不确定的，如播放进度、缓存等就是确定的。
+    相反地，不确定的就是不清楚、不确定一个操作需要多长时间来完成，
+    这个时候就需要用的不确定的ProgressBar了。
+    这个是由属性android:indeterminate来控制的，
+    如果设置为true的话，那么ProgressBar就可能是圆形的滚动条或者水平的滚动条（由样式决定）。
+    默认情况下，如果是水平进度条，那么就是确定的。
+
+    android:indeterminateTint="?android:colorAccent"
+    android:indeterminateTintMode="src_in"
+    两个一起控制progressbar的颜色
+    -->
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="?android:colorAccent"
+        android:indeterminateTintMode="src_in"/>
+    <ViewStub
+        android:id="@+id/stub_no_connection_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout="@layout/no_connection_text"/>
+    <ViewStub
+        android:id="@+id/stub_posting_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout="@layout/posting_progress"
+        />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/iv_tip_fail"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_tip_fail"/>
+</FrameLayout>

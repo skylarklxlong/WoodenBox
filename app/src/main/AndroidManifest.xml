@@ -1,0 +1,93 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="online.himakeit.skylark">
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:name=".AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/skylark"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".common.BaseActivity" />
+        <activity
+            android:name=".activity.ChooseFileActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ChooseReceiverActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.FileReceiverActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.FileSenderActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ReceiverWaitingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.WebTransferActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.TopNewsDescribeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ZhiHuDescribeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.GankMeiZhiAcitvity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/translucent" />
+        <activity
+            android:name=".activity.WebActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:launchMode="singleTask" />
+
+        <receiver android:name=".receiver.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.skylark.myapplication.alarm" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.KeepAlarmLiveReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59cca78ae88bad241d00006d"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+
+    </application>
+
+</manifest>

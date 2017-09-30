@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_device"
+        android:layout_height="64dp"
+        android:layout_width="64dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/icon_radish"
+        android:paddingLeft="10dp"
+        android:paddingTop="4dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="4dp"
+        app:civ_border_color="#FFFFFFFF"
+        app:civ_border_width="2dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/iv_device"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:gravity="left"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tv_mac"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:gravity="left"
+            android:text="@string/str_mac"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/iv_device"
+        android:layout_toRightOf="@+id/iv_device"
+        android:background="@android:color/white"
+        />
+
+
+</RelativeLayout>

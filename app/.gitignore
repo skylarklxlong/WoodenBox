@@ -1,0 +1,21 @@
+# Built application files
+*.apk
+*.ap_
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Gradle files
+.gradle/
+build/
+
+# Log Files
+*.log
+
+# Keystore files
+*.jks
+
+*.iml
