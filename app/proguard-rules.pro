@@ -148,6 +148,19 @@
 -dontnote com.osbcp.cssparser.**
 -keep class com.osbcp.cssparser.** {*;}
 
+# 去掉与 jpush jar包相关的
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
+-keep class * extends cn.jpush.android.helpers.JPushMessageReceiver { *; }
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
+# 去掉与 com.yanzhenjie:permission jar包相关的
+-keepclassmembers class ** {
+    @com.yanzhenjie.permission.PermissionYes <methods>;
+}
+-keepclassmembers class ** {
+    @com.yanzhenjie.permission.PermissionNo <methods>;
+}
 
 
 

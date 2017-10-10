@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import cn.jpush.android.api.JPushInterface;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.util.Toasts;
 
@@ -50,6 +51,9 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         mAppContext = this;
+
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
 
         initUmengAnalytics();
 
