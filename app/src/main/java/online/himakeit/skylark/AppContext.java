@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 
 import cn.jpush.android.api.JPushInterface;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
+import online.himakeit.skylark.util.LogUtils;
 import online.himakeit.skylark.util.Toasts;
 
 /**
@@ -52,8 +53,7 @@ public class AppContext extends Application {
         super.onCreate();
         mAppContext = this;
 
-        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-        JPushInterface.init(this);     		// 初始化 JPush
+        initJPush();
 
         initUmengAnalytics();
 
@@ -75,6 +75,15 @@ public class AppContext extends Application {
          * facebook调试工具
          */
         Stetho.initializeWithDefaults(this);
+    }
+
+    private void initJPush(){
+        try {
+            JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+            JPushInterface.init(this);     		// 初始化 JPush
+        }catch (Exception e){
+            LogUtils.e(e);
+        }
     }
 
     private void initUmengAnalytics() {
