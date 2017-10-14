@@ -161,6 +161,9 @@
 -keepclassmembers class ** {
     @com.yanzhenjie.permission.PermissionNo <methods>;
 }
+# 去掉与 com.readystatesoftware.chuck jar包相关的
+-keep class com.readystatesoftware.chuck.internal.data.HttpTransaction { *; }
+-keep class android.support.v7.widget.SearchView { *; }
 
 
 

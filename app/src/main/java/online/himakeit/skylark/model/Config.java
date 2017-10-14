@@ -23,4 +23,9 @@ public class Config {
     public static final String ZUIMEI_BASE_URL = "http://lab.zuimeia.com/";
     public static final String ZUIMEI_PIC_BASE_URL = "http://wpstatic.zuimeia.com/";
 
+    //Mob官网API
+    public static final String URL_Mob = "http://apicloud.mob.com/";
+    //Mob ApiKey
+    public static final String URL_APP_Key = "215df9177263d";
+
 }

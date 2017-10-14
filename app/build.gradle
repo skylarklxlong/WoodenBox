@@ -240,4 +240,9 @@ dependencies {
      * 权限库
      */
     compile 'com.yanzhenjie:permission:1.1.0'
+    /**
+     * 网络监测 chuck
+     */
+    debugCompile 'com.readystatesoftware.chuck:library:1.0.4'
+    releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.0.4'
 }
