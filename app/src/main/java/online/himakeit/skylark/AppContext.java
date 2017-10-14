@@ -136,7 +136,13 @@ public class AppContext extends Application {
         client.addInterceptor(LoggingInterceptor);
         client.addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
         client.addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
-        //添加拦截器 chuck
+        /**
+         * 添加拦截器 chuck 记录客户端所有的网络连接
+         * 可以使用 new ChuckInterceptor(mAppContext).showNotification(false)
+         * 来取消显示。
+         *
+         * 使用 Chuck.getLaunchIntent();来在任何地方打开Chunck界面
+         */
         client.addInterceptor(new ChuckInterceptor(mAppContext));
         return client.build();
     }
