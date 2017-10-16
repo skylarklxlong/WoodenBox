@@ -41,6 +41,7 @@ public interface WebServiceApi {
     //-------------------------------TopNews end-----------------------------
 
     //--------------------------------ZuiMei start-----------------------------
+    // TODO: 2017/8/22 从最美官网抓取壁纸用的
     @GET(Config.ZUIMEI_BASE_URL + "/wallpaper/category/1/?page_size=1")
     Observable<ZuiMeiImageResponse> getImage();
     //--------------------------------ZuiMei end-----------------------------
@@ -56,9 +57,6 @@ public interface WebServiceApi {
     @GET(Config.ZHIHU_BASE_URL + "/api/4/news/{id}")
     Observable<ZhiHuStory> getZhiHuStory(@Path("id") String id);
 
-    // TODO: 2017/8/22 从最美官网抓取壁纸用的
-//    @GET("http://lab.zuimeia.com/wallpaper/category/1/?page_size=1")
-//    Observable<ImageResponse> getImage();
     //--------------------------------ZhiHu end-----------------------------
 
     //--------------------------------Gank start-----------------------------

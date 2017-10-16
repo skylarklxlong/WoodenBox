@@ -13,7 +13,7 @@ public class Config {
     public static final String GANK = "gank";
     public static final String ZUIMEI = "zuimei";
     public static final String TOPNEWS_BASE_URL = "http://c.m.163.com";
-    public static final String TOPNEWS_DETAIL_BASE_URL = TOPNEWS_BASE_URL + "nc/article/";
+    public static final String TOPNEWS_DETAIL_BASE_URL = TOPNEWS_BASE_URL + "/nc/article/";
     public static final String TOPNEWS_DETAIL_END_URL = "/full.html";
 
     public static final String ZHIHU_BASE_URL = "http://news-at.zhihu.com";

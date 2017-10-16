@@ -22,7 +22,8 @@ import java.util.ArrayList;
 
 import online.himakeit.skylark.MainActivity;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.activity.TopNewsDescribeActivity;
+import online.himakeit.skylark.activity.WebActivity;
+import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.topnews.NewsBean;
 import online.himakeit.skylark.util.DensityUtils;
 
@@ -129,19 +130,19 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         /**
          * 新闻详细界面是通过第一次访问请求新闻列表时得到的NewsBean中的docid重新拼接一个链接获得的
          */
-        Intent intent = new Intent(mContext, TopNewsDescribeActivity.class);
+        /*Intent intent = new Intent(mContext, TopNewsDescribeActivity.class);
         intent.putExtra("docid",newsBeanItem.getDocid());
         intent.putExtra("title",newsBeanItem.getTitle());
         intent.putExtra("image",newsBeanItem.getImgsrc());
         intent.putExtra("source",newsBeanItem.getSource());
         // TODO: 2017/7/28 在这里要做些什么呢？
-        mContext.startActivity(intent);
-
-        /*//https://c.m.163.com/news/a/CSEEFE0T000189FH.html?spss=newsapp&spsw=1
-        Intent intent = WebActivity.newTntent(mContext,
-                "https://c.m.163.com/news/a/"+newsBeanItem.getDocid()+".html?spss=newsapp&spsw=1",
-                newsBeanItem.getTitle());
         mContext.startActivity(intent);*/
+
+        //https://c.m.163.com/news/a/CSEEFE0T000189FH.html?spss=newsapp&spsw=1
+        Intent intent = WebActivity.newTntent(mContext,
+                Config.TOPNEWS_BASE_URL + "/news/a/"+newsBeanItem.getDocid()+".html?spss=newsapp&spsw=1",
+                newsBeanItem.getTitle());
+        mContext.startActivity(intent);
     }
 
     @Override
