@@ -31,6 +31,8 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
     @Override
     public void getBackground() {
         addSubscription(ZuiMeiApiImpl.getBackgroundPic(iZuiMeiPic));
+        // TODO: 2017/10/16 测试mob接口用
+//        addSubscription(MobApiImpl.queryBankCradInfo("6228480058489875078"));
         /*
         iZuiMeiPic.showProgressDialog();
         Subscription subscription = ApiManager.getInstence().getZuiMeiService().getImage()

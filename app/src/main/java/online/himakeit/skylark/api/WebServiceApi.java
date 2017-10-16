@@ -1,14 +1,22 @@
 package online.himakeit.skylark.api;
 
+import java.util.ArrayList;
+
 import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.gank.GankData;
 import online.himakeit.skylark.model.gank.GankMeiZhiData;
+import online.himakeit.skylark.model.mob.MobBankCard;
+import online.himakeit.skylark.model.mob.MobBaseEntity;
+import online.himakeit.skylark.model.mob.MobCarDetailsEntity;
+import online.himakeit.skylark.model.mob.MobCarEntity;
+import online.himakeit.skylark.model.mob.MobCarItemEntity;
 import online.himakeit.skylark.model.topnews.NewsList;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -70,6 +78,34 @@ public interface WebServiceApi {
     //--------------------------------Gank end-----------------------------
 
     //--------------------------------Mob start-----------------------------
+
+    //银行卡信息查询
+    //http://apicloud.mob.com/appstore/bank/card/query?key=215df9177263d&card=6228480058489875078
+    @GET(Config.MOB_BASE_URL+"/appstore/bank/card/query")
+    Observable<MobBaseEntity<MobBankCard>> queryMobBankCradInfo(
+            @Query("key") String appkey,@Query("card") String card);
+
+    //查询汽车品牌
+    //http://apicloud.mob.com/car/brand/query?key=215df9177263d
+    @GET(Config.MOB_BASE_URL + "/car/brand/query")
+    Observable<MobBaseEntity<ArrayList<MobCarEntity>>> queryMobCarList(
+            @Query("key") String appkey);
+
+    //车型信息查询
+    //http://apicloud.mob.com/car/seriesname/query?name=%E5%A5%A5%E8%BF%AAQ5&key=215df9177263d
+    @GET(Config.MOB_BASE_URL + "/car/seriesname/query")
+    Observable<MobBaseEntity<ArrayList<MobCarItemEntity>>> queryMobCarItems(
+            @Query("key") String appkey,@Query("name") String name);
+
+    //车型详细信息查询
+    //http://apicloud.mob.com/car/series/query?key=215df9177263d&cid=1060133
+    @GET(Config.MOB_BASE_URL + "/car/series/query")
+    Observable<MobBaseEntity<ArrayList<MobCarDetailsEntity>>> queryMobCarDetails(
+            @Query("key") String appkey,@Query("cid") String cid);
+
+
+
+
     //--------------------------------Mob start-----------------------------
 
 }
