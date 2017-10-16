@@ -4,17 +4,10 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
-import online.himakeit.skylark.model.Config;
-import online.himakeit.skylark.api.ApiManager;
-import online.himakeit.skylark.model.gank.GankData;
+import online.himakeit.skylark.api.GankApiImpl;
 import online.himakeit.skylark.presenter.IGankPresenter;
 import online.himakeit.skylark.presenter.implView.IGankFragment;
 import online.himakeit.skylark.util.CacheUtils;
-import online.himakeit.skylark.util.LogUtils;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/6 11:12
@@ -38,8 +31,9 @@ public class GankPresenterImpl extends BasePresenterImpl implements IGankPresent
 
     @Override
     public void getGankData(String type ,int t) {
-        mGankFragment.showProgressDialog();
-        Subscription subscription = ApiManager.getInstence().getGankService().getGankData(type,t)
+        addSubscription(GankApiImpl.getGankData(mGankFragment,cacheUtils,type,t));
+        /*mGankFragment.showProgressDialog();
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().getGankData(type,t)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<GankData>() {
@@ -63,7 +57,7 @@ public class GankPresenterImpl extends BasePresenterImpl implements IGankPresent
                         mGankFragment.updateGankData(gankData.getResults());
                     }
                 });
-        addSubscription(subscription);
+        addSubscription(subscription);*/
 
     }
 }

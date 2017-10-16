@@ -4,19 +4,10 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
-import online.himakeit.skylark.model.Config;
-import online.himakeit.skylark.api.ApiManager;
-import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
-import online.himakeit.skylark.model.zhuhu.ZhiHuDailyItem;
+import online.himakeit.skylark.api.ZhiHuApiImpl;
 import online.himakeit.skylark.presenter.IZhiHuPresenter;
 import online.himakeit.skylark.presenter.implView.IZhiHuFragment;
 import online.himakeit.skylark.util.CacheUtils;
-import online.himakeit.skylark.util.LogUtils;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/8/23 14:29
@@ -40,7 +31,8 @@ public class ZhiHuPresenterImpl extends BasePresenterImpl implements IZhiHuPrese
 
     @Override
     public void getLastZhiHuNews() {
-        zhiHuFragment.showProgressDialog();
+        addSubscription(ZhiHuApiImpl.getLastZhiHuNews(zhiHuFragment,cacheUtil));
+        /*zhiHuFragment.showProgressDialog();
         Subscription subscription = ApiManager.getInstence().getZhiHuApiService().getLastDaily()
                 .map(new Func1<ZhiHuDaily, ZhiHuDaily>() {
                     @Override
@@ -74,13 +66,14 @@ public class ZhiHuPresenterImpl extends BasePresenterImpl implements IZhiHuPrese
                         zhiHuFragment.updateList(zhiHuDaily);
                     }
                 });
-        addSubscription(subscription);
+        addSubscription(subscription);*/
 
     }
 
     @Override
     public void getTheDaily(String date) {
-        Subscription subscription = ApiManager.getInstence().getZhiHuApiService().getTheDaily(date)
+        addSubscription(ZhiHuApiImpl.getTheDaily(zhiHuFragment,date));
+        /*Subscription subscription = ApiManager.getInstence().getZhiHuApiService().getTheDaily(date)
                 .map(new Func1<ZhiHuDaily, ZhiHuDaily>() {
                     @Override
                     public ZhiHuDaily call(ZhiHuDaily zhiHuDaily) {
@@ -113,14 +106,16 @@ public class ZhiHuPresenterImpl extends BasePresenterImpl implements IZhiHuPrese
                         zhiHuFragment.updateList(zhiHuDaily);
                     }
                 });
-        addSubscription(subscription);
+        addSubscription(subscription);*/
     }
 
     @Override
     public void getLastFromCache() {
+        ZhiHuApiImpl.getLastFromCache(zhiHuFragment,cacheUtil);
+        /*
         if (cacheUtil.getAsJSONObject(Config.ZHIHU) != null){
             ZhiHuDaily zhiHuDaily = gson.fromJson(cacheUtil.getAsJSONObject(Config.ZHIHU).toString(), ZhiHuDaily.class);
             zhiHuFragment.updateList(zhiHuDaily);
-        }
+        }*/
     }
 }

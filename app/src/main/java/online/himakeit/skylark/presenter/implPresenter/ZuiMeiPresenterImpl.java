@@ -2,15 +2,9 @@ package online.himakeit.skylark.presenter.implPresenter;
 
 import android.content.Context;
 
-import online.himakeit.skylark.api.ApiManager;
-import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
+import online.himakeit.skylark.api.ZuiMeiApiImpl;
 import online.himakeit.skylark.presenter.IZuiMeiPresenter;
 import online.himakeit.skylark.presenter.implView.IZuiMeiPic;
-import online.himakeit.skylark.util.LogUtils;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/14 20:17
@@ -36,10 +30,12 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
 
     @Override
     public void getBackground() {
+        addSubscription(ZuiMeiApiImpl.getBackgroundPic(iZuiMeiPic));
+        /*
         iZuiMeiPic.showProgressDialog();
         Subscription subscription = ApiManager.getInstence().getZuiMeiService().getImage()
                 .subscribeOn(Schedulers.io())
-                /*.map(new Func1<ZuiMeiImageResponse, Boolean>() {
+                *//*.map(new Func1<ZuiMeiImageResponse, Boolean>() {
                     @Override
                     public Boolean call(ZuiMeiImageResponse zuiMeiImageResponse) {
 
@@ -66,7 +62,7 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
 
                         return false;
                     }
-                })*/
+                })*//*
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ZuiMeiImageResponse>() {
                     @Override
@@ -88,7 +84,7 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
                         LogUtils.e(TAG,"getBackground onNext " + zuiMeiImageResponse.getData().getImages().get(0).getDescription());
                     }
                 });
-                /*.subscribe(new Observer<Boolean>() {
+                *//*.subscribe(new Observer<Boolean>() {
                     @Override
                     public void onCompleted() {
                         LogUtils.e(TAG,"getBackground onCompleted");
@@ -108,7 +104,7 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
                         iZuiMeiPic.updateZuiMeiPic();
                         LogUtils.e(TAG,"getBackground onNext " + isOk);
                     }
-                });*/
-        addSubscription(subscription);
+                });*//*
+        addSubscription(subscription);*/
     }
 }

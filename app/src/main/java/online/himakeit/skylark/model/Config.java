@@ -12,7 +12,7 @@ public class Config {
     public static final String ZHIHU = "zhihu";
     public static final String GANK = "gank";
     public static final String ZUIMEI = "zuimei";
-    public static final String TOPNEWS_BASE_URL = "http://c.m.163.com/";
+    public static final String TOPNEWS_BASE_URL = "http://c.m.163.com";
     public static final String TOPNEWS_DETAIL_BASE_URL = TOPNEWS_BASE_URL + "nc/article/";
     public static final String TOPNEWS_DETAIL_END_URL = "/full.html";
 
@@ -20,12 +20,12 @@ public class Config {
 
     public static final String GANKIO_BASE_URL = "http://gank.io";
 
-    public static final String ZUIMEI_BASE_URL = "http://lab.zuimeia.com/";
+    public static final String ZUIMEI_BASE_URL = "http://lab.zuimeia.com";
     public static final String ZUIMEI_PIC_BASE_URL = "http://wpstatic.zuimeia.com/";
 
     //Mob官网API
-    public static final String URL_Mob = "http://apicloud.mob.com/";
+    public static final String MOB_BASE_URL = "http://apicloud.mob.com";
     //Mob ApiKey
-    public static final String URL_APP_Key = "215df9177263d";
+    public static final String MOB_APP_KEY = "215df9177263d";
 
 }

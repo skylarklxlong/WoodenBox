@@ -16,10 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiManager {
     private static ApiManager apiManager;
-    private TopNewsApi topNewsApi;
-    private ZhiHuApi zhiHuApi;
-    private GankApi gankApi;
-    private ZuiMeiApi zuiMeiApi;
+    private WebServiceApi webServiceApi;
     private static Object monitor = new Object();
 
     // TODO: 2017/7/27 采用双重检查模式的单列
@@ -34,72 +31,89 @@ public class ApiManager {
         return apiManager;
     }
 
-    public ZhiHuApi getZhiHuApiService() {
-        if (zhiHuApi == null) {
+    public WebServiceApi getWebServiceApi(){
+        if (webServiceApi == null){
+            synchronized (monitor){
+                if (webServiceApi == null){
+                    webServiceApi = new Retrofit.Builder()
+                            .baseUrl(Config.MOB_BASE_URL)
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .client(AppContext.defaultOkHttpClient())
+                            .build()
+                            .create(WebServiceApi.class);
+                }
+            }
+        }
+        return webServiceApi;
+    }
+
+    public WebServiceApi getZhiHuApiService() {
+        if (webServiceApi == null) {
             synchronized (monitor) {
-                if (zhiHuApi == null) {
-                    zhiHuApi = new Retrofit.Builder()
+                if (webServiceApi == null) {
+                    webServiceApi = new Retrofit.Builder()
                             .baseUrl(Config.ZHIHU_BASE_URL)
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())
                             .client(AppContext.defaultOkHttpClient())
                             .build()
-                            .create(ZhiHuApi.class);
+                            .create(WebServiceApi.class);
                 }
             }
         }
-        return zhiHuApi;
+        return webServiceApi;
     }
 
-    public TopNewsApi getTopNewsService() {
-        if (topNewsApi == null) {
+    public WebServiceApi getTopNewsService() {
+        if (webServiceApi == null) {
             synchronized (monitor) {
-                if (topNewsApi == null) {
-                    topNewsApi = new Retrofit.Builder()
+                if (webServiceApi == null) {
+                    webServiceApi = new Retrofit.Builder()
                             .baseUrl(Config.TOPNEWS_BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(AppContext.defaultOkHttpClient())
                             .build()
-                            .create(TopNewsApi.class);
+                            .create(WebServiceApi.class);
                 }
             }
         }
-        return topNewsApi;
+        return webServiceApi;
     }
 
-    public GankApi getGankService() {
-        if (gankApi == null) {
+    public WebServiceApi getGankService() {
+        if (webServiceApi == null) {
             synchronized (monitor) {
-                if (gankApi == null) {
-                    gankApi = new Retrofit.Builder()
+                if (webServiceApi == null) {
+                    webServiceApi = new Retrofit.Builder()
                             .baseUrl(Config.GANKIO_BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(AppContext.defaultOkHttpClient())
                             .build()
-                            .create(GankApi.class);
+                            .create(WebServiceApi.class);
                 }
             }
         }
 
-        return gankApi;
+        return webServiceApi;
     }
 
-    public ZuiMeiApi getZuiMeiService(){
-        if (zuiMeiApi == null){
+    public WebServiceApi getZuiMeiService(){
+        if (webServiceApi == null){
             synchronized (monitor){
-                if (zuiMeiApi == null){
-                    zuiMeiApi = new Retrofit.Builder()
+                if (webServiceApi == null){
+                    webServiceApi = new Retrofit.Builder()
                             .baseUrl(Config.ZUIMEI_BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(AppContext.defaultOkHttpClient())
                             .build()
-                            .create(ZuiMeiApi.class);
+                            .create(WebServiceApi.class);
                 }
             }
         }
-        return zuiMeiApi;
+        return webServiceApi;
     }
 }

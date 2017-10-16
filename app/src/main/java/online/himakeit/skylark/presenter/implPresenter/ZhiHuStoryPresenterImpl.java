@@ -33,7 +33,7 @@ public class ZhiHuStoryPresenterImpl extends BasePresenterImpl implements IZhiHu
 
     @Override
     public void getZhiHuStory(String id) {
-        Subscription subscription = ApiManager.getInstence().getZhiHuApiService().getZhiHuStory(id)
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().getZhiHuStory(id)
                 .subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ZhiHuStory>() {

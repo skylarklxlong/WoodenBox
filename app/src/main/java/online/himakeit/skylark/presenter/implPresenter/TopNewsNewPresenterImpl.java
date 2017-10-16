@@ -1,14 +1,8 @@
 package online.himakeit.skylark.presenter.implPresenter;
 
-import online.himakeit.skylark.api.ApiManager;
-import online.himakeit.skylark.model.topnews.NewsList;
+import online.himakeit.skylark.api.TopNewsApiImpl;
 import online.himakeit.skylark.presenter.ITopNewPresenter;
 import online.himakeit.skylark.presenter.implView.ITopNewsFragment;
-import online.himakeit.skylark.util.LogUtils;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/7/27 17:18
@@ -29,6 +23,8 @@ public class TopNewsNewPresenterImpl extends BasePresenterImpl implements ITopNe
 
     @Override
     public void getNewsList(int t) {
+        addSubscription(TopNewsApiImpl.getTopNewsList(mITopNewsFragment,t));
+        /*
         mITopNewsFragment.showProgressDialog();
         Subscription subscription = ApiManager.getInstence().getTopNewsService().getNews(t)
                 .subscribeOn(Schedulers.io())
@@ -56,6 +52,6 @@ public class TopNewsNewPresenterImpl extends BasePresenterImpl implements ITopNe
                                 + newsList.getNewsList().get(0).getTitle());
                     }
                 });
-        addSubscription(subscription);
+        addSubscription(subscription);*/
     }
 }
