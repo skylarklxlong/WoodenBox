@@ -48,7 +48,7 @@ public class MobApiImpl {
         return subscription;
     }
 
-    public static Subscription queryMobCarList(){
+    public static Subscription queryCarList(){
         Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobCarList(Config.MOB_APP_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -65,14 +65,14 @@ public class MobApiImpl {
 
                     @Override
                     public void onNext(MobBaseEntity<ArrayList<MobCarEntity>> arrayListMobBaseEntity) {
-                        LogUtils.e(TAG,"queryMobCarList onNext " );
+                        LogUtils.e(TAG,"queryMobCarList onNext " + arrayListMobBaseEntity.getResult().get(0).getName());
                     }
                 });
 
         return subscription;
     }
 
-    public static Subscription queryMobCarItems(String name){
+    public static Subscription queryCarItems(String name){
         Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobCarItems(Config.MOB_APP_KEY,name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -89,7 +89,7 @@ public class MobApiImpl {
 
                     @Override
                     public void onNext(MobBaseEntity<ArrayList<MobCarItemEntity>> arrayListMobBaseEntity) {
-                        LogUtils.e(TAG,"queryMobCarItems onNext ");
+                        LogUtils.e(TAG,"queryMobCarItems onNext " + arrayListMobBaseEntity.getResult().get(0).getBrandName());
                     }
                 });
 
@@ -113,7 +113,7 @@ public class MobApiImpl {
 
                     @Override
                     public void onNext(MobBaseEntity<ArrayList<MobCarDetailsEntity>> arrayListMobBaseEntity) {
-                        LogUtils.e(TAG,"queryCarDetails onCompleted ");
+                        LogUtils.e(TAG,"queryCarDetails onCompleted " + arrayListMobBaseEntity.getResult().get(0).getCarImage());
                     }
                 });
 

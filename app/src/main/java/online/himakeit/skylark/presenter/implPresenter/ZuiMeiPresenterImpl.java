@@ -33,6 +33,9 @@ public class ZuiMeiPresenterImpl extends BasePresenterImpl implements IZuiMeiPre
         addSubscription(ZuiMeiApiImpl.getBackgroundPic(iZuiMeiPic));
         // TODO: 2017/10/16 测试mob接口用
 //        addSubscription(MobApiImpl.queryBankCradInfo("6228480058489875078"));
+//        addSubscription(MobApiImpl.queryCarList());
+//        addSubscription(MobApiImpl.queryCarItems("奥迪Q5"));
+//        addSubscription(MobApiImpl.queryCarDetails("1060133"));
         /*
         iZuiMeiPic.showProgressDialog();
         Subscription subscription = ApiManager.getInstence().getZuiMeiService().getImage()
