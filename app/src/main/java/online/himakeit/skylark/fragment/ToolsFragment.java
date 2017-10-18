@@ -39,9 +39,9 @@ import online.himakeit.skylark.common.BaseFragment;
  * http://jsq.9170.com
  *
  */
-public class FourFragment extends BaseFragment {
+public class ToolsFragment extends BaseFragment {
 
-    private static final String TAG = "FourFragment";
+    private static final String TAG = "ToolsFragment";
 
     @Bind(R.id.edit_dixin)
     EditText edit_dixin;

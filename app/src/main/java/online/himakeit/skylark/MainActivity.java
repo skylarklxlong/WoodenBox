@@ -37,8 +37,8 @@ import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.common.BaseActivity;
-import online.himakeit.skylark.fragment.FiveFragment;
-import online.himakeit.skylark.fragment.FourFragment;
+import online.himakeit.skylark.fragment.MobFragment;
+import online.himakeit.skylark.fragment.ToolsFragment;
 import online.himakeit.skylark.fragment.GankFragment;
 import online.himakeit.skylark.fragment.KCFragment;
 import online.himakeit.skylark.fragment.ReadFragment;
@@ -66,8 +66,8 @@ public class MainActivity extends BaseActivity
     KCFragment kCFragment;
     ReadFragment readFragment;
     GankFragment gankFragment;
-    FourFragment fourFragment;
-    FiveFragment fiveFragment;
+    ToolsFragment toolsFragment;
+    MobFragment mobFragment;
 
     Toolbar toolbar;
     NavigationView navigationView;
@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity
 
         initfragment();
 
-        toolbarTitle("阅读");
+        toolbarTitle("ReadHub");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.content_fragment, fragmentArrayList.get(0));
         fragmentTransaction.commit();
@@ -220,17 +220,17 @@ public class MainActivity extends BaseActivity
         fragmentManager = getSupportFragmentManager();
 
         fragmentArrayList = new ArrayList<Fragment>();
-        kCFragment = new KCFragment();
         readFragment = new ReadFragment();
         gankFragment = new GankFragment();
-        fourFragment = new FourFragment();
-        fiveFragment = new FiveFragment();
+        mobFragment = new MobFragment();
+        toolsFragment = new ToolsFragment();
+        kCFragment = new KCFragment();
 
         fragmentArrayList.add(readFragment);
-        fragmentArrayList.add(kCFragment);
         fragmentArrayList.add(gankFragment);
-        fragmentArrayList.add(fourFragment);
-        fragmentArrayList.add(fiveFragment);
+        fragmentArrayList.add(mobFragment);
+        fragmentArrayList.add(kCFragment);
+        fragmentArrayList.add(toolsFragment);
     }
 
     private int preIndex = 0;
@@ -318,15 +318,15 @@ public class MainActivity extends BaseActivity
         switch (item.getItemId()) {
             case R.id.nav_camera:
                 loadfragment(0);
-                toolbarTitle("阅读");
+                toolbarTitle("ReadHub");
                 break;
             case R.id.nav_gallery:
                 loadfragment(1);
-                toolbarTitle("00002");
+                toolbarTitle("Gank.io");
                 break;
             case R.id.nav_slideshow:
                 loadfragment(2);
-                toolbarTitle("00003");
+                toolbarTitle("工具集合");
                 break;
             case R.id.nav_manage:
                 loadfragment(3);

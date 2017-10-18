@@ -21,7 +21,9 @@
     <color name="color_yellow">#d5de85</color>
     <color name="ripple_dark">@color/mid_grey</color>
     <color name="mid_grey">#40808080</color>
-
+    <color name="black_text1_color">#000000</color>
+    <color name="black_text2_color">#454545</color>
+    <color name="black_text3_color">#7c7c7c</color>
     <color name="gank_meizhi_bg">#faf1f1f1</color>
 
     <color name="theme_primary">#432e2a</color>
