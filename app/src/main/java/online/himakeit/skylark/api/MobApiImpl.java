@@ -8,6 +8,10 @@ import online.himakeit.skylark.model.mob.MobBaseEntity;
 import online.himakeit.skylark.model.mob.MobCarDetailsEntity;
 import online.himakeit.skylark.model.mob.MobCarEntity;
 import online.himakeit.skylark.model.mob.MobCarItemEntity;
+import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
+import online.himakeit.skylark.model.mob.MobCookDetailEntity;
+import online.himakeit.skylark.model.mob.MobDictEntity;
+import online.himakeit.skylark.model.mob.MobFlightEntity;
 import online.himakeit.skylark.util.LogUtils;
 import rx.Observer;
 import rx.Subscription;
@@ -114,6 +118,101 @@ public class MobApiImpl {
                     @Override
                     public void onNext(MobBaseEntity<ArrayList<MobCarDetailsEntity>> arrayListMobBaseEntity) {
                         LogUtils.e(TAG,"queryCarDetails onCompleted " + arrayListMobBaseEntity.getResult().get(0).getCarImage());
+                    }
+                });
+
+        return subscription;
+    }
+
+    public static Subscription queryCookCategory(){
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobCookCategory(Config.MOB_APP_KEY)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MobBaseEntity<MobCookCategoryEntity>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(MobBaseEntity<MobCookCategoryEntity> mobCookCategoryEntityMobBaseEntity) {
+
+                    }
+                });
+        return subscription;
+    }
+
+    public static Subscription queryCookDetailsList(String cid ,int page,int size){
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobCookDetailsList(Config.MOB_APP_KEY,cid,page,size)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MobBaseEntity<MobCookDetailEntity>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(MobBaseEntity<MobCookDetailEntity> mobCookDetailEntityMobBaseEntity) {
+
+                    }
+                });
+
+        return subscription;
+    }
+
+    public static Subscription queryDict(String name){
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobDict(Config.MOB_APP_KEY,name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MobBaseEntity<MobDictEntity>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(MobBaseEntity<MobDictEntity> mobDictEntityMobBaseEntity) {
+
+                    }
+                });
+
+        return subscription;
+    }
+
+    public static Subscription queryFlightLineList(String start, String end){
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobFlightLineList(Config.MOB_APP_KEY,start,end)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MobBaseEntity<MobFlightEntity>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(MobBaseEntity<MobFlightEntity> mobFlightEntityMobBaseEntity) {
+
                     }
                 });
 

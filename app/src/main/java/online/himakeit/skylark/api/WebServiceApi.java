@@ -10,6 +10,10 @@ import online.himakeit.skylark.model.mob.MobBaseEntity;
 import online.himakeit.skylark.model.mob.MobCarDetailsEntity;
 import online.himakeit.skylark.model.mob.MobCarEntity;
 import online.himakeit.skylark.model.mob.MobCarItemEntity;
+import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
+import online.himakeit.skylark.model.mob.MobCookDetailEntity;
+import online.himakeit.skylark.model.mob.MobDictEntity;
+import online.himakeit.skylark.model.mob.MobFlightEntity;
 import online.himakeit.skylark.model.topnews.NewsList;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
@@ -103,7 +107,31 @@ public interface WebServiceApi {
     Observable<MobBaseEntity<ArrayList<MobCarDetailsEntity>>> queryMobCarDetails(
             @Query("key") String appkey,@Query("cid") String cid);
 
+    //菜谱分类标签查询
+    //http://apicloud.mob.com/v1/cook/category/query?key=215df9177263d
+    @GET(Config.MOB_BASE_URL + "/v1/cook/category/query")
+    Observable<MobBaseEntity<MobCookCategoryEntity>> queryMobCookCategory(
+            @Query("key") String appkey);
 
+    //按标签查询菜谱接口
+    //http://apicloud.mob.com/v1/cook/menu/search?key=appkey&cid=0010001007&page=1&size=20
+    @GET(Config.MOB_BASE_URL+"/v1/cook/menu/search")
+    Observable<MobBaseEntity<MobCookDetailEntity>> queryMobCookDetailsList(
+            @Query("key") String appkey, @Query("cid") String cid,
+            @Query("page") int page, @Query("size") int size);
+
+    //新华字典查询
+    //http://apicloud.mob.com/appstore/dicionary/query?key=215df9177263d&name=李
+    @GET(Config.MOB_BASE_URL + "/appstore/dicionary/query")
+    Observable<MobBaseEntity<MobDictEntity>> queryMobDict(
+            @Query("key") String appkey,@Query("name") String name);
+
+    //航线查询航班信息
+    //http://apicloud.mob.com/flight/line/query?key=215df9177263d&start=上海&end=海口
+    @GET(Config.MOB_BASE_URL + "/flight/line/query")
+    Observable<MobBaseEntity<MobFlightEntity>> queryMobFlightLineList(
+            @Query("key") String appkey,@Query("start") String start, @Query("end") String end
+    );
 
 
     //--------------------------------Mob start-----------------------------
