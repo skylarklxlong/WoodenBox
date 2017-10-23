@@ -12,6 +12,7 @@ import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
 import online.himakeit.skylark.model.mob.MobCookDetailEntity;
 import online.himakeit.skylark.model.mob.MobDictEntity;
 import online.himakeit.skylark.model.mob.MobFlightEntity;
+import online.himakeit.skylark.model.mob.MobHealthEntity;
 import online.himakeit.skylark.util.LogUtils;
 import rx.Observer;
 import rx.Subscription;
@@ -212,6 +213,30 @@ public class MobApiImpl {
 
                     @Override
                     public void onNext(MobBaseEntity<MobFlightEntity> mobFlightEntityMobBaseEntity) {
+
+                    }
+                });
+
+        return subscription;
+    }
+
+    public static Subscription queryHealth(String name ,int page,int size){
+        Subscription subscription = ApiManager.getInstence().getWebServiceApi().queryMobHealth(Config.MOB_APP_KEY,name,page,size)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MobBaseEntity<MobHealthEntity>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(MobBaseEntity<MobHealthEntity> mobHealthEntityMobBaseEntity) {
 
                     }
                 });
