@@ -28,7 +28,7 @@
     <!--允许应用读取外部存储。-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!--允许应用访问手机状态。-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- Optional for location -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
@@ -95,6 +95,83 @@
         <activity
             android:name=".activity.AboutActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.BankCardActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.CarListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.ChineseCalendarActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.CookMenuActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.CurrencyRateActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.DictionaryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.DrivingExamActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.FlightActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.FootballLeagueActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.GlobalStockActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.GoldDataActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.HealthActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.HistoryTodayActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.IDCardQueryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.IdiomActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.IPQueryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.LotteryCategoryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.OilPriceActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.PhoneAddressActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.PiaoFangVipActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.PostCodeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.PreciousMetalActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.SilverDataActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.TrainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.WXArticleActivity"
+            android:launchMode="singleTask" />
+
+
 
         <receiver android:name=".receiver.AlarmReceiver">
             <intent-filter>
@@ -111,18 +188,18 @@
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59cca78ae88bad241d00006d"/>
+            android:value="59cca78ae88bad241d00006d" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}"/>
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <!-- 极光推送  start -->
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
-            android:process=":mult"
-            android:exported="false">
+            android:exported="false"
+            android:process=":mult">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -132,10 +209,9 @@
         </service>
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
-            android:authorities="online.himakeit.skylark.DataProvider"
             android:name="cn.jpush.android.service.DataProvider"
-            android:exported="true"
-            />
+            android:authorities="online.himakeit.skylark.DataProvider"
+            android:exported="true" />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
@@ -175,18 +251,18 @@
         <!-- Rich push 核心功能 since 2.0.6-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
-            android:theme="@style/MyDialogStyle"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:theme="@style/MyDialogStyle"></activity>
 
         <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="online.himakeit.skylark" />
             </intent-filter>
@@ -196,17 +272,18 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver"
-            android:exported="false"/>
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
 
         <!-- User defined.  For test only  用户自定义的广播接收器-->
         <receiver
             android:name=".receiver.MyJPushReceiver"
-            android:exported="false"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
@@ -225,8 +302,12 @@
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="d89d099b8ade6a6db0d2423a" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="d89d099b8ade6a6db0d2423a" /> <!--  </>值来自开发者平台取得的AppKey-->
         <!-- 极光推送  END -->
 
     </application>

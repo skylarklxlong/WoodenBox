@@ -1,6 +1,7 @@
 package online.himakeit.skylark.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,31 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
+import online.himakeit.skylark.activity.WebActivity;
+import online.himakeit.skylark.activity.mob.BankCardActivity;
+import online.himakeit.skylark.activity.mob.CarListActivity;
+import online.himakeit.skylark.activity.mob.ChineseCalendarActivity;
+import online.himakeit.skylark.activity.mob.CookMenuActivity;
+import online.himakeit.skylark.activity.mob.CurrencyRateActivity;
+import online.himakeit.skylark.activity.mob.DictionaryActivity;
+import online.himakeit.skylark.activity.mob.DrivingExamActivity;
+import online.himakeit.skylark.activity.mob.FlightActivity;
+import online.himakeit.skylark.activity.mob.FootballLeagueActivity;
+import online.himakeit.skylark.activity.mob.GlobalStockActivity;
+import online.himakeit.skylark.activity.mob.GoldDataActivity;
+import online.himakeit.skylark.activity.mob.HealthActivity;
+import online.himakeit.skylark.activity.mob.HistoryTodayActivity;
+import online.himakeit.skylark.activity.mob.IDCardQueryActivity;
+import online.himakeit.skylark.activity.mob.IPQueryActivity;
+import online.himakeit.skylark.activity.mob.IdiomActivity;
+import online.himakeit.skylark.activity.mob.LotteryCategoryActivity;
+import online.himakeit.skylark.activity.mob.OilPriceActivity;
+import online.himakeit.skylark.activity.mob.PhoneAddressActivity;
+import online.himakeit.skylark.activity.mob.PiaoFangVipActivity;
+import online.himakeit.skylark.activity.mob.PostCodeActivity;
+import online.himakeit.skylark.activity.mob.PreciousMetalActivity;
+import online.himakeit.skylark.activity.mob.SilverDataActivity;
+import online.himakeit.skylark.activity.mob.TrainActivity;
 import online.himakeit.skylark.listeners.OnItemClickListener;
 
 /**
@@ -99,38 +125,64 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 public void onItemClick(View view, int position) {
                     String title = mDatasTitle.get(position);
                     if (title.equals("手机号码归属地")) {
+                        mContext.startActivity(new Intent(mContext, PhoneAddressActivity.class));
                     } else if (title.equals("邮编查询")) {
+                        mContext.startActivity(new Intent(mContext, PostCodeActivity.class));
                     } else if (title.equals("菜谱查询")) {
+                        mContext.startActivity(new Intent(mContext, CookMenuActivity.class));
                     } else if (title.equals("身份证查询")) {
+                        mContext.startActivity(new Intent(mContext, IDCardQueryActivity.class));
                     } else if (title.equals("IP地址")) {
+                        mContext.startActivity(new Intent(mContext, IPQueryActivity.class));
                     } else if (title.equals("中国彩票开奖结果")) {
+                        mContext.startActivity(new Intent(mContext, LotteryCategoryActivity.class));
                     } else if (title.equals("微信精选")) {
 //-------------------------------------------------------------------
                     } else if (title.equals("银行卡信息")) {
+                        mContext.startActivity(new Intent(mContext, BankCardActivity.class));
                     } else if (title.equals("白银数据")) {
+                        mContext.startActivity(new Intent(mContext, SilverDataActivity.class));
                     } else if (title.equals("黄金数据")) {
+                        mContext.startActivity(new Intent(mContext, GoldDataActivity.class));
                     } else if (title.equals("货币汇率")) {
+                        mContext.startActivity(new Intent(mContext, CurrencyRateActivity.class));
                     } else if (title.equals("国内现货交易所贵金属")) {
+                        mContext.startActivity(new Intent(mContext, PreciousMetalActivity.class));
                     } else if (title.equals("全球股指查询")) {
+                        mContext.startActivity(new Intent(mContext, GlobalStockActivity.class));
 //-------------------------------------------------------------------
                     } else if (title.equals("周公解梦")) {
+                        mContext.startActivity(WebActivity.newTntent(mContext,"http://tools.2345.com/zhgjm.htm","周公解梦"));
                     } else if (title.equals("婚姻匹配")) {
+                        mContext.startActivity(WebActivity.newTntent(mContext,"http://www.jjdzc.com/peidui/hehun.html","婚姻匹配"));
                     } else if (title.equals("手机号码查吉凶")) {
                     } else if (title.equals("八字算命")) {
+                        mContext.startActivity(WebActivity.newTntent(mContext,"http://www.jjdzc.com/sm/bz.html","八字算命"));
                     } else if (title.equals("老黄历")) {
+                        mContext.startActivity(new Intent(mContext, ChineseCalendarActivity.class));
                     } else if (title.equals("电影票房")) {
+                        mContext.startActivity(new Intent(mContext, PiaoFangVipActivity.class));
                     } else if (title.equals("火车票查询")) {
+                        mContext.startActivity(new Intent(mContext, TrainActivity.class));
                     } else if (title.equals("航班信息查询")) {
+                        mContext.startActivity(new Intent(mContext, FlightActivity.class));
                     } else if (title.equals("足球五大联赛")) {
-
+                        mContext.startActivity(new Intent(mContext, FootballLeagueActivity.class));
 //-------------------------------------------------------------------
                     } else if (title.equals("健康知识")) {
+                        mContext.startActivity(new Intent(mContext, HealthActivity.class));
                     } else if (title.equals("历史上的今天")) {
+                        mContext.startActivity(new Intent(mContext, HistoryTodayActivity.class));
                     } else if (title.equals("成语大全")) {
+                        mContext.startActivity(new Intent(mContext, IdiomActivity.class));
                     } else if (title.equals("新华字典")) {
+                        mContext.startActivity(new Intent(mContext, DictionaryActivity.class));
                     } else if (title.equals("全国省市今日油价")) {
+                        mContext.startActivity(new Intent(mContext, OilPriceActivity.class));
                     } else if (title.equals("汽车信息查询")) {
+                        mContext.startActivity(new Intent(mContext, CarListActivity.class));
                     } else if (title.equals("驾考题库")) {
+                        mContext.startActivity(new Intent(mContext, DrivingExamActivity.class));
                     }
                 }
             });

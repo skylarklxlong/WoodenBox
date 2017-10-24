@@ -7,9 +7,11 @@ import online.himakeit.skylark.model.gank.GankData;
 import online.himakeit.skylark.model.gank.GankMeiZhiData;
 import online.himakeit.skylark.model.mob.MobBankCard;
 import online.himakeit.skylark.model.mob.MobBaseEntity;
+import online.himakeit.skylark.model.mob.MobCalendarInfoEntity;
 import online.himakeit.skylark.model.mob.MobCarDetailsEntity;
 import online.himakeit.skylark.model.mob.MobCarEntity;
 import online.himakeit.skylark.model.mob.MobCarItemEntity;
+import online.himakeit.skylark.model.mob.MobCitysEntity;
 import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
 import online.himakeit.skylark.model.mob.MobCookDetailEntity;
 import online.himakeit.skylark.model.mob.MobDictEntity;
@@ -25,6 +27,7 @@ import online.himakeit.skylark.model.mob.MobPhoneAddressEntity;
 import online.himakeit.skylark.model.mob.MobPostCodeEntity;
 import online.himakeit.skylark.model.mob.MobTrainEntity;
 import online.himakeit.skylark.model.mob.MobTrainNoEntity;
+import online.himakeit.skylark.model.mob.MobWeatherEntity;
 import online.himakeit.skylark.model.mob.MobWxArticleEntity;
 import online.himakeit.skylark.model.mob.MobWxCategoryEntity;
 import online.himakeit.skylark.model.topnews.NewsList;
@@ -32,6 +35,7 @@ import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -104,6 +108,20 @@ public interface WebServiceApi {
     @GET(Config.MOB_BASE_URL + "/appstore/bank/card/query")
     Observable<MobBaseEntity<MobBankCard>> queryMobBankCradInfo(
             @Query("key") String appkey, @Query("card") String card);
+
+    //万年历查询
+    //http://apicloud.mob.com/appstore/clendar/day?key=appkey&date=2015-05-01
+    @Headers("Cache-Control: public, max-age=300")
+    @GET(Config.MOB_BASE_URL + "/appstore/calendar/day")
+    Observable<MobBaseEntity<MobCalendarInfoEntity>> queryMobCalendarInfo(
+            @Query("key") String appkey, @Query("date") String date);
+
+
+    //城市列表查询接口
+    //http://apiclod.mob.com/v1/weather/citys?key=appkey
+    @Headers("Cache-Control: public, max-age=300")
+    @GET(Config.MOB_BASE_URL + "/v1/weather/citys")
+    Observable<MobCitysEntity> queryMobCitys(@Query("key") String appkey);
 
     //查询汽车品牌
     //http://apicloud.mob.com/car/brand/query?key=215df9177263d
@@ -220,6 +238,13 @@ public interface WebServiceApi {
     @GET(Config.MOB_BASE_URL + "/train/tickets/queryByTrainNo")
     Observable<MobBaseEntity<ArrayList<MobTrainNoEntity>>> queryMobTrainNo(
             @Query("key") String appkey, @Query("trainno") String trainno);
+
+    //获取天气信息
+    //http://apicloud.mob.com/v1/weather/query?key=215df9177263d&city=武汉&province=湖北
+    @Headers("Cache-Control: public, max-age=300")
+    @GET(Config.MOB_BASE_URL + "/v1/weather/query")
+    Observable<MobWeatherEntity> queryMobCityWeather(@Query("key") String appkey,
+    @Query("city") String city, @Query("province") String province);
 
     //微信精选列表查询
     //http://apicloud.mob.com/wx/article/search?key=123456&cid=1
