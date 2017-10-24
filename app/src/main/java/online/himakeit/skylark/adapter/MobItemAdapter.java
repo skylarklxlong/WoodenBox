@@ -41,9 +41,18 @@ public class MobItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof MobItemViewHolder) {
             MobItemViewHolder mobItemViewHolder = (MobItemViewHolder) holder;
+
+            if (mOnItemClickListener != null) {
+                mobItemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mOnItemClickListener.onItemClick(view, position);
+                    }
+                });
+            }
 
             String title = mDatas.get(position);
             mobItemViewHolder.mTvItemTitle.setText(title);
