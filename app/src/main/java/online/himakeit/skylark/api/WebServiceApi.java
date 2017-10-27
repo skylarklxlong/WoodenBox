@@ -34,6 +34,7 @@ import online.himakeit.skylark.model.topnews.NewsList;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
@@ -106,14 +107,14 @@ public interface WebServiceApi {
     //银行卡信息查询
     //http://apicloud.mob.com/appstore/bank/card/query?key=215df9177263d&card=6228480058489875078
     @GET(Config.MOB_BASE_URL + "/appstore/bank/card/query")
-    Observable<MobBaseEntity<MobBankCard>> queryMobBankCradInfo(
+    Call<MobBaseEntity<MobBankCard>> queryMobBankCradInfo(
             @Query("key") String appkey, @Query("card") String card);
 
     //万年历查询
     //http://apicloud.mob.com/appstore/clendar/day?key=appkey&date=2015-05-01
     @Headers("Cache-Control: public, max-age=300")
     @GET(Config.MOB_BASE_URL + "/appstore/calendar/day")
-    Observable<MobBaseEntity<MobCalendarInfoEntity>> queryMobCalendarInfo(
+    Call<MobBaseEntity<MobCalendarInfoEntity>> queryMobCalendarInfo(
             @Query("key") String appkey, @Query("date") String date);
 
 
@@ -121,142 +122,142 @@ public interface WebServiceApi {
     //http://apiclod.mob.com/v1/weather/citys?key=appkey
     @Headers("Cache-Control: public, max-age=300")
     @GET(Config.MOB_BASE_URL + "/v1/weather/citys")
-    Observable<MobCitysEntity> queryMobCitys(@Query("key") String appkey);
+    Call<MobCitysEntity> queryMobCitys(@Query("key") String appkey);
 
     //查询汽车品牌
     //http://apicloud.mob.com/car/brand/query?key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/car/brand/query")
-    Observable<MobBaseEntity<ArrayList<MobCarEntity>>> queryMobCarList(
+    Call<MobBaseEntity<ArrayList<MobCarEntity>>> queryMobCarList(
             @Query("key") String appkey);
 
     //车型信息查询
     //http://apicloud.mob.com/car/seriesname/query?name=%E5%A5%A5%E8%BF%AAQ5&key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/car/seriesname/query")
-    Observable<MobBaseEntity<ArrayList<MobCarItemEntity>>> queryMobCarItems(
+    Call<MobBaseEntity<ArrayList<MobCarItemEntity>>> queryMobCarItems(
             @Query("key") String appkey, @Query("name") String name);
 
     //车型详细信息查询
     //http://apicloud.mob.com/car/series/query?key=215df9177263d&cid=1060133
     @GET(Config.MOB_BASE_URL + "/car/series/query")
-    Observable<MobBaseEntity<ArrayList<MobCarDetailsEntity>>> queryMobCarDetails(
+    Call<MobBaseEntity<ArrayList<MobCarDetailsEntity>>> queryMobCarDetails(
             @Query("key") String appkey, @Query("cid") String cid);
 
     //菜谱分类标签查询
     //http://apicloud.mob.com/v1/cook/category/query?key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/v1/cook/category/query")
-    Observable<MobBaseEntity<MobCookCategoryEntity>> queryMobCookCategory(
+    Call<MobBaseEntity<MobCookCategoryEntity>> queryMobCookCategory(
             @Query("key") String appkey);
 
     //按标签查询菜谱接口
     //http://apicloud.mob.com/v1/cook/menu/search?key=appkey&cid=0010001007&page=1&size=20
     @GET(Config.MOB_BASE_URL + "/v1/cook/menu/search")
-    Observable<MobBaseEntity<MobCookDetailEntity>> queryMobCookDetailsList(
+    Call<MobBaseEntity<MobCookDetailEntity>> queryMobCookDetailsList(
             @Query("key") String appkey, @Query("cid") String cid,
             @Query("page") int page, @Query("size") int size);
 
     //新华字典查询
     //http://apicloud.mob.com/appstore/dicionary/query?key=215df9177263d&name=李
     @GET(Config.MOB_BASE_URL + "/appstore/dicionary/query")
-    Observable<MobBaseEntity<MobDictEntity>> queryMobDict(
+    Call<MobBaseEntity<MobDictEntity>> queryMobDict(
             @Query("key") String appkey, @Query("name") String name);
 
     //航线查询航班信息
     //http://apicloud.mob.com/flight/line/query?key=215df9177263d&start=上海&end=海口
     @GET(Config.MOB_BASE_URL + "/flight/line/query")
-    Observable<MobBaseEntity<MobFlightEntity>> queryMobFlightLineList(
+    Call<MobBaseEntity<ArrayList<MobFlightEntity>>> queryMobFlightLineList(
             @Query("key") String appkey, @Query("start") String start, @Query("end") String end
     );
 
     //健康知识
     //http://apicloud.mob.com/appstore/health/search?key=215df9177263d&name=板栗
     @GET(Config.MOB_BASE_URL + "/appstore/health/search")
-    Observable<MobBaseEntity<MobHealthEntity>> queryMobHealth(
+    Call<MobBaseEntity<MobHealthEntity>> queryMobHealth(
             @Query("key") String appkey, @Query("name") String name,
             @Query("page") int page, @Query("size") int size);
 
     //历史上今天
     //http://apicloud.mob.com/appstore/history/query?day=0418&key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/appstore/history/query")
-    Observable<MobBaseEntity<ArrayList<MobHistoryTodayEntity>>> queryMobHistory(
+    Call<MobBaseEntity<ArrayList<MobHistoryTodayEntity>>> queryMobHistory(
             @Query("key") String appkey, @Query("day") String day);
 
     //身份证查询
     //http://apicloud.mob.com/idcrd/query?cardno=xxx&key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/idcrd/query")
-    Observable<MobBaseEntity<MobIdCardEntity>> queryMobIdcard(
+    Call<MobBaseEntity<MobIdCardEntity>> queryMobIdcard(
             @Query("key") String appkey, @Query("cardno") String cardno);
 
     //成语大全
     //http://apicloud.mob.com/appstore/idiom/query?name=丢三落四&key=215df9177263d
     @GET(Config.MOB_BASE_URL + "/appstore/idiom/query")
-    Observable<MobBaseEntity<MobIdiomEntity>> queryMobIdiom(
+    Call<MobBaseEntity<MobIdiomEntity>> queryMobIdiom(
             @Query("key") String appkey, @Query("name") String name);
 
     //IP查询
     //http://apicloud.mob.com/ip/query?key=215df9177263d&ip=123.123.123.123
     @GET(Config.MOB_BASE_URL + "/ip/query")
-    Observable<MobBaseEntity<MobIpEntity>> queryMobIp(
+    Call<MobBaseEntity<MobIpEntity>> queryMobIp(
             @Query("key") String appkey, @Query("ip") String ip);
 
     //支持彩种列表
     //http://apicloud.mob.com/lottery/list?key=appkey
     @GET(Config.MOB_BASE_URL + "/lottery/list")
-    Observable<MobBaseEntity<ArrayList<String>>> queryMoblotteryList(@Query("key") String appkey);
+    Call<MobBaseEntity<ArrayList<String>>> queryMoblotteryList(@Query("key") String appkey);
 
     //彩票开奖结果查询
     //http://apicloud.mob.com/lottery/query?key=appkey&name=大乐透
     @GET(Config.MOB_BASE_URL + "/lottery/query")
-    Observable<MobBaseEntity<MobLotteryEntity>> queryMoblotteryDetail(
+    Call<MobBaseEntity<MobLotteryEntity>> queryMoblotteryDetail(
             @Query("key") String appkey, @Query("name") String name
     );
 
     //全国今日油价查询
     //http://apicloud.mob.com/oil/price/province/query?key=appkey
     @GET(Config.MOB_BASE_URL + "/oil/price/province/query")
-    Observable<MobBaseEntity<MobOilPriceEntity>> queryMobOilPrice(@Query("key") String appkey);
+    Call<MobBaseEntity<MobOilPriceEntity>> queryMobOilPrice(@Query("key") String appkey);
 
     //手机号码归属地查询
     //http://apicloud.mob.com/v1/mobile/address/query?phone=xxxx&key=1c9dccb9a2434
     @GET(Config.MOB_BASE_URL + "/v1/mobile/address/query")
-    Observable<MobBaseEntity<MobPhoneAddressEntity>> queryMobMobileAddress(
+    Call<MobBaseEntity<MobPhoneAddressEntity>> queryMobMobileAddress(
             @Query("key") String appkey, @Query("phone") String phone);
 
     //邮编查询
     //http://apicloud.mob.com/v1/postcode/query?code=102629&key=1c9dccb9a2434
     @GET(Config.MOB_BASE_URL + "/v1/postcode/query")
-    Observable<MobBaseEntity<MobPostCodeEntity>> queryMobPostCode(
+    Call<MobBaseEntity<MobPostCodeEntity>> queryMobPostCode(
             @Query("key") String appkey, @Query("code") String code);
 
     //火车站站查询
     //http://apicloud.mob.com/train/tickets/queryByStationToStation?key=123456&start=北京&end=上海
     @GET(Config.MOB_BASE_URL + "/train/tickets/queryByStationToStation")
-    Observable<MobBaseEntity<ArrayList<MobTrainEntity>>> queryMobTrainStation(
+    Call<MobBaseEntity<ArrayList<MobTrainEntity>>> queryMobTrainStation(
             @Query("key") String appkey, @Query("start") String start, @Query("end") String end);
 
     //火车车次查询
     //http://apicloud.mob.com/train/tickets/queryByTrainNo?key=123456&trainno=G2
     @GET(Config.MOB_BASE_URL + "/train/tickets/queryByTrainNo")
-    Observable<MobBaseEntity<ArrayList<MobTrainNoEntity>>> queryMobTrainNo(
+    Call<MobBaseEntity<ArrayList<MobTrainNoEntity>>> queryMobTrainNo(
             @Query("key") String appkey, @Query("trainno") String trainno);
 
     //获取天气信息
     //http://apicloud.mob.com/v1/weather/query?key=215df9177263d&city=武汉&province=湖北
     @Headers("Cache-Control: public, max-age=300")
     @GET(Config.MOB_BASE_URL + "/v1/weather/query")
-    Observable<MobWeatherEntity> queryMobCityWeather(@Query("key") String appkey,
+    Call<MobWeatherEntity> queryMobCityWeather(@Query("key") String appkey,
     @Query("city") String city, @Query("province") String province);
 
     //微信精选列表查询
     //http://apicloud.mob.com/wx/article/search?key=123456&cid=1
     @GET(Config.MOB_BASE_URL + "/wx/article/search")
-    Observable<MobBaseEntity<MobWxArticleEntity>> queryMobWxArticle(
+    Call<MobBaseEntity<MobWxArticleEntity>> queryMobWxArticle(
             @Query("key") String appkey, @Query("cid") String cid,
             @Query("page") int page, @Query("size") int size);
 
     //微信精选分类查询
     //http://apicloud.mob.com/wx/article/category/query?key=123456
     @GET(Config.MOB_BASE_URL + "/wx/article/category/query")
-    Observable<MobBaseEntity<ArrayList<MobWxCategoryEntity>>> queryMobWxArticleCategory(
+    Call<MobBaseEntity<ArrayList<MobWxCategoryEntity>>> queryMobWxArticleCategory(
             @Query("key") String appkey);
 
     //--------------------------------Mob start-----------------------------
