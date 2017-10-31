@@ -20,7 +20,7 @@ import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.listeners.MobCallBack;
 import online.himakeit.skylark.model.mob.MobPhoneAddressEntity;
-import online.himakeit.skylark.util.LogUtils;
+import online.himakeit.skylark.util.TextStrUtils;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/10/24 18:37
@@ -45,6 +45,14 @@ public class PhoneAddressActivity extends BaseActivity {
     EditText ed_phone_address_query;
     @Bind(R.id.iv_phone_address_query)
     ImageView iv_phone_address_query;
+    @Bind(R.id.tv_phone_yys)
+    TextView tv_phone_yys;
+    @Bind(R.id.tv_phone_city)
+    TextView tv_phone_city;
+    @Bind(R.id.tv_phone_city_num)
+    TextView tv_phone_city_num;
+    @Bind(R.id.tv_phone_post)
+    TextView tv_phone_post;
 
     String phoneNumber = null;
 
@@ -79,19 +87,22 @@ public class PhoneAddressActivity extends BaseActivity {
                     Snackbar.make(btn_phone_address_query, "手机号码不能为空", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                if (!TextStrUtils.isMobileNum(phoneNumber)) {
+                    Snackbar.make(btn_phone_address_query, "手机号码格式不正确", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                showProgressDialog("正在查询...");
                 MobApiImpl.queryMobMobileAddress(phoneNumber, 0x001, new MobCallBack() {
                     @Override
                     public void onSuccess(int what, Object result) {
+                        dissmissProgressDialog();
                         if (result != null) {
                             MobPhoneAddressEntity phoneAddressEntity = (MobPhoneAddressEntity) result;
-                            StringBuilder stringBuilder = new StringBuilder();
-                            stringBuilder.append(phoneAddressEntity.getCity() + "\n");
-                            stringBuilder.append(phoneAddressEntity.getCityCode() + "\n");
-                            stringBuilder.append(phoneAddressEntity.getMobileNumber() + "\n");
-                            stringBuilder.append(phoneAddressEntity.getOperator() + "\n");
-                            stringBuilder.append(phoneAddressEntity.getProvince() + "\n");
-                            stringBuilder.append(phoneAddressEntity.getZipCode() + "\n");
-                            LogUtils.show("skylark",stringBuilder+"");
+
+                            tv_phone_yys.setText("运营商：     " + phoneAddressEntity.getOperator());
+                            tv_phone_city.setText("城市：         " + phoneAddressEntity.getProvince() + " " + phoneAddressEntity.getCity());
+                            tv_phone_city_num.setText("城市区号： " + phoneAddressEntity.getCityCode());
+                            tv_phone_post.setText("邮政编码： " + phoneAddressEntity.getZipCode());
                         }
                     }
 
@@ -102,7 +113,8 @@ public class PhoneAddressActivity extends BaseActivity {
 
                     @Override
                     public void onFail(int what, String result) {
-
+                        dissmissProgressDialog();
+                        Snackbar.make(btn_phone_address_query, result, Snackbar.LENGTH_SHORT).show();
                     }
                 });
                 break;

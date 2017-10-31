@@ -77,6 +77,9 @@ public interface WebServiceApi {
     // TODO: 2017/8/22 从最美官网抓取壁纸用的
     @GET(Config.ZUIMEI_BASE_URL + "/wallpaper/category/1/?page_size=1")
     Observable<ZuiMeiImageResponse> getImage();
+
+    @GET(Config.ZUIMEI_BASE_URL + "/wallpaper/category/1/?page_size=1")
+    Call<ZuiMeiImageResponse> getZuiMeiPic();
     //--------------------------------ZuiMei end-----------------------------
 
     //--------------------------------ZhiHu start-----------------------------

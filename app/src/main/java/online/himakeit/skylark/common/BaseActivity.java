@@ -4,9 +4,11 @@ package online.himakeit.skylark.common;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 
+import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -17,6 +19,8 @@ import com.umeng.analytics.MobclickAgent;
  * Description:
  */
 public class BaseActivity extends AppCompatActivity {
+
+    private SVProgressHUD svProgressHUD;
     /**
      * 写文件的请求码
      */
@@ -36,6 +40,41 @@ public class BaseActivity extends AppCompatActivity {
 //        StatusBarUtils.setStatuBarAndBottomBarTranslucent(this);
         super.onCreate(savedInstanceState);
 
+        initDialog();
+    }
+
+    private void initDialog() {
+        svProgressHUD = new SVProgressHUD(this);
+    }
+
+    public void showProgressDialog(){
+        dissmissProgressDialog();
+        svProgressHUD.showWithStatus("加载中...", SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void showProgressDialog(String msg){
+        if (TextUtils.isEmpty(msg)){
+            showProgressDialog();
+        }else {
+            dissmissProgressDialog();
+            svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+        }
+    }
+
+    public void showProgressSuccess(String msg){
+        dissmissProgressDialog();
+        svProgressHUD.showSuccessWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void showProgressError(String msg){
+        dissmissProgressDialog();
+        svProgressHUD.showErrorWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    public void dissmissProgressDialog(){
+        if (svProgressHUD.isShowing()){
+            svProgressHUD.dismiss();
+        }
     }
 
     @Override

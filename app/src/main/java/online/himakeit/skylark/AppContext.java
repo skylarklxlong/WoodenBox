@@ -1,6 +1,8 @@
 package online.himakeit.skylark;
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.facebook.stetho.Stetho;
 import com.litesuits.orm.LiteOrm;
@@ -119,6 +121,30 @@ public class AppContext extends Application {
      */
     public static AppContext getAppContext(){
         return mAppContext;
+    }
+
+    //版本名
+    public static String getVersionName() {
+        return getPackageInfo().versionName;
+    }
+
+    //版本号
+    public static int getVersionCode() {
+        return getPackageInfo().versionCode;
+    }
+
+    private static PackageInfo getPackageInfo(){
+        PackageInfo info = null;
+
+        try {
+            PackageManager packageManager = mAppContext.getPackageManager();
+            info = packageManager.getPackageInfo(mAppContext.getPackageName(),PackageManager.GET_CONFIGURATIONS);
+            return info;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return info;
     }
 
 

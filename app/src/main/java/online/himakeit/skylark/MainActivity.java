@@ -1,6 +1,5 @@
 package online.himakeit.skylark;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -25,23 +24,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-import com.yanzhenjie.permission.Rationale;
-import com.yanzhenjie.permission.RationaleListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.common.BaseActivity;
-import online.himakeit.skylark.fragment.MobFragment;
-import online.himakeit.skylark.fragment.ToolsFragment;
 import online.himakeit.skylark.fragment.GankFragment;
 import online.himakeit.skylark.fragment.KCFragment;
+import online.himakeit.skylark.fragment.MobFragment;
 import online.himakeit.skylark.fragment.ReadFragment;
+import online.himakeit.skylark.fragment.ToolsFragment;
 import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageItem;
 import online.himakeit.skylark.presenter.implPresenter.ZuiMeiPresenterImpl;
@@ -123,7 +117,7 @@ public class MainActivity extends BaseActivity
 
         AlarmManagerUtils.register(this);
 
-        requestSomePermission();
+//        requestSomePermission();
 
         registerMessageReceiver();  // used for receive msg JPush
 
@@ -147,7 +141,7 @@ public class MainActivity extends BaseActivity
         super.onDestroy();
     }
 
-    private void requestSomePermission() {
+    /*private void requestSomePermission() {
         // 申请权限。
         AndPermission.with(MainActivity.this)
                 .requestCode(100)
@@ -207,7 +201,7 @@ public class MainActivity extends BaseActivity
                 }
             }
         }
-    };
+    };*/
 
     private void toolbarTitle(String title) {
         getSupportActionBar().setTitle(title);

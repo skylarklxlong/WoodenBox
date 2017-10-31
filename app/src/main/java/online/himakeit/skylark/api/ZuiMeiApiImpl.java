@@ -1,8 +1,12 @@
 package online.himakeit.skylark.api;
 
+import online.himakeit.skylark.listeners.MobCallBack;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
 import online.himakeit.skylark.presenter.implView.IZuiMeiPic;
 import online.himakeit.skylark.util.LogUtils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -18,6 +22,8 @@ import rx.schedulers.Schedulers;
 public class ZuiMeiApiImpl {
 
     private static final String TAG = "ZuiMeiApiImpl";
+    public final static String GET_DATA_FAIL = "获取数据失败";
+    public final static String NET_FAIL = "网络出问题了";
 
     public static Subscription getBackgroundPic(final IZuiMeiPic iZuiMeiPic){
         iZuiMeiPic.showProgressDialog();
@@ -96,5 +102,36 @@ public class ZuiMeiApiImpl {
 //        addSubscription(subscription);
 
         return subscription;
+    }
+
+    public static Call<ZuiMeiImageResponse> getZuiMeiPic(final int what ,final MobCallBack callBack){
+        Call<ZuiMeiImageResponse> zuiMeiPic = ApiManager.getInstence().getZuiMeiService().getZuiMeiPic();
+        zuiMeiPic.enqueue(new Callback<ZuiMeiImageResponse>() {
+            @Override
+            public void onResponse(Call<ZuiMeiImageResponse> call, Response<ZuiMeiImageResponse> response) {
+                if (response.isSuccessful()){
+                    LogUtils.show("response.isSuccessful()");
+                    ZuiMeiImageResponse body = response.body();
+                    if (body != null){
+                        LogUtils.show("body != null");
+                        callBack.onSuccessList(what,body.getData().getImages());
+                    }else {
+                        LogUtils.show("body == null");
+                        callBack.onFail(what, GET_DATA_FAIL);
+                    }
+                }else {
+                    LogUtils.show("!response.isSuccessful()");
+                    callBack.onFail(what, GET_DATA_FAIL);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ZuiMeiImageResponse> call, Throwable t) {
+                callBack.onFail(what, NET_FAIL);
+                LogUtils.show("onFailure" + t.getMessage());
+            }
+        });
+
+        return zuiMeiPic;
     }
 }
