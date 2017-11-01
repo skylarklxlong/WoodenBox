@@ -39,6 +39,9 @@ public class PhoneAddressActivity extends BaseActivity {
     @Bind(R.id.tv_title)
     TextView tv_title;
 
+    /**
+     * 其他UI
+     */
     @Bind(R.id.btn_phone_address_query)
     Button btn_phone_address_query;
     @Bind(R.id.ed_phone_address_query)

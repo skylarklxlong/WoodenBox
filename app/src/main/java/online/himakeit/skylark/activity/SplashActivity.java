@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
@@ -23,7 +22,6 @@ import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.ZuiMeiApiImpl;
 import online.himakeit.skylark.common.BaseActivityForFullScreen;
 import online.himakeit.skylark.listeners.MobCallBack;
-import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageItem;
 import online.himakeit.skylark.util.LogUtils;
 
@@ -64,11 +62,11 @@ public class SplashActivity extends BaseActivityForFullScreen{
             @Override
             public void onSuccessList(int what, List results) {
                 LogUtils.show(((ZuiMeiImageItem)(results.get(0))).getImageUrl() + "");
-                Picasso.with(SplashActivity.this)
+                /*Picasso.with(SplashActivity.this)
                         .load(Config.ZUIMEI_PIC_BASE_URL + ((ZuiMeiImageItem)(results.get(0))).getImageUrl()
                                 + "?imageMogr/v2/auto-orient/thumbnail/1024x768/quality/100")
                         .resize(iv_splash.getWidth(),iv_splash.getHeight())
-                        .into(iv_splash);
+                        .into(iv_splash);*/
 
                 tv_desc.setText(((ZuiMeiImageItem)(results.get(0))).getDescription());
                 LogUtils.show(((ZuiMeiImageItem)(results.get(0))).getDescription() + "");
@@ -86,7 +84,7 @@ public class SplashActivity extends BaseActivityForFullScreen{
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 SplashActivity.this.finish();
             }
-        },4000);
+        },2000);
 
     }
 

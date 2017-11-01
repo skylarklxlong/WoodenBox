@@ -96,7 +96,7 @@ public interface WebServiceApi {
     //--------------------------------ZhiHu end-----------------------------
 
     //--------------------------------Gank start-----------------------------
-    @GET(Config.GANKIO_BASE_URL + "/api/data/福利/10/{page}")
+    @GET(Config.GANKIO_BASE_URL + "/api/data/福利/5/{page}")
     Observable<GankMeiZhiData> getMeiZhiData(@Path("page") int page);
 
     // TODO: 2017/9/6 type: 福利/Android/iOS/休息视频/拓展资源/前端
