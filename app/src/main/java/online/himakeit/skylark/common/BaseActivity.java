@@ -31,7 +31,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     public static final int REQUEST_CODE_READ_FILE = 201;
 
-    Context mContext;
+    public Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

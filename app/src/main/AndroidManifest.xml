@@ -119,6 +119,8 @@
         <activity
             android:name=".activity.mob.CookMenuActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".activity.mob.CookListActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".activity.mob.CurrencyRateActivity"
             android:launchMode="singleTask" />
