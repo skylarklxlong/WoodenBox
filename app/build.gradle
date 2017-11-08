@@ -245,6 +245,12 @@ dependencies {
      */
     debugCompile 'com.readystatesoftware.chuck:library:1.0.4'
     releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.0.4'
-    /*提示库*/
+    /**
+     * 提示库
+     */
     compile 'com.bigkoo:svprogresshud:1.0.4'
+    /**
+     * 下拉刷新框架
+     */
+    compile 'com.github.Aspsine:SwipeToLoadLayout:v1.0.4'
 }

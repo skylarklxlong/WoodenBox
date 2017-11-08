@@ -3,6 +3,7 @@ package online.himakeit.skylark;
 import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 
 import com.facebook.stetho.Stetho;
 import com.litesuits.orm.LiteOrm;
@@ -63,10 +64,13 @@ public class AppContext extends Application {
     private static final String DB_NAME = "skylark.db";
     public static LiteOrm liteOrmDB;
 
+    private static Handler mHandler;
+
     @Override
     public void onCreate() {
         super.onCreate();
         mAppContext = this;
+        mHandler = new Handler();
 
         initJPush();
 
@@ -90,6 +94,13 @@ public class AppContext extends Application {
          * facebook调试工具
          */
         Stetho.initializeWithDefaults(this);
+    }
+
+    public static Handler getHandler() {
+        if (mHandler == null) {
+            mHandler = new Handler();
+        }
+        return mHandler;
     }
 
     private void initJPush(){

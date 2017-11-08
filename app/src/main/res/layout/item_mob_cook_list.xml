@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@drawable/item_selector">
+
+    <ImageView
+        android:id="@+id/iv_mob_cook_list_show"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_gray_bg"/>
+
+
+    <ImageView
+        android:id="@+id/iv_arrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/ic_icon_arrow_right"
+        tools:ignore="VectorDrawableCompat" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/iv_arrow"
+        android:layout_toRightOf="@id/iv_mob_cook_list_show"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_mob_cook_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="桂皮红烧肉"
+            android:textColor="@color/black_text1_color"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_mob_cook_list_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_mob_cook_list_title"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="原料：五花肉、八角、桂皮、香叶、姜、大蒜、冰糖。"
+            android:textColor="@color/black_text2_color"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_mob_cook_list_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="荤菜,红烧,养生"
+            android:textColor="#fa8e09"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1.2px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lineColor"
+        />
+
+</RelativeLayout>

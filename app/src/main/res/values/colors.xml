@@ -37,4 +37,8 @@
     <color name="about_header_background">@color/theme_primary_darker</color>
 
     <color name="lite_blue">#ff359ff2</color>
+
+    <color name="item_selecter_pressed_color">#e6e6e6</color>
+    <color name="item_bg">#ffffff</color>
+    <color name="lineColor">#cccccc</color>
 </resources>

@@ -56,36 +56,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:label="@string/app_name"/>
-        <activity android:name=".common.BaseActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".common.BaseActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ChooseFileActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ChooseReceiverActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FileReceiverActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FileSenderActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ReceiverWaitingActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WebTransferActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.TopNewsDescribeActivity"
             android:launchMode="singleTask"
@@ -101,12 +103,12 @@
             android:theme="@style/translucent" />
         <activity
             android:name=".activity.WebActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AboutActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.BankCardActivity"
             android:launchMode="singleTask" />
@@ -119,8 +121,12 @@
         <activity
             android:name=".activity.mob.CookMenuActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".activity.mob.CookListActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".activity.mob.CookListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.CookDetailsActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.mob.CurrencyRateActivity"
             android:launchMode="singleTask" />
@@ -184,7 +190,6 @@
         <activity
             android:name=".activity.mob.WXArticleActivity"
             android:launchMode="singleTask" />
-
 
 
         <receiver android:name=".receiver.AlarmReceiver">
