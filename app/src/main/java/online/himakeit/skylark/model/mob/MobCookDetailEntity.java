@@ -99,7 +99,7 @@ public class MobCookDetailEntity implements Serializable {
             this.thumbnail = thumbnail;
         }
 
-        public static class MobCookDetailListRecipeBean{
+        public static class MobCookDetailListRecipeBean implements Serializable{
             private String ingredients;
             private String method;
             private String sumary;

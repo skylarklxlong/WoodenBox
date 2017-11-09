@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_show"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_gray_bg" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="主席红烧肉"
+        android:textColor="@color/black_text1_color"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tv_sumary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="主席红烧肉属于川菜中的一道经典菜，它是四川、重庆许多地区许多人家接待重要客人才做的一道菜。主要原料是猪肉，口味是香，工艺是烧，难度属于中级。"
+        android:textColor="@color/black_text2_color"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="食物清单"
+        android:textColor="@color/black_text1_color"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="五花肉一斤半洗净切约2厘米见方的块，葱半两切段，老姜一块拍破，花椒二十余粒，八角四、五个粒，三奈四、五粒，冰糖半两，红烧酱油三大匙，盐适量，鲜汤约二斤。"
+        android:textColor="@color/black_text2_color"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:text="烹饪步骤"
+        android:textColor="@color/black_text1_color"
+        android:textSize="20sp" />
+
+</LinearLayout>

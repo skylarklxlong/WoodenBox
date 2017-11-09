@@ -154,7 +154,7 @@ public class CookListActivity extends BaseActivity implements OnRefreshListener,
     }
 
     private void init() {
-        tv_title.setText("我的厨房");
+        tv_title.setText(mobCookCategoryEntity.getCategoryInfo().getName());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

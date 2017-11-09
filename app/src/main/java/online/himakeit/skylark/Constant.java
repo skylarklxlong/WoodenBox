@@ -1,6 +1,8 @@
 package online.himakeit.skylark;
 
 
+import android.os.Environment;
+
 import java.util.Comparator;
 import java.util.Map;
 
@@ -117,5 +119,8 @@ public class Constant {
      */
     public static final String NAME_FILE_TEMPLATE = "file.template";
     public static final String NAME_CLASSIFY_TEMPLATE = "classify.template";
+
+    //保存图片的地址
+    public static final String BasePath = Environment.getExternalStorageDirectory() + "/Skylark";
 }
 
