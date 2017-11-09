@@ -184,7 +184,7 @@ public class TopNewsFragment extends BaseFragment implements ITopNewsFragment {
     @Override
     public void showError(String error) {
         mSwipeRefreshLayout.setRefreshing(false);
-        mIvTipFail.setVisibility(View.VISIBLE);
+       /* mIvTipFail.setVisibility(View.VISIBLE);
         mIvTipFail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,7 +192,7 @@ public class TopNewsFragment extends BaseFragment implements ITopNewsFragment {
                 mSwipeRefreshLayout.setRefreshing(true);
                 loadMoreData();
             }
-        });
+        });*/
         if (recyclerView != null) {
             Snackbar.make(recyclerView, "请检查网络！", Snackbar.LENGTH_LONG)
                     .setAction("重试", new View.OnClickListener() {
