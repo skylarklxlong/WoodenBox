@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
 
     <include
         android:id="@+id/layout_toolbar"
         layout="@layout/layout_search_bar" />
-
+    <!--
+    SwipeToLoadLayout对contentView, headerView, footerView的id是有要求的
+    contentView     swipe_target
+    headerView      swipe_refresh_header
+    footerView      swipe_load_more_footer
+    -->
     <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipe_to_load_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swipe_to_load_layout"
         app:swipe_style="classic">
 
         <include
             android:id="@+id/swipe_refresh_header"
-            layout="@layout/layout_cook_header"/>
+            layout="@layout/layout_cook_header" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_cook_list"
+            android:id="@+id/swipe_target"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
-        <include android:id="@+id/swipe_refresh_more_footer"
-            layout="@layout/layout_refresh_footer_normal"/>
+        <include
+            android:id="@+id/swipe_load_more_footer"
+            layout="@layout/layout_refresh_footer_normal" />
 
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 

@@ -48,14 +48,14 @@ public class CookListActivity extends BaseActivity implements OnRefreshListener,
 
     @Bind(R.id.swipe_to_load_layout)
     SwipeToLoadLayout swipeToLoadLayout;
-    @Bind(R.id.recycler_cook_list)
+    @Bind(R.id.swipe_target)
     RecyclerView recyclerView;
 
     MobCookCategoryEntity mobCookCategoryEntity = new MobCookCategoryEntity();
     private int pageIndex = 1;
-    private int pageSize = 20;
+    private int pageSize = 10;
 
-    private List<MobCookDetailEntity.MobCookDetailListBean> mDatas = new ArrayList<>();
+    private List<MobCookDetailEntity.MobCookDetailListBean> mDatas = new ArrayList<MobCookDetailEntity.MobCookDetailListBean>();
     MobCookListRecyclerAdapter adapter;
 
     @Override
