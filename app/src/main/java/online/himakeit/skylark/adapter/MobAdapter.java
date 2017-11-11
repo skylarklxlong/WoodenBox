@@ -41,6 +41,7 @@ import online.himakeit.skylark.activity.mob.PostCodeActivity;
 import online.himakeit.skylark.activity.mob.PreciousMetalActivity;
 import online.himakeit.skylark.activity.mob.SilverDataActivity;
 import online.himakeit.skylark.activity.mob.TrainActivity;
+import online.himakeit.skylark.activity.mob.WXArticleActivity;
 import online.himakeit.skylark.listeners.OnItemClickListener;
 
 /**
@@ -137,6 +138,7 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (title.equals("中国彩票开奖结果")) {
                         mContext.startActivity(new Intent(mContext, LotteryCategoryActivity.class));
                     } else if (title.equals("微信精选")) {
+                        mContext.startActivity(new Intent(mContext, WXArticleActivity.class));
 //-------------------------------------------------------------------
                     } else if (title.equals("银行卡信息")) {
                         mContext.startActivity(new Intent(mContext, BankCardActivity.class));

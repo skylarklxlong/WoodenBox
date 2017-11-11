@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/layout_search_bar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_wxarticle_category"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1.2px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mid_grey" />
+
+        <TextView
+            android:id="@+id/tv_wxarticle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="分类"
+            android:textColor="@color/black_text3_color"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_wxarticle_title"
+            android:background="@drawable/ic_icon_arrow_drop_down_gray" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swipeToLoadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:swipe_style="classic">
+
+            <include
+                android:id="@+id/swipe_refresh_header"
+                layout="@layout/layout_cook_header" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/swipe_target"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+            <include
+                android:id="@+id/swipe_load_more_footer"
+                layout="@layout/layout_refresh_footer_normal" />
+
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_wxarticle_category_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#a8545454">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_wxacticle_category"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:scrollbars="vertical" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>
