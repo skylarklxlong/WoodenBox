@@ -17,7 +17,7 @@ public interface MyCallBack {
      * @param what
      * @param result
      */
-    void onSuccess(int what, Object result) ;
+    void onSuccess(int what, Object result);
 
     /**
      * 成功的回调集合

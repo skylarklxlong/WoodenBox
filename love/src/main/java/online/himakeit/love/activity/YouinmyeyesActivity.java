@@ -30,16 +30,17 @@ public class YouinmyeyesActivity extends AppCompatActivity {
             }
         });
 
-        Toolbar toolbar= (Toolbar)findViewById(R.id.toolbar1);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar !=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        CollapsingToolbarLayout collapsingToolbarLayout =(CollapsingToolbarLayout)
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)
                 findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("我眼中的你");
     }
+
     //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

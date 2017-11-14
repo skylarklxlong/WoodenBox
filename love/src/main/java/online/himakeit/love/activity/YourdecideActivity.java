@@ -17,14 +17,15 @@ public class YourdecideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_yourdecide);
         ThemeUtils.changeTheme(this);
         //返回按钮
-        Toolbar toolbar= (Toolbar)findViewById(R.id.tb_yd);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_yd);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar !=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //返回按钮
     }
+
     //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

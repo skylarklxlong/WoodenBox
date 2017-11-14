@@ -47,14 +47,14 @@ public class DialogUtils {
         void onCancel();
     }
 
-    public static MaterialDialog showMyListDialog(final Context context,String title, int contents, final OnDialogListCallback onDialogListCallback){
+    public static MaterialDialog showMyListDialog(final Context context, String title, int contents, final OnDialogListCallback onDialogListCallback) {
         MaterialDialog materialDialog = new MaterialDialog.Builder(context)
                 .title(title)
                 .items(contents)
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        onDialogListCallback.onSelection(dialog,itemView,position,text);
+                        onDialogListCallback.onSelection(dialog, itemView, position, text);
                     }
                 }).show();
         return materialDialog;

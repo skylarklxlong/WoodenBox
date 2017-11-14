@@ -20,29 +20,32 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         ThemeUtils.changeTheme(this);
 
-        Button bt_zt=(Button)findViewById(R.id.bt_zt);
-        bt_zt.setOnClickListener(new View.OnClickListener(){
+        Button bt_zt = (Button) findViewById(R.id.bt_zt);
+        bt_zt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, ThemeActivity.class);
                 startActivity(intent);
-            }});
-        Button bt_gy=(Button)findViewById(R.id.bt_gy);
-        bt_gy.setOnClickListener(new View.OnClickListener(){
+            }
+        });
+        Button bt_gy = (Button) findViewById(R.id.bt_gy);
+        bt_gy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, DeveloperActivity.class);
                 startActivity(intent);
-            }});
+            }
+        });
         //返回按钮
-        Toolbar toolbar= (Toolbar)findViewById(R.id.tb_sz);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_sz);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar !=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //返回按钮
     }
+
     //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

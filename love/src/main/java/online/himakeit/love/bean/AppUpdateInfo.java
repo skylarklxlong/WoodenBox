@@ -13,7 +13,7 @@ public class AppUpdateInfo {
      * name : 干货营
      * version : 9
      * changelog : 1.紧急修复item点击跳转错乱问题
-     2.优化MVP模式，添加判空处理
+     * 2.优化MVP模式，添加判空处理
      * updated_at : 1470931921
      * versionShort : 1.3.1
      * build : 9

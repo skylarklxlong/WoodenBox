@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/youinmyeyes" />
+                    android:src="@drawable/xyxl" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/road" />
+                    android:src="@drawable/xyxl" />
 
                 <TextView
                     android:layout_width="wrap_content"

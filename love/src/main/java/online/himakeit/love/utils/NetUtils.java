@@ -17,19 +17,20 @@ public class NetUtils {
 
     /**
      * 判断指定的ipaddress是否可以ping
+     *
      * @param ipAddress
      * @return
      */
-    public static boolean pingIpAddress(String ipAddress){
+    public static boolean pingIpAddress(String ipAddress) {
 
         try {
             Process process = Runtime.getRuntime().exec(
                     "/system/bin/ping -c 1 -w 100 " + ipAddress);
             int status = process.waitFor();
 
-            if (status == 0){
+            if (status == 0) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
 

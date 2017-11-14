@@ -20,30 +20,33 @@ public class DecideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_decide);
         ThemeUtils.changeTheme(this);
 
-        CardView cv_you =(CardView)findViewById(R.id.cv_you);
-        cv_you.setOnClickListener(new View.OnClickListener(){
+        CardView cv_you = (CardView) findViewById(R.id.cv_you);
+        cv_you.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(DecideActivity.this, YouinmyeyesActivity.class);
                 startActivity(intent);
-            }});
-        CardView cv_decide =(CardView)findViewById(R.id.cv_decide);
-        cv_decide.setOnClickListener(new View.OnClickListener(){
+            }
+        });
+        CardView cv_decide = (CardView) findViewById(R.id.cv_decide);
+        cv_decide.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(DecideActivity.this, YourdecideActivity.class);
                 startActivity(intent);
-            }});
+            }
+        });
 
         //返回按钮
-        Toolbar toolbar= (Toolbar)findViewById(R.id.tb_dc);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_dc);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar !=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //返回按钮
     }
+
     //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

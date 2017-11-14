@@ -23,7 +23,7 @@ public class DeveloperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developer);
         ThemeUtils.changeTheme(this);
-        TextView tv_androidstudio=(TextView)findViewById(R.id.tv_androidstudio);
+        TextView tv_androidstudio = (TextView) findViewById(R.id.tv_androidstudio);
         tv_androidstudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,51 +34,53 @@ public class DeveloperActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button bt_ud=(Button)findViewById(R.id.bt_ud);
+        Button bt_ud = (Button) findViewById(R.id.bt_ud);
         bt_ud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog =new AlertDialog.Builder(DeveloperActivity.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(DeveloperActivity.this);
                 dialog.setTitle("日志").setMessage(R.string.update_log).setCancelable(true)
-                        .setPositiveButton("OK~", new DialogInterface.OnClickListener(){
+                        .setPositiveButton("OK~", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog ,int which){}
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
                         });
                 dialog.show();
             }
         });
-        Button bt_up=(Button)findViewById(R.id.bt_up);
+        Button bt_up = (Button) findViewById(R.id.bt_up);
         bt_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent();
+                Intent intent = new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse("https://fir.im/wzq");
+                Uri content_url = Uri.parse("http://fir.im/loveforchan");
                 intent.setData(content_url);
                 startActivity(intent);
 
             }
         });
-        Button bt_os=(Button)findViewById(R.id.bt_os);
+        Button bt_os = (Button) findViewById(R.id.bt_os);
         bt_os.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse("https://github.com/0oFantasyo0/wzq");
+                Uri content_url = Uri.parse("https://github.com/skylarklxlong/WoodenBox");
                 intent.setData(content_url);
                 startActivity(intent);
             }
         });
         //返回按钮
-        Toolbar toolbar= (Toolbar)findViewById(R.id.tb_dv);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_dv);
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
-        if (actionBar !=null){
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //返回按钮
     }
+
     //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

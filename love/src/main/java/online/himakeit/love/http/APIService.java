@@ -15,7 +15,7 @@ import retrofit2.http.Headers;
  */
 public interface APIService {
 
-    //获取fir.im中的GankMM的最新版本
+    //获取fir.im中的Love的最新版本
     @Headers("Cache-Control: public, max-age=3600")
     @GET(Constants.URL_AppUpdateInfo)
     Call<AppUpdateInfo> getTheLastAppInfo();

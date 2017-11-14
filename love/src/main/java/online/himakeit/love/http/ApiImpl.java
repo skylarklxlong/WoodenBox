@@ -29,7 +29,7 @@ public class ApiImpl {
                 if (response.isSuccessful()) {
                     AppUpdateInfo body = response.body();
                     if (body != null) {
-                        if (body.getName().equals("干货营")) {
+                        if (body.getName().equals("Love")) {
                             myCallBack.onSuccess(what, body);
                         } else {
                             myCallBack.onFail(what, GET_DATA_FAIL);

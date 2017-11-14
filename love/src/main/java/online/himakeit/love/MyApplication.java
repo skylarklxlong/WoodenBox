@@ -79,15 +79,15 @@ public class MyApplication extends Application {
         return pi;
     }
 
-    public static MyApplication getAppContext(){
+    public static MyApplication getAppContext() {
         return mContext;
     }
 
-    public static OkHttpClient defaultOkHttpClient(){
+    public static OkHttpClient defaultOkHttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
-        client.writeTimeout(30 * 1000 , TimeUnit.MILLISECONDS);
+        client.writeTimeout(30 * 1000, TimeUnit.MILLISECONDS);
         client.readTimeout(30 * 1000, TimeUnit.MILLISECONDS);
-        client.connectTimeout(30 * 1000 , TimeUnit.MILLISECONDS);
+        client.connectTimeout(30 * 1000, TimeUnit.MILLISECONDS);
         //设置缓存路径
         File httpCacheDirectory = new File(mContext.getCacheDir(), "okhttpCache");
         //设置缓存 10M

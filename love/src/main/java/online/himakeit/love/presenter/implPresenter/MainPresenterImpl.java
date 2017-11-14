@@ -76,6 +76,7 @@ public class MainPresenterImpl extends BasePresenterImpl<IMainView> implements I
         this.context = context;
         attachView(iMainView);
     }
+
     @Override
     public void initAppUpdate() {
         if (NetUtils.hasNetWorkConection(context)) {

@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
 
 
                     Date date = new Date();
-                    Calendar calendar = new GregorianCalendar(2015, 10, 8);
+                    Calendar calendar = new GregorianCalendar(2011, 10, 3);
                     //2015.10.8 8:00计时起
                     long x = date.getTime() - calendar.getTimeInMillis();
                     long y = x - 8 * 3600 * 1000;
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
         pb_time.setIndeterminate(true);
 
         Date d = new Date();
-        Calendar c = new GregorianCalendar(2015, 10, 8);
+        Calendar c = new GregorianCalendar(2011, 10, 3);
         //2015.10.8 8:00计时起
         long a = (d.getTime() - c.getTimeInMillis());
         long s = a / (1000 * 3600 * 24);
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("说明").setMessage("计时器从2015.10.8 0:00计时起，每天0点整跳动一次" +
+                dialog.setTitle("说明").setMessage("计时器从2011.10.3 0:00计时起，每天0点整跳动一次" +
                         "\nX年X月X日   XX：XX：XX为计时的具体时间，精确到秒" +
                         "\n使用了新算法，新算法中只能精确到日，时分秒都不行的~" +
                         "\n最上面天数和最下面时钟是绝对没问题的，主要是中间的那个日期...调了两天了应该不会有毛病...吧..." +
@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
                 })
                 .show();
 
-        new InstallUtils(context, appUpdateInfo.getInstall_url(), "GankMM_" + appUpdateInfo.getVersionShort(), new InstallUtils.DownloadCallBack() {
+        new InstallUtils(context, appUpdateInfo.getInstall_url(), "Love_" + appUpdateInfo.getVersionShort(), new InstallUtils.DownloadCallBack() {
             @Override
             public void onStart() {
                 KLog.i("installAPK-----onStart");
@@ -449,10 +449,10 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
         PendingIntent rightPendIntent = PendingIntent.getActivity(this,
                 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         int smallIcon = R.mipmap.ic_launcher;
-        String ticker = "正在下载干货营更新包...";
+        String ticker = "正在下载Love更新包...";
         //实例化工具类，并且调用接口
         notifyUtils = new NotifyUtil(this, 0);
-        notifyUtils.notify_progress(rightPendIntent, smallIcon, ticker, "干货营 下载", "正在下载中...", false, false, false);
+        notifyUtils.notify_progress(rightPendIntent, smallIcon, ticker, "Love 下载", "正在下载中...", false, false, false);
     }
 
     @Override

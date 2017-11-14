@@ -48,7 +48,7 @@ public class LogUtils {
         }
     }
 
-    public static void show(String tag ,String str) {
+    public static void show(String tag, String str) {
         str = str.trim();
         int index = 0;
         int maxLength = 40000;
