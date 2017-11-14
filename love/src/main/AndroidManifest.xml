@@ -31,9 +31,6 @@
             android:label="你的决定"/>
         <activity android:name=".activity.DeveloperActivity"
             android:label="开发信息"/>
-        <activity android:name=".activity.SettingsActivity"
-            android:label="设置"/>
-        <activity android:name=".activity.ThemeActivity" />
         <activity android:name=".activity.YouinmyeyesActivity"
             android:label="我眼中的你"
             android:theme="@style/AppTheme.NoActionBar"/>

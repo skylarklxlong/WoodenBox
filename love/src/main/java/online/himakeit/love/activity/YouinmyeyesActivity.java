@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import online.himakeit.love.R;
-import online.himakeit.love.utils.ThemeUtils;
 
 public class YouinmyeyesActivity extends AppCompatActivity {
 
@@ -19,7 +18,6 @@ public class YouinmyeyesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youinmyeyes);
-        ThemeUtils.changeTheme(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fb_decide);
         fab.setOnClickListener(new View.OnClickListener() {

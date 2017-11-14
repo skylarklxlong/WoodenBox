@@ -40,8 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="26dp"
-                app:backgroundTint="@android:color/background_light"
-                app:srcCompat="@drawable/drawermenu" />
+                app:srcCompat="@drawable/ic_favorite_deep_24dp" />
         </FrameLayout>
 
         <android.support.design.widget.NavigationView

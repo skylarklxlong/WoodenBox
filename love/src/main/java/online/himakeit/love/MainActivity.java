@@ -34,6 +34,7 @@ import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,7 +45,6 @@ import java.util.TimerTask;
 
 import online.himakeit.love.activity.DecideActivity;
 import online.himakeit.love.activity.DeveloperActivity;
-import online.himakeit.love.activity.SettingsActivity;
 import online.himakeit.love.bean.AppUpdateInfo;
 import online.himakeit.love.presenter.implPresenter.MainPresenterImpl;
 import online.himakeit.love.presenter.implView.IMainView;
@@ -173,9 +173,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
         long i = a / 1000 - s * 86400;
         long hours = a / (1000 * 60 * 60) - s * 24;
         long mins = a / (1000 * 60) - s * 24 * 60 - hours * 60;
-        long secs = a / 1000 - s * 24 * 60 * 60 - hours * 60 * 60 - mins * 60;
         int t = (int) i;
-        int tss = (int) secs * 1440;
         pb_timeprogress = (ProgressBar) findViewById(R.id.pb_timeprogress);
         pb_timeprogress.incrementProgressBy(t);
 
@@ -246,6 +244,36 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
         }
     };
 
+    public static void main(String[] args) {
+        //Date或者String转化为时间戳
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = "2011-10-03 05:02:00";
+        Date date = null;
+        try {
+            date = format.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.print("Format To times:" + date.getTime());
+
+        long seconds = (System.currentTimeMillis() - date.getTime()) / 1000;
+        System.out.println("seconds：" + seconds);
+
+        String days = String.valueOf(Math.floor(seconds / (3600 * 24)));
+//        double days = Math.floor(seconds / (3600 * 24));
+        seconds = seconds % (3600 * 24);//取余数
+
+        String hours = String.valueOf(Math.floor(seconds / 3600));
+//        double hours = Math.floor(seconds / 3600);
+        seconds = seconds % 3600;
+
+        String minutes = String.valueOf(Math.floor(seconds / 60));
+//        double minutes = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+
+        System.out.println("days：" + days + " hours：" + hours + " minutes：" + minutes + " seconds：" + seconds);
+    }
+
     void init() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -280,11 +308,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_updatelog) {
+        if (id == R.id.action_updatelog) {
             Snackbar.make(getWindow().getDecorView(), "历史N天，精心打磨，只为蛊惑住你的心~\n希望纸琪能够喜欢~", Snackbar.LENGTH_LONG)
                     .setAction("详细", new View.OnClickListener() {
                         @Override
@@ -316,9 +340,6 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
             startActivity(intent);
         } else if (id == R.id.nav_developer) {
             Intent intent = new Intent(MainActivity.this, DeveloperActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_setting) {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         }
 
@@ -444,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
      */
     private void startNotifyProgress() {
         //设置想要展示的数据内容
-        Intent intent = new Intent(this, SettingsActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent rightPendIntent = PendingIntent.getActivity(this,
                 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);

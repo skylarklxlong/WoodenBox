@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import online.himakeit.love.R;
-import online.himakeit.love.utils.ThemeUtils;
 
 public class YourdecideActivity extends AppCompatActivity {
 
@@ -15,7 +14,6 @@ public class YourdecideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yourdecide);
-        ThemeUtils.changeTheme(this);
         //返回按钮
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_yd);
         setSupportActionBar(toolbar);

@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import online.himakeit.love.R;
-import online.himakeit.love.utils.ThemeUtils;
 
 public class DeveloperActivity extends AppCompatActivity {
 
@@ -22,7 +21,6 @@ public class DeveloperActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developer);
-        ThemeUtils.changeTheme(this);
         TextView tv_androidstudio = (TextView) findViewById(R.id.tv_androidstudio);
         tv_androidstudio.setOnClickListener(new View.OnClickListener() {
             @Override

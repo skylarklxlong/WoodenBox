@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import online.himakeit.love.R;
-import online.himakeit.love.utils.ThemeUtils;
 
 public class DecideActivity extends AppCompatActivity {
 
@@ -18,7 +17,6 @@ public class DecideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decide);
-        ThemeUtils.changeTheme(this);
 
         CardView cv_you = (CardView) findViewById(R.id.cv_you);
         cv_you.setOnClickListener(new View.OnClickListener() {

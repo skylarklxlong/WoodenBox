@@ -20,13 +20,5 @@
             android:title="不登大雅" />
     </menu>
 </item>
-    <item android:title="-一手一足-">
-        <menu>
-            <item
-                android:id="@+id/nav_setting"
-                android:icon="@drawable/settings"
-                android:title="改弦更张" />
-        </menu>
-    </item>
 
 </menu>
