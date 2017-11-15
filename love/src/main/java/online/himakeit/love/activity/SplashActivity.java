@@ -2,15 +2,15 @@ package online.himakeit.love.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import online.himakeit.love.MainActivity;
 import online.himakeit.love.R;
+import online.himakeit.love.base.BaseActivity;
 import online.himakeit.love.view.LoveView;
 import online.himakeit.love.view.TypeTextView;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     LoveView loveView;
     TypeTextView typeTextView;

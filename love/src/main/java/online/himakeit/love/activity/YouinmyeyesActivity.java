@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import online.himakeit.love.R;
+import online.himakeit.love.base.BaseActivity;
 
-public class YouinmyeyesActivity extends AppCompatActivity {
+public class YouinmyeyesActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

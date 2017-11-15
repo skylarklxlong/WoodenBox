@@ -18,16 +18,32 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "false"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            debuggable true
             //混淆
             minifyEnabled false
 //            signingConfig signingConfigs.release
 //            proguardFiles customerproguardFile.path
             buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+
+        //这里的作用跟 singingConfigs 差不多，只是为不同的 flavor 设置一些属性
+        //常见的设置比如设置不同的渠道编号，设置不同的 api 服务器等等
+        productFlavors {
+            fir {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fir"]
+            }
+            GooglePlay {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GooglePlay"]
+            }
+            Umeng {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Umeng"]
+            }
         }
     }
 
@@ -60,6 +76,8 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.3.0'
     /*提示库*/
     compile 'com.bigkoo:svprogresshud:1.0.4'
+    /*Umeng统计*/
+    compile 'com.umeng.analytics:analytics:latest.integration'
     /**
      * 网络监测 chuck
      */

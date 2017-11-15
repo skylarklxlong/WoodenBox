@@ -36,6 +36,13 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.YourdecideActivity"
             android:label="你的决定"/>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a0b84898f4a9d4210000461"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
     </application>
 
 </manifest>

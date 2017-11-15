@@ -3,15 +3,15 @@ package online.himakeit.love.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import online.himakeit.love.R;
+import online.himakeit.love.base.BaseActivity;
 
-public class DecideActivity extends AppCompatActivity {
+public class DecideActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import com.readystatesoftware.chuck.ChuckInterceptor;
 import com.socks.library.KLog;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import online.himakeit.love.utils.LogUtils;
 import online.himakeit.love.utils.NetUtils;
+import online.himakeit.love.utils.Toasts;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/11/14 13:43
@@ -41,8 +43,27 @@ public class MyApplication extends Application {
         mContext = this;
         mHandler = new Handler();
 
+        Toasts.register(this);
+
         //初始化Log
         initLog();
+
+        //初始化Umeng
+        initUmeng();
+
+    }
+
+    private void initUmeng() {
+        //------------------友盟统计----------------------
+
+        //禁止默认的页面统计方式
+        MobclickAgent.openActivityDurationTrack(false);
+
+        //设置是否对日志信息进行加密, 默认false(不加密).
+        MobclickAgent.enableEncrypt(!BuildConfig.LOG_DEBUG);
+
+        //捕获程序崩溃日志
+        MobclickAgent.setCatchUncaughtExceptions(true);
     }
 
     private void initLog() {

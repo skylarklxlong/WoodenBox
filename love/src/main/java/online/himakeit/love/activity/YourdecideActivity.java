@@ -2,13 +2,13 @@ package online.himakeit.love.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import online.himakeit.love.R;
+import online.himakeit.love.base.BaseActivity;
 
-public class YourdecideActivity extends AppCompatActivity {
+public class YourdecideActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,7 +16,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -45,15 +44,16 @@ import java.util.TimerTask;
 
 import online.himakeit.love.activity.DecideActivity;
 import online.himakeit.love.activity.DeveloperActivity;
+import online.himakeit.love.base.BaseActivity;
 import online.himakeit.love.bean.AppUpdateInfo;
 import online.himakeit.love.presenter.implPresenter.MainPresenterImpl;
 import online.himakeit.love.presenter.implView.IMainView;
 import online.himakeit.love.utils.DialogUtils;
-import online.himakeit.love.utils.MyToast;
 import online.himakeit.love.utils.NetUtils;
 import online.himakeit.love.utils.NotifyUtil;
+import online.himakeit.love.utils.Toasts;
 
-public class MainActivity extends AppCompatActivity implements IMainView, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements IMainView, NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textView, textView1, textView2, textView4, textView5, textView6;
     private ProgressBar pb_timeprogress;
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
         @Override
         public void onSucceed(int requestCode, List<String> grantedPermissions) {
             KLog.i("权限onSucceed:" + grantedPermissions.toString());
-            MyToast.showShortToast("权限申请成功");
+            Toasts.showShort("权限申请成功");
         }
 
         @Override
@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Naviga
 
     @Override
     public void showToast(String msg) {
-        MyToast.showShortToast(msg);
+        Toasts.showShort(msg);
     }
 
     @Override
