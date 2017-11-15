@@ -21,9 +21,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -35,9 +33,7 @@ import com.yanzhenjie.permission.PermissionListener;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -49,14 +45,14 @@ import online.himakeit.love.bean.AppUpdateInfo;
 import online.himakeit.love.presenter.implPresenter.MainPresenterImpl;
 import online.himakeit.love.presenter.implView.IMainView;
 import online.himakeit.love.utils.DialogUtils;
+import online.himakeit.love.utils.IntentUtils;
 import online.himakeit.love.utils.NetUtils;
 import online.himakeit.love.utils.NotifyUtil;
 import online.himakeit.love.utils.Toasts;
 
 public class MainActivity extends BaseActivity implements IMainView, NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView textView, textView1, textView2, textView4, textView5, textView6;
-    private ProgressBar pb_timeprogress;
+    private TextView textView, textView4, textView6;
     private Timer timer;
     private Handler handler;
     private Boolean begined = true;
@@ -74,7 +70,6 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
         context = this;
         mainPresenter = new MainPresenterImpl(this, this);
         mainPresenter.initAppUpdate();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -102,80 +97,38 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 if (begined == true) {
-                    Calendar loveday = new GregorianCalendar(2011, 10, 3);
-                    Calendar now = Calendar.getInstance();
+                    try {
+                        //Date或者String转化为时间戳
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String time = "2011-10-03 05:02:00";
+                        Date date = format.parse(time);
+                        long seconds = (System.currentTimeMillis() - date.getTime()) / 1000;
 
-                    int day = now.get(Calendar.DAY_OF_MONTH) - loveday.get(Calendar.DAY_OF_MONTH);
-                    int month = now.get(Calendar.MONTH) - loveday.get(Calendar.MONTH);
-                    int year = now.get(Calendar.YEAR) - loveday.get(Calendar.YEAR);
-                    if (day < 0) {
-                        month -= 1;
-                        now.add(Calendar.MONTH, -1);//得到上一个月，用来得到上个月的天数。
-                        day = day + now.getActualMaximum(Calendar.DAY_OF_MONTH);
+                        textView4 = (TextView) findViewById(R.id.tw_sec);
+                        textView4.setText(seconds + "秒");
+
+                        int days = (int) (Math.floor(seconds / (3600 * 24)));
+                        textView = (TextView) findViewById(R.id.tw_day);
+                        textView.setText(days + "");
+
+                        seconds = seconds % (3600 * 24);//取余数
+                        int hours = (int) (Math.floor(seconds / 3600));
+
+                        seconds = seconds % 3600;
+                        int minutes = (int) (Math.floor(seconds / 60));
+
+                        seconds = seconds % 60;
+//                        System.out.println("days：" + days + " hours：" + hours + " minutes：" + minutes + " seconds：" + seconds);
+
+                        textView6 = (TextView) findViewById(R.id.tw_hour);
+                        textView6.setText(hours + "小时" + minutes + "分" + seconds + "秒");
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
-                    if (month < 0) {
-                        month = (month + 12) % 12;
-                        year--;
-                    }
-
-
-                    int tday = day + 1;
-                    int tmonth = month + 2;
-                    if (tmonth > 12) {
-                        tmonth = 1;
-                        year = year + 1;
-                    }
-
-                    textView1 = (TextView) findViewById(R.id.tw_year);
-                    textView1.setText(year + "年");
-
-                    textView2 = (TextView) findViewById(R.id.tw_month);
-                    textView2.setText(tmonth + "月");
-
-                    textView5 = (TextView) findViewById(R.id.tw_dayl);
-                    textView5.setText(tday + "日");
-
-
-                    Date date = new Date();
-                    Calendar calendar = new GregorianCalendar(2011, 10, 3);
-                    //2015.10.8 8:00计时起
-                    long x = date.getTime() - calendar.getTimeInMillis();
-                    long y = x - 8 * 3600 * 1000;
-                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-                    String submittime = format.format(y);
-                    long days = x / (1000 * 3600 * 24);
-                    long dayss = days + 30;
-
-                    textView = (TextView) findViewById(R.id.tw_day);
-                    textView.setText(dayss + "");
-
-                    textView6 = (TextView) findViewById(R.id.tw_hour);
-                    textView6.setText(submittime);
-
-                    textView4 = (TextView) findViewById(R.id.tw_sec);
-                    long seconds = x / 1000;
-                    textView4.setText(seconds + "秒");
-
-
                 }
             }
         };
-
-
-        ProgressBar pb_time = (ProgressBar) findViewById(R.id.pb_time);
-        pb_time.setIndeterminate(true);
-
-        Date d = new Date();
-        Calendar c = new GregorianCalendar(2011, 10, 3);
-        //2015.10.8 8:00计时起
-        long a = (d.getTime() - c.getTimeInMillis());
-        long s = a / (1000 * 3600 * 24);
-        long i = a / 1000 - s * 86400;
-        long hours = a / (1000 * 60 * 60) - s * 24;
-        long mins = a / (1000 * 60) - s * 24 * 60 - hours * 60;
-        int t = (int) i;
-        pb_timeprogress = (ProgressBar) findViewById(R.id.pb_timeprogress);
-        pb_timeprogress.incrementProgressBy(t);
 
         TextView tw_info = (TextView) findViewById(R.id.tw_sec);
         tw_info.setOnClickListener(new View.OnClickListener() {
@@ -183,9 +136,6 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             public void onClick(View view) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("说明").setMessage("计时器从2011.10.3 0:00计时起，每天0点整跳动一次" +
-                        "\nX年X月X日   XX：XX：XX为计时的具体时间，精确到秒" +
-                        "\n使用了新算法，新算法中只能精确到日，时分秒都不行的~" +
-                        "\n最上面天数和最下面时钟是绝对没问题的，主要是中间的那个日期...调了两天了应该不会有毛病...吧..." +
                         "\nSorry我的能力还达不到那么高的水平233就先这样凑合吧"
                 ).setCancelable(true)
                         .setPositiveButton("噗....", new DialogInterface.OnClickListener() {
@@ -245,33 +195,29 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
     };
 
     public static void main(String[] args) {
-        //Date或者String转化为时间戳
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time = "2011-10-03 05:02:00";
-        Date date = null;
         try {
-            date = format.parse(time);
+            //Date或者String转化为时间戳
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time = "2011-10-03 05:02:00";
+            Date date = format.parse(time);
+            System.out.print("Format To times:" + date.getTime());
+
+            long seconds = (System.currentTimeMillis() - date.getTime()) / 1000;
+            System.out.println("seconds：" + seconds);
+
+            String days = String.valueOf(Math.floor(seconds / (3600 * 24)));
+            seconds = seconds % (3600 * 24);//取余数
+
+            String hours = String.valueOf(Math.floor(seconds / 3600));
+            seconds = seconds % 3600;
+
+            String minutes = String.valueOf(Math.floor(seconds / 60));
+            seconds = seconds % 60;
+
+            System.out.println("days：" + days + " hours：" + hours + " minutes：" + minutes + " seconds：" + seconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.print("Format To times:" + date.getTime());
-
-        long seconds = (System.currentTimeMillis() - date.getTime()) / 1000;
-        System.out.println("seconds：" + seconds);
-
-        String days = String.valueOf(Math.floor(seconds / (3600 * 24)));
-//        double days = Math.floor(seconds / (3600 * 24));
-        seconds = seconds % (3600 * 24);//取余数
-
-        String hours = String.valueOf(Math.floor(seconds / 3600));
-//        double hours = Math.floor(seconds / 3600);
-        seconds = seconds % 3600;
-
-        String minutes = String.valueOf(Math.floor(seconds / 60));
-//        double minutes = Math.floor(seconds / 60);
-        seconds = seconds % 60;
-
-        System.out.println("days：" + days + " hours：" + hours + " minutes：" + minutes + " seconds：" + seconds);
     }
 
     void init() {
@@ -281,7 +227,7 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             public void run() {
                 // TODO Auto-generated method stub
                 Message message = new Message();
-                message.what = (int) (Math.random() * 999 + 100);
+                message.what = 0;
                 handler.sendMessage(message);
             }
         }, 1000, 1000);        //从1000ms即1s开始，1000ms为数字改变周期
@@ -309,15 +255,16 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
         int id = item.getItemId();
 
         if (id == R.id.action_updatelog) {
-            Snackbar.make(getWindow().getDecorView(), "历史N天，精心打磨，只为蛊惑住你的心~\n希望纸琪能够喜欢~", Snackbar.LENGTH_LONG)
+            Snackbar.make(getWindow().getDecorView(), "历时N天，精心打磨，只为蛊惑住你的心~\n希望雪婵能够喜欢~", Snackbar.LENGTH_LONG)
                     .setAction("详细", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                            dialog.setTitle("日志").setMessage(R.string.update_log).setCancelable(true)
+                            dialog.setTitle("说明").setMessage(R.string.update_log).setCancelable(true)
                                     .setPositiveButton("OK~", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            IntentUtils.startToWebActivity(MainActivity.this, null, "送给你", "http://himakeit.online/justforchan");
                                         }
                                     });
                             dialog.show();
@@ -418,12 +365,12 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
                 InstallUtils.installAPK(context, path, getPackageName() + ".fileProvider", new InstallUtils.InstallCallBack() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(context, "正在安装程序", Toast.LENGTH_SHORT).show();
+                        Toasts.showShort("正在安装程序");
                     }
 
                     @Override
                     public void onFail(Exception e) {
-                        Toast.makeText(context, "安装失败:" + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toasts.showShort("安装失败:" + e.toString());
                     }
                 });
                 if (dialogUpdate != null && dialogUpdate.isShowing()) {
@@ -469,7 +416,7 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent rightPendIntent = PendingIntent.getActivity(this,
                 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        int smallIcon = R.mipmap.ic_launcher;
+        int smallIcon = R.drawable.ic_favorite_24dp;
         String ticker = "正在下载Love更新包...";
         //实例化工具类，并且调用接口
         notifyUtils = new NotifyUtil(this, 0);

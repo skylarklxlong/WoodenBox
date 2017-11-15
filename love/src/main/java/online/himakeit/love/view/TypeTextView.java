@@ -24,7 +24,7 @@ public class TypeTextView extends TextView {
     private String mShowTextString = null;
     private Timer mTypeTimer = null;
     private OnTypeViewListener mOnTypeViewListener = null;
-    private static final int TYPE_TIME_DELAY = 280;
+    private static final int TYPE_TIME_DELAY = 50;
     private int mTypeTimeDelay = TYPE_TIME_DELAY; // 打字间隔
 
     public TypeTextView(Context context, AttributeSet attrs, int defStyle) {

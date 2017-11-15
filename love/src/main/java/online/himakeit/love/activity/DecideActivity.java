@@ -7,16 +7,27 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import online.himakeit.love.R;
 import online.himakeit.love.base.BaseActivity;
 
 public class DecideActivity extends BaseActivity {
+    ImageView iv_youinmyeyes;
+    ImageView iv_yourdecide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decide);
+
+        iv_youinmyeyes = (ImageView) findViewById(R.id.iv_you_in_my_eyes);
+        iv_yourdecide = (ImageView) findViewById(R.id.iv_you_decide);
+
+        Glide.with(this).load(R.drawable.xyxl).into(iv_youinmyeyes);
+        Glide.with(this).load(R.drawable.road).into(iv_yourdecide);
 
         CardView cv_you = (CardView) findViewById(R.id.cv_you);
         cv_you.setOnClickListener(new View.OnClickListener() {

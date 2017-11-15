@@ -10,18 +10,23 @@ package online.himakeit.love.bean;
 public class AppUpdateInfo {
 
     /**
-     * name : 干货营
-     * version : 9
-     * changelog : 1.紧急修复item点击跳转错乱问题
-     * 2.优化MVP模式，添加判空处理
-     * updated_at : 1470931921
-     * versionShort : 1.3.1
-     * build : 9
-     * installUrl : http://download.fir.im/v2/app/install/56dd4bb7e75e2d27f2000046?download_token=e415c0fd1ac3b7abcb65ebc6603c59d9
-     * install_url : http://download.fir.im/v2/app/install/56dd4bb7e75e2d27f2000046?download_token=e415c0fd1ac3b7abcb65ebc6603c59d9
-     * direct_install_url : http://download.fir.im/v2/app/install/56dd4bb7e75e2d27f2000046?download_token=e415c0fd1ac3b7abcb65ebc6603c59d9
-     * update_url : http://fir.im/gankmm
-     * binary : {"fsize":2927116}
+     * {
+     * "binary": {
+     * "fsize": 5217206
+     * },
+     * "build": "1",
+     * "changelog": "修复部分不可见BUG；
+     * 更改启动页动画；
+     * 增加页面统计；",
+     * "direct_install_url": "http://download.fir.im/v2/app/install/5a0aca0d959d69632b00004e?download_token=d730f0b690d5244aa3f8c54d0146b4c7&source=update",
+     * "installUrl": "http://download.fir.im/v2/app/install/5a0aca0d959d69632b00004e?download_token=d730f0b690d5244aa3f8c54d0146b4c7&source=update",
+     * "install_url": "http://download.fir.im/v2/app/install/5a0aca0d959d69632b00004e?download_token=d730f0b690d5244aa3f8c54d0146b4c7&source=update",
+     * "name": "Love",
+     * "update_url": "http://fir.im/loveforchan",
+     * "updated_at": 1510707099,
+     * "version": "1",
+     * "versionShort": "520.11150847"
+     * }
      */
 
     private String name;
@@ -35,7 +40,7 @@ public class AppUpdateInfo {
     private String direct_install_url;
     private String update_url;
     /**
-     * fsize : 2927116
+     * fsize : 5217206
      */
 
     private BinaryEntity binary;

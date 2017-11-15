@@ -2,28 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/side_nav_bar">
-    <!--
-    这里放一张背景图片，背景图片最好是合成的，然后放上几句简单的话描述
-    -->
-    <online.himakeit.love.view.LoveView
-        android:id="@+id/loveView"
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <online.himakeit.love.view.TypeTextView
-        android:id="@+id/typeTextView"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!--<TextView
+    android:background="@drawable/splash_bg">
+    <TextView
+        android:textColor="#FF4081"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="愿得一人心，白头不相离" />-->
+        android:text="Just for XueChan" />
 
 </RelativeLayout>

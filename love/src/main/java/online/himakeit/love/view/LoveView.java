@@ -30,7 +30,7 @@ public class LoveView extends View {
     private float[] mData = new float[8];               // 顺时针记录绘制圆形的四个数据点
     private float[] mCtrl = new float[16];              // 顺时针记录绘制圆形的八个控制点
 
-    private float mDuration = 6000;                     // 变化总时长
+    private float mDuration = 3000;                     // 变化总时长
     private float mCurrent = 0;                         // 当前已进行时长
     private float mCount = 100;                         // 将时长总共划分多少份
     private float mPiece = mDuration / mCount;            // 每一份的时长

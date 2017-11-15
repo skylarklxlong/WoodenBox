@@ -37,10 +37,10 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_you_in_my_eyes"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/xyxl" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,10 +73,10 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_you_decide"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/xyxl" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:layout_width="wrap_content"

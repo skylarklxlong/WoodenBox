@@ -8,18 +8,35 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import online.himakeit.love.R;
 import online.himakeit.love.base.BaseActivity;
+import online.himakeit.love.view.TypeTextView;
 
 public class YouinmyeyesActivity extends BaseActivity {
+
+    TypeTextView typeTextView;
+    FloatingActionButton fab;
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    ImageView title_image_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youinmyeyes);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fb_decide);
+        typeTextView = (TypeTextView) findViewById(R.id.typeTextView);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        fab = (FloatingActionButton) findViewById(R.id.fb_decide);
+        title_image_view = (ImageView) findViewById(R.id.title_image_view);
+
+        Glide.with(this).load(R.drawable.xyxl).into(title_image_view);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,16 +44,27 @@ public class YouinmyeyesActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)
-                findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("我眼中的你");
+
+        typeTextView.setOnTypeViewListener(new TypeTextView.OnTypeViewListener() {
+            @Override
+            public void onTypeStart() {
+
+            }
+
+            @Override
+            public void onTypeOver() {
+
+            }
+        });
+
+        typeTextView.start("心动是等你的留言，渴望是常和你见面，甜蜜是和你小路流连，温馨是看着你清澈的双眼，爱你的感觉真的妙不可言！",1000);
+
     }
 
     //返回按钮
@@ -51,5 +79,4 @@ public class YouinmyeyesActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    //返回按钮
 }
