@@ -14,12 +14,9 @@ import online.himakeit.love.activity.WebActivity;
  */
 public class IntentUtils {
 
-    public static final String ImagePositionForImageShow = "PositionForImageShow";
-    public static final String ImageArrayList = "BigImageArrayList";
     public static final String WebTitleFlag = "WebTitleFlag";
     public static final String WebTitle = "WebTitle";
     public static final String WebUrl = "WebUrl";
-    public static final String DayDate = "DayDate";
 
 
     public static void startToWebActivity(Context context, String titleFlag, String title, String url) {

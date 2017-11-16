@@ -8,6 +8,11 @@ package online.himakeit.skylark.model;
  * Description:
  */
 public class Config {
+
+    //获取APKinfo的地址：fir.im
+    public static final String URL_AppUpdateInfo = "http://api.fir.im/apps/latest/5a0aca0d959d69632b00004e?api_token=d242396c7ad3470a207b6c120a2ab0b5&type=android";
+    public static final String SPAppUpdate = "update";
+
     public static final String TOPNEWS = "topnews";
     public static final String ZHIHU = "zhihu";
     public static final String GANK = "gank";

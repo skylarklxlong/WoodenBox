@@ -253,4 +253,8 @@ dependencies {
      * 下拉刷新框架
      */
     compile 'com.github.Aspsine:SwipeToLoadLayout:v1.0.4'
+    /*material风格的dialogs*/
+    compile 'com.afollestad.material-dialogs:core:0.9.3.0'
+    /* 版本升级 */
+    compile 'com.github.maning0303:MNUpdateAPK:V1.0.5'
 }

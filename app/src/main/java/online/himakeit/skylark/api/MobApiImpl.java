@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import online.himakeit.skylark.listeners.MobCallBack;
 import online.himakeit.skylark.model.Config;
+import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.model.mob.MobBankCard;
 import online.himakeit.skylark.model.mob.MobBaseEntity;
 import online.himakeit.skylark.model.mob.MobCalendarInfoEntity;
@@ -44,6 +45,40 @@ public class MobApiImpl {
     private static final String TAG = "MobApiImpl";
     public final static String GET_DATA_FAIL = "获取数据失败";
     public final static String NET_FAIL = "网络出问题了";
+
+    public static Call<AppUpdateInfo> getAppUpdateInfo(final int what, final MobCallBack myCallBack) {
+
+        Call<AppUpdateInfo> theLastAppInfoCall = ApiManager.getInstence().
+                getWebServiceApi().getTheLastAppInfo();
+
+        theLastAppInfoCall.enqueue(new Callback<AppUpdateInfo>() {
+            @Override
+            public void onResponse(Call<AppUpdateInfo> call, Response<AppUpdateInfo> response) {
+                if (response.isSuccessful()) {
+                    AppUpdateInfo body = response.body();
+                    if (body != null) {
+                        if (body.getName().equals("木匣")) {
+                            myCallBack.onSuccess(what, body);
+                        } else {
+                            myCallBack.onFail(what, GET_DATA_FAIL);
+                        }
+                    } else {
+                        myCallBack.onFail(what, GET_DATA_FAIL);
+                    }
+                } else {
+                    myCallBack.onFail(what, GET_DATA_FAIL);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppUpdateInfo> call, Throwable t) {
+                //数据错误
+                myCallBack.onFail(what, NET_FAIL);
+            }
+        });
+
+        return theLastAppInfoCall;
+    }
 
     public static Call<MobBaseEntity<MobBankCard>> queryMobBankCradInfo(String card, final int what, final MobCallBack callBack) {
         Call<MobBaseEntity<MobBankCard>> call = ApiManager.getInstence().

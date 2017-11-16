@@ -3,6 +3,7 @@ package online.himakeit.skylark.api;
 import java.util.ArrayList;
 
 import online.himakeit.skylark.model.Config;
+import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.model.gank.GankData;
 import online.himakeit.skylark.model.gank.GankMeiZhiData;
 import online.himakeit.skylark.model.mob.MobBankCard;
@@ -104,6 +105,13 @@ public interface WebServiceApi {
     Observable<GankData> getGankData(@Path("type") String type,
                                      @Path("page") int page);
     //--------------------------------Gank end-----------------------------
+
+    //--------------------------------Fir.im start-----------------------------
+    //获取fir.im中的Love的最新版本
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET(Config.URL_AppUpdateInfo)
+    Call<AppUpdateInfo> getTheLastAppInfo();
+    //--------------------------------Fir.im end-----------------------------
 
     //--------------------------------Mob start-----------------------------
 

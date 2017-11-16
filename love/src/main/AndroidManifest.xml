@@ -16,6 +16,16 @@
         android:roundIcon="@drawable/ic_favorite_24dp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider" />
+        </provider>
+
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -50,6 +60,10 @@
         <activity
             android:name=".activity.WebActivity"
             android:hardwareAccelerated="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HeartActivity"
+            android:label="给你比心"
             android:screenOrientation="portrait" />
 
         <meta-data

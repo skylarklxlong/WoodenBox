@@ -9,4 +9,6 @@ package online.himakeit.skylark.presenter;
  */
 public interface IZuiMeiPresenter extends BasePresenter {
     void getBackground();
+
+    void initAppUpdate();
 }

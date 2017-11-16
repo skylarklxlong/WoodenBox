@@ -1,11 +1,13 @@
 package online.himakeit.skylark;
 
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -23,9 +25,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.maning.updatelibrary.InstallUtils;
 import com.squareup.picasso.Picasso;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RationaleListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
@@ -37,14 +48,18 @@ import online.himakeit.skylark.fragment.MobFragment;
 import online.himakeit.skylark.fragment.ReadFragment;
 import online.himakeit.skylark.fragment.ToolsFragment;
 import online.himakeit.skylark.model.Config;
+import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageItem;
 import online.himakeit.skylark.presenter.implPresenter.ZuiMeiPresenterImpl;
 import online.himakeit.skylark.presenter.implView.IZuiMeiPic;
 import online.himakeit.skylark.receiver.JPushLocalBroadcastManager;
 import online.himakeit.skylark.util.AlarmManagerUtils;
 import online.himakeit.skylark.util.DeviceUtils;
+import online.himakeit.skylark.util.DialogUtils;
 import online.himakeit.skylark.util.JPushUtil;
 import online.himakeit.skylark.util.LogUtils;
+import online.himakeit.skylark.util.NetUtils;
+import online.himakeit.skylark.util.NotifyUtil;
 import online.himakeit.skylark.util.PreferencesUtils;
 import online.himakeit.skylark.util.Toasts;
 
@@ -66,6 +81,8 @@ public class MainActivity extends BaseActivity
     Toolbar toolbar;
     NavigationView navigationView;
     ZuiMeiPresenterImpl zuiMeiPresenterImpl;
+    private NotifyUtil notifyUtils;
+    private MaterialDialog dialogUpdate;
 
     private long exitTime = 0;
 
@@ -117,49 +134,26 @@ public class MainActivity extends BaseActivity
 
         AlarmManagerUtils.register(this);
 
-//        requestSomePermission();
-
         registerMessageReceiver();  // used for receive msg JPush
 
+        requestSomePermission();
     }
 
-    @Override
-    protected void onResume() {
-        isForeground = true;
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        isForeground = false;
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        JPushLocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
-        super.onDestroy();
-    }
-
-    /*private void requestSomePermission() {
+    private void requestSomePermission() {
         // 申请权限。
         AndPermission.with(MainActivity.this)
                 .requestCode(100)
-                .permission(Manifest.permission.WAKE_LOCK,
-//                        Manifest.permission.WRITE_SETTINGS,
-                        Manifest.permission.VIBRATE,
-//                        Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
-                        Manifest.permission.CHANGE_NETWORK_STATE,
-                        Manifest.permission.CHANGE_WIFI_STATE,
-                        Manifest.permission.ACCESS_NETWORK_STATE,
-                        Manifest.permission.ACCESS_WIFI_STATE,
-                        Manifest.permission.INTERNET,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_PHONE_STATE
-//                        Manifest.permission.SYSTEM_ALERT_WINDOW,
-//                        Manifest.permission.ACCESS_COARSE_LOCATION
-                        )
+                .permission(android.Manifest.permission.WAKE_LOCK,
+                        android.Manifest.permission.VIBRATE,
+                        android.Manifest.permission.CHANGE_NETWORK_STATE,
+                        android.Manifest.permission.CHANGE_WIFI_STATE,
+                        android.Manifest.permission.ACCESS_NETWORK_STATE,
+                        android.Manifest.permission.ACCESS_WIFI_STATE,
+                        android.Manifest.permission.INTERNET,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        android.Manifest.permission.READ_PHONE_STATE
+                )
                 .rationale(new RationaleListener() {
                     @Override
                     public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
@@ -201,7 +195,26 @@ public class MainActivity extends BaseActivity
                 }
             }
         }
-    };*/
+    };
+
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        JPushLocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        zuiMeiPresenterImpl.unsubscrible();
+        super.onDestroy();
+    }
 
     private void toolbarTitle(String title) {
         getSupportActionBar().setTitle(title);
@@ -396,6 +409,134 @@ public class MainActivity extends BaseActivity
             linearLayout.setBackground(bitmapDrawable);
         }*/
 
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toasts.showShort(msg);
+    }
+
+    @Override
+    public void showAppUpdateDialog(final AppUpdateInfo appUpdateInfo) {
+        String title = "检测到新版本:V" + appUpdateInfo.getVersionShort();
+        Double appSize = Double.parseDouble(appUpdateInfo.getBinary().getFsize() + "") / 1024 / 1024;
+        DecimalFormat df = new DecimalFormat(".##");
+        String resultSize = df.format(appSize) + "M";
+        boolean isWifi = NetUtils.isWifiConnected(this);
+        String content = appUpdateInfo.getChangelog() +
+                "\n\n新版大小：" + resultSize +
+                "\n当前网络：" + (isWifi ? "wifi" : "非wifi环境(注意)");
+
+        DialogUtils.showMyDialog(this,
+                title, content, "立马更新", "稍后更新",
+                new DialogUtils.OnDialogClickListener() {
+                    @Override
+                    public void onConfirm() {
+                        //更新版本
+                        showDownloadDialog(appUpdateInfo);
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
+    }
+
+    private void showDownloadDialog(AppUpdateInfo appUpdateInfo) {
+        dialogUpdate = new MaterialDialog.Builder(MainActivity.this)
+                .title("正在下载最新版本")
+                .content("请稍等")
+                .canceledOnTouchOutside(false)
+                .cancelable(false)
+                .progress(false, 100, false)
+                .negativeText("后台下载")
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        startNotifyProgress();
+                    }
+                })
+                .show();
+
+        new InstallUtils(MainActivity.this, appUpdateInfo.getInstall_url(), "木匣_" + appUpdateInfo.getVersionShort(), new InstallUtils.DownloadCallBack() {
+            @Override
+            public void onStart() {
+                LogUtils.i("installAPK-----onStart");
+                if (dialogUpdate != null) {
+                    dialogUpdate.setProgress(0);
+                }
+            }
+
+            @Override
+            public void onComplete(String path) {
+                LogUtils.i("installAPK----onComplete:" + path);
+                /**
+                 * 安装APK工具类
+                 * @param context       上下文
+                 * @param filePath      文件路径
+                 * @param authorities   ---------Manifest中配置provider的authorities字段---------
+                 * @param callBack      安装界面成功调起的回调
+                 */
+                InstallUtils.installAPK(MainActivity.this, path, getPackageName() + ".fileProvider", new InstallUtils.InstallCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        Toasts.showShort("正在安装程序");
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        Toasts.showShort("安装失败:" + e.toString());
+                    }
+                });
+                if (dialogUpdate != null && dialogUpdate.isShowing()) {
+                    dialogUpdate.dismiss();
+                }
+                if (notifyUtils != null) {
+                    notifyUtils.setNotifyProgressComplete();
+                    notifyUtils.clear();
+                }
+            }
+
+            @Override
+            public void onLoading(long total, long current) {
+                LogUtils.i("installAPK-----onLoading:-----total:" + total + ",current:" + current);
+                int currentProgress = (int) (current * 100 / total);
+                if (dialogUpdate != null) {
+                    dialogUpdate.setProgress(currentProgress);
+                }
+                if (notifyUtils != null) {
+                    notifyUtils.setNotifyProgress(100, currentProgress, false);
+                }
+            }
+
+            @Override
+            public void onFail(Exception e) {
+                if (dialogUpdate != null && dialogUpdate.isShowing()) {
+                    dialogUpdate.dismiss();
+                }
+                if (notifyUtils != null) {
+                    notifyUtils.clear();
+                }
+            }
+        }).downloadAPK();
+
+    }
+
+    /**
+     * 开启通知栏
+     */
+    private void startNotifyProgress() {
+        //设置想要展示的数据内容
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent rightPendIntent = PendingIntent.getActivity(this,
+                0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        int smallIcon = R.drawable.zero;
+        String ticker = "正在下载木匣更新包...";
+        //实例化工具类，并且调用接口
+        notifyUtils = new NotifyUtil(this, 0);
+        notifyUtils.notify_progress(rightPendIntent, smallIcon, ticker, "木匣 下载", "正在下载中...", false, false, false);
     }
 
     public interface LoadingMore {

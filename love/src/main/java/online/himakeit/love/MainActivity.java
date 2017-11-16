@@ -40,6 +40,7 @@ import java.util.TimerTask;
 
 import online.himakeit.love.activity.DecideActivity;
 import online.himakeit.love.activity.DeveloperActivity;
+import online.himakeit.love.activity.HeartActivity;
 import online.himakeit.love.base.BaseActivity;
 import online.himakeit.love.bean.AppUpdateInfo;
 import online.himakeit.love.presenter.implPresenter.MainPresenterImpl;
@@ -287,6 +288,9 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             startActivity(intent);
         } else if (id == R.id.nav_developer) {
             Intent intent = new Intent(MainActivity.this, DeveloperActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_heart){
+            Intent intent = new Intent(MainActivity.this, HeartActivity.class);
             startActivity(intent);
         }
 
