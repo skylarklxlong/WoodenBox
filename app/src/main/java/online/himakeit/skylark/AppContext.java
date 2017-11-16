@@ -180,7 +180,7 @@ public class AppContext extends Application {
          *
          * 使用 Chuck.getLaunchIntent();来在任何地方打开Chunck界面
          */
-        client.addInterceptor(new ChuckInterceptor(mAppContext));
+        client.addInterceptor(new ChuckInterceptor(mAppContext).showNotification(!BuildConfig.DEBUG));
         return client.build();
     }
 
