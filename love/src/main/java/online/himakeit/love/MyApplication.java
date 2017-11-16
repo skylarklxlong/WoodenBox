@@ -125,7 +125,7 @@ public class MyApplication extends Application {
          *
          * 使用 Chuck.getLaunchIntent();来在任何地方打开Chunck界面
          */
-        client.addInterceptor(new ChuckInterceptor(mContext));
+        client.addInterceptor(new ChuckInterceptor(mContext).showNotification(BuildConfig.LOG_DEBUG));
         return client.build();
     }
 

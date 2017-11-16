@@ -21,7 +21,7 @@ android {
             debuggable false
             minifyEnabled false
             buildConfigField "boolean", "LOG_DEBUG", "false"
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             debuggable true
