@@ -35,7 +35,7 @@ public class YouinmyeyesActivity extends BaseActivity {
         fab = (FloatingActionButton) findViewById(R.id.fb_decide);
         title_image_view = (ImageView) findViewById(R.id.title_image_view);
 
-        Glide.with(this).load(R.drawable.xyxl).into(title_image_view);
+        Glide.with(this).load(R.drawable.xuechan).into(title_image_view);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

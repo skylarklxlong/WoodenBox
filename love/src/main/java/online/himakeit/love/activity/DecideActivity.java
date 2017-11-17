@@ -26,8 +26,8 @@ public class DecideActivity extends BaseActivity {
         iv_youinmyeyes = (ImageView) findViewById(R.id.iv_you_in_my_eyes);
         iv_yourdecide = (ImageView) findViewById(R.id.iv_you_decide);
 
-        Glide.with(this).load(R.drawable.xyxl).into(iv_youinmyeyes);
-        Glide.with(this).load(R.drawable.road).into(iv_yourdecide);
+        Glide.with(this).load(R.drawable.youinmyeyes).into(iv_youinmyeyes);
+        Glide.with(this).load(R.drawable.xyxl).into(iv_yourdecide);
 
         CardView cv_you = (CardView) findViewById(R.id.cv_you);
         cv_you.setOnClickListener(new View.OnClickListener() {
