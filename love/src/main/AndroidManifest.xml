@@ -46,7 +46,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DeveloperActivity"
-            android:label="开发信息"
+            android:label="关于我"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.YouinmyeyesActivity"

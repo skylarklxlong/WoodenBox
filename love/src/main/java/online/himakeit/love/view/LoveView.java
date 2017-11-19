@@ -24,7 +24,7 @@ public class LoveView extends View {
     private int mCenterX, mCenterY;
 
     private PointF mCenter = new PointF(0, 0);
-    private float mCircleRadius = 300;                  // 圆的半径
+    private float mCircleRadius = 250;                  // 圆的半径
     private float mDifference = mCircleRadius * C;        // 圆形的控制点与数据点的差值
 
     private float[] mData = new float[8];               // 顺时针记录绘制圆形的四个数据点

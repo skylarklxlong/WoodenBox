@@ -39,7 +39,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import online.himakeit.love.activity.DecideActivity;
-import online.himakeit.love.activity.DeveloperActivity;
 import online.himakeit.love.activity.HeartActivity;
 import online.himakeit.love.base.BaseActivity;
 import online.himakeit.love.bean.AppUpdateInfo;
@@ -136,8 +135,8 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("说明").setMessage("计时器从2011.10.3 0:00计时起，每天0点整跳动一次" +
-                        "\nSorry我的能力还达不到那么高的水平233就先这样凑合吧"
+                dialog.setTitle("呀！竟然被你发现了").setMessage("对你爱爱爱不完\n" +
+                        "我可以天天月月年年到永远"
                 ).setCancelable(true)
                         .setPositiveButton("噗....", new DialogInterface.OnClickListener() {
                             @Override
@@ -286,10 +285,7 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
         if (id == R.id.nav_decide) {
             Intent intent = new Intent(MainActivity.this, DecideActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_developer) {
-            Intent intent = new Intent(MainActivity.this, DeveloperActivity.class);
-            startActivity(intent);
-        }else if (id == R.id.nav_heart){
+        } else if (id == R.id.nav_heart) {
             Intent intent = new Intent(MainActivity.this, HeartActivity.class);
             startActivity(intent);
         }

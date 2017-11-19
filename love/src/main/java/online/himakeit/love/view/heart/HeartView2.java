@@ -53,11 +53,6 @@ public class HeartView2 extends TextureView {
         setSurfaceTextureListener(new SurfaceTextureListener() {
             @Override
             public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-//                L.e("call: onSurfaceTextureAvailable([surface, width, height])-> ");
-//                Canvas canvas = lockCanvas();
-//                canvas.drawColor(Color.parseColor("#800000aa"));
-//                unlockCanvasAndPost(canvas);
-
                 HeartView2.this.width = width;
                 HeartView2.this.height = height;
                 //我的手机宽度像素是1080，发现参数设置为30比较合适，这里根据不同的宽度动态调整参数
@@ -65,7 +60,6 @@ public class HeartView2 extends TextureView {
 
                 offsetX = width / 2;
                 offsetY = height / 2 - 55;
-//        bm = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 bm = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 canvas = new Canvas(bm);
                 drawOnNewThread();
@@ -73,21 +67,15 @@ public class HeartView2 extends TextureView {
 
             @Override
             public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-//                L.e("call: onSurfaceTextureSizeChanged([surface, width, height])-> ");
-//                Canvas canvas = lockCanvas();
-//                canvas.drawColor(Color.parseColor("800000FF"));
-//                unlockCanvasAndPost(canvas);
             }
 
             @Override
             public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-//                L.e("call: onSurfaceTextureDestroyed([surface])-> ");
                 return false;
             }
 
             @Override
             public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-//                L.e("call: onSurfaceTextureUpdated([surface])-> ");
             }
         });
     }

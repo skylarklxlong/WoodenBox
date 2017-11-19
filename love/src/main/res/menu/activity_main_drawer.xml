@@ -8,21 +8,28 @@
             android:title="一日三秋" />
     </group>
 
-    <item android:title="-不可或缺-">
-    <menu>
-        <item
-            android:id="@+id/nav_decide"
-            android:icon="@drawable/decide"
-            android:title="一锤定音" />
-        <item
-            android:id="@+id/nav_heart"
-            android:icon="@drawable/book"
-            android:title="给你比心"/>
-        <item
-            android:id="@+id/nav_developer"
-            android:icon="@drawable/developer"
-            android:title="不登大雅" />
-    </menu>
-</item>
+    <item android:title="-愿得一人心-">
+        <menu>
+            <item
+                android:id="@+id/nav_decide"
+                android:icon="@drawable/decide"
+                android:title="一锤定音" />
+        </menu>
+    </item>
+
+    <item android:title="-白首不相离-">
+        <menu>
+            <item
+                android:id="@+id/nav_heart"
+                android:icon="@drawable/book"
+                android:title="一心为你" />
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="none">
+        <item android:title="-衣带渐宽终不悔-"></item>
+        <item android:title="-为伊消得人憔悴-"></item>
+    </group>
+
 
 </menu>
