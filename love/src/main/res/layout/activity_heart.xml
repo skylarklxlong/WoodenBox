@@ -16,7 +16,6 @@
 
     <online.himakeit.love.view.heart.HeartView2
         android:id="@+id/heartView2"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tb_heart" />
@@ -29,14 +28,5 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-    <online.himakeit.love.view.TypeTextView
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/tb_heart"
-        android:id="@+id/typeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp" />
 
 </RelativeLayout>

@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import online.himakeit.love.R;
 import online.himakeit.love.base.BaseActivity;
 import online.himakeit.love.view.RevealTextView;
-import online.himakeit.love.view.TypeTextView;
 import online.himakeit.love.view.heart.HeartView2;
 
 /**
@@ -20,7 +19,6 @@ import online.himakeit.love.view.heart.HeartView2;
  */
 public class HeartActivity extends BaseActivity {
 
-    TypeTextView typeTextView;
     RevealTextView revealTextView;
     HeartView2 heartView2;
 
@@ -29,28 +27,8 @@ public class HeartActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heart);
 
-        typeTextView = findViewById(R.id.typeTextView);
         revealTextView = findViewById(R.id.revealTextView);
         heartView2 = findViewById(R.id.heartView2);
-
-        typeTextView.setOnTypeViewListener(new TypeTextView.OnTypeViewListener() {
-            @Override
-            public void onTypeStart() {
-
-            }
-
-            @Override
-            public void onTypeOver() {
-
-            }
-        });
-
-        typeTextView.start(
-                "心动是等你的留言，\n" +
-                        "渴望是常和你见面，\n" +
-                        "甜蜜是和你小路流连，\n" +
-                        "温馨是看着你清澈的双眼，\n" +
-                        "爱你的感觉真的妙不可言！");
 
         revealTextView.setAnimationDuration(2000);
         revealTextView.setLoop(true);
