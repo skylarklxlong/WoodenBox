@@ -41,7 +41,7 @@ public class DecideActivity extends BaseActivity {
         cv_decide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DecideActivity.this, YourdecideActivity.class);
+                Intent intent = new Intent(DecideActivity.this, MyPromiseActivity.class);
                 startActivity(intent);
             }
         });

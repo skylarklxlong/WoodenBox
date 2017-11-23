@@ -54,7 +54,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.YourdecideActivity"
+            android:name=".activity.MyPromiseActivity"
             android:label="你的决定"
             android:screenOrientation="portrait" />
         <activity

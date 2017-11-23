@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import online.himakeit.love.R;
+
 /**
  * Created by：LiXueLong 李雪龙 on 2017/11/14 20:12
  * <p>
@@ -92,7 +94,7 @@ public class TypeTextView extends TextView {
 
     private void startAudioPlayer() {
         stopAudio();
-//        playAudio( R.raw.type_in );
+//        playAudio(R.raw.type_in);
     }
 
     private void playAudio( int audioResId ){

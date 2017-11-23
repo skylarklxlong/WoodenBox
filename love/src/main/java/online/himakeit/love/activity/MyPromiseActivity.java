@@ -1,53 +1,64 @@
 package online.himakeit.love.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 import online.himakeit.love.R;
 import online.himakeit.love.base.BaseActivity;
+import online.himakeit.love.view.TypeTextView;
 
-public class YouinmyeyesActivity extends BaseActivity {
+public class MyPromiseActivity extends BaseActivity {
 
-    FloatingActionButton fab;
     Toolbar toolbar;
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView title_image_view;
+    TypeTextView typeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_youinmyeyes);
+        setContentView(R.layout.activity_mypromise);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        toolbar = (Toolbar) findViewById(R.id.toolbar1);
-        fab = (FloatingActionButton) findViewById(R.id.fb_decide);
+        toolbar = (Toolbar) findViewById(R.id.tb_yd);
         title_image_view = (ImageView) findViewById(R.id.title_image_view);
+        typeTextView = (TypeTextView) findViewById(R.id.typeTextView);
 
-        Glide.with(this).load(R.drawable.xuechan).into(title_image_view);
-
-        fab.setOnClickListener(new View.OnClickListener() {
+        typeTextView.setOnTypeViewListener(new TypeTextView.OnTypeViewListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(YouinmyeyesActivity.this, MyPromiseActivity.class);
-                startActivity(intent);
+            public void onTypeStart() {
+
+            }
+
+            @Override
+            public void onTypeOver() {
+
             }
         });
+
+        typeTextView.start(
+                "00110000001110000001100111100\n" +
+                         "00100000000100000000100111100\n" +
+                         "00110000000000000001100111100\n" +
+                         "00111100000000000011100111100\n" +
+                         "00111111000000001111100111100\n" +
+                         "00111111110000111111100111100\n" +
+                         "00111111111001111111110000001");
+
+        Glide.with(this).load(R.drawable.xyxl).into(title_image_view);
+
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        collapsingToolbarLayout.setTitle("我眼中的你");
-
+        collapsingToolbarLayout.setTitle("我的承诺");
     }
 
     //返回按钮
@@ -62,4 +73,5 @@ public class YouinmyeyesActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    //返回按钮
 }
