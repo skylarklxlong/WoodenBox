@@ -89,5 +89,32 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
+        <ImageView
+            android:id="@+id/iv_chan"
+            android:background="@drawable/chan"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/cv_decide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="在今后，我会用实际行动向你证明\n我对你的爱\n"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/iv_chan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:background="@drawable/meigui"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 </ScrollView>

@@ -87,7 +87,7 @@ android {
             //开启混淆
             minifyEnabled false
             //删除无用的资源
-            shrinkResources true
+//            shrinkResources true
             //混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
@@ -257,4 +257,8 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.3.0'
     /* 版本升级 */
     compile 'com.github.maning0303:MNUpdateAPK:V1.0.5'
+    /* 日历 */
+    compile 'com.github.maning0303:MNCalendar:V1.0.1'
+    /*显示更多文字*/
+    compile 'com.ms-square:expandableTextView:0.1.4'
 }

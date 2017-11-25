@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.DecideActivity"
-            android:label="你的决定"
+            android:label="坦诚相见"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DeveloperActivity"
@@ -55,7 +55,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.MyPromiseActivity"
-            android:label="你的决定"
+            android:label="我的承诺"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WebActivity"

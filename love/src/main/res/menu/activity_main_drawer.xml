@@ -4,16 +4,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/restore"
-            android:title="一日三秋" />
+            android:icon="@drawable/ic_favorite_24dp"
+            android:title="#^_^#" />
     </group>
 
     <item android:title="-愿得一人心-">
         <menu>
             <item
                 android:id="@+id/nav_decide"
-                android:icon="@drawable/decide"
-                android:title="一锤定音" />
+                android:icon="@drawable/ic_favorite_24dp"
+                android:title="*^_^*" />
         </menu>
     </item>
 
@@ -21,14 +21,14 @@
         <menu>
             <item
                 android:id="@+id/nav_heart"
-                android:icon="@drawable/book"
-                android:title="一心为你" />
+                android:icon="@drawable/ic_favorite_24dp"
+                android:title="*^o^*" />
         </menu>
     </item>
 
     <group android:checkableBehavior="none">
-        <item android:title="-衣带渐宽终不悔-"></item>
-        <item android:title="-为伊消得人憔悴-"></item>
+        <item android:title="-衣带渐宽终不悔-"/>
+        <item android:title="-为伊消得人憔悴-"/>
     </group>
 
 

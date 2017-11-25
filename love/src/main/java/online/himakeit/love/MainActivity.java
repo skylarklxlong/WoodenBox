@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -45,7 +46,6 @@ import online.himakeit.love.bean.AppUpdateInfo;
 import online.himakeit.love.presenter.implPresenter.MainPresenterImpl;
 import online.himakeit.love.presenter.implView.IMainView;
 import online.himakeit.love.utils.DialogUtils;
-import online.himakeit.love.utils.IntentUtils;
 import online.himakeit.love.utils.NetUtils;
 import online.himakeit.love.utils.NotifyUtil;
 import online.himakeit.love.utils.Toasts;
@@ -136,7 +136,9 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
             public void onClick(View view) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("呀！竟然被你发现了").setMessage("对你爱爱爱不完\n" +
-                        "我可以天天月月年年到永远"
+                        "我可以天天月月年年到永远\n\n"+
+                        "我无法想象如果没有你我该如何是好\n\n" +
+                        "一定要开开心心的噢^_^"
                 ).setCancelable(true)
                         .setPositiveButton("噗....", new DialogInterface.OnClickListener() {
                             @Override
@@ -255,16 +257,21 @@ public class MainActivity extends BaseActivity implements IMainView, NavigationV
         int id = item.getItemId();
 
         if (id == R.id.action_updatelog) {
-            Snackbar.make(getWindow().getDecorView(), "历时N天，精心打磨，只为蛊惑住你的心~\n希望雪婵能够喜欢~", Snackbar.LENGTH_LONG)
+            Snackbar.make(getWindow().getDecorView(), "历时N天，精心打磨，只为蛊惑住你的心~\n希望雪婵能够喜欢^_^", Snackbar.LENGTH_LONG)
                     .setAction("详细", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                             dialog.setTitle("说明").setMessage(R.string.update_log).setCancelable(true)
-                                    .setPositiveButton("OK~", new DialogInterface.OnClickListener() {
+                                    .setPositiveButton("好的~", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            IntentUtils.startToWebActivity(MainActivity.this, null, "送给你", "http://himakeit.online/justforchan");
+//                                            IntentUtils.startToWebActivity(MainActivity.this, null, "送给你", "http://himakeit.online/justforchan");
+                                            Intent intent = new Intent();
+                                            intent.setAction("android.intent.action.VIEW");
+                                            Uri content_url = Uri.parse("http://himakeit.online/justforchan");
+                                            intent.setData(content_url);
+                                            startActivity(intent);
                                         }
                                     });
                             dialog.show();

@@ -9,8 +9,8 @@ android {
         applicationId "online.himakeit.love"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 5
-        versionName "520.11212005"
+        versionCode 7
+        versionName "520.11251850"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
