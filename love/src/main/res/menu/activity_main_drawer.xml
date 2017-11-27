@@ -5,7 +5,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_favorite_24dp"
-            android:title="#^_^#" />
+            android:title="一日三秋" />
     </group>
 
     <item android:title="-愿得一人心-">
@@ -13,7 +13,7 @@
             <item
                 android:id="@+id/nav_decide"
                 android:icon="@drawable/ic_favorite_24dp"
-                android:title="*^_^*" />
+                android:title="一生一世" />
         </menu>
     </item>
 
@@ -22,7 +22,7 @@
             <item
                 android:id="@+id/nav_heart"
                 android:icon="@drawable/ic_favorite_24dp"
-                android:title="*^o^*" />
+                android:title="一心为你" />
         </menu>
     </item>
 

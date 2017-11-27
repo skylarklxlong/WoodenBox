@@ -2,6 +2,8 @@ package online.himakeit.love.http;
 
 import com.socks.library.KLog;
 
+import online.himakeit.love.MyApplication;
+import online.himakeit.love.R;
 import online.himakeit.love.bean.AppUpdateInfo;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +31,7 @@ public class ApiImpl {
                 if (response.isSuccessful()) {
                     AppUpdateInfo body = response.body();
                     if (body != null) {
-                        if (body.getName().equals("Love")) {
+                        if (body.getName().equals(MyApplication.getAppContext().getResources().getString(R.string.app_name))) {
                             myCallBack.onSuccess(what, body);
                         } else {
                             myCallBack.onFail(what, GET_DATA_FAIL);
