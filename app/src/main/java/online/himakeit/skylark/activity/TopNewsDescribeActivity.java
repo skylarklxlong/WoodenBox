@@ -51,7 +51,7 @@ public class TopNewsDescribeActivity extends BaseActivity implements ITopNewsDes
      * topbar
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.tv_title)
     TextView tv_title;
     //---------

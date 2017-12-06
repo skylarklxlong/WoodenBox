@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,7 +34,7 @@ import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
 public class CookMenuActivity extends BaseActivity {
 
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.tv_title)
     TextView tv_title;
 

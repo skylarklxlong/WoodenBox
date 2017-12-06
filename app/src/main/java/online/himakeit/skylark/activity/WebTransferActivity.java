@@ -1,6 +1,7 @@
 package online.himakeit.skylark.activity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -24,7 +25,7 @@ public class WebTransferActivity extends BaseActivity {
      * Topbar 相关UI
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.tv_title)
     TextView tv_title;
     @Bind(R.id.tv_tip_1)

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.net.DatagramPacket;
@@ -43,7 +44,7 @@ public class ReceiverWaitingActivity extends BaseActivity {
      * Topbar相关UI
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     /**
      * 其他UI
      */

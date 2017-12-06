@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class FileSenderActivity extends BaseActivity {
      * TopBar相关UI
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.tv_title)
     TextView tv_title;
 

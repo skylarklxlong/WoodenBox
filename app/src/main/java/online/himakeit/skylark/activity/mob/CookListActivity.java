@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
@@ -42,7 +43,7 @@ public class CookListActivity extends BaseActivity implements OnRefreshListener,
     private static final String TAG = "CookListActivity";
 
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.tv_title)
     TextView tv_title;
 

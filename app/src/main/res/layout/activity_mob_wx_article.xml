@@ -35,7 +35,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_wxarticle_title"
-            android:background="@drawable/ic_icon_arrow_drop_down_gray" />
+            app:srcCompat="@drawable/ic_icon_arrow_drop_down_gray" />
 
     </RelativeLayout>
 

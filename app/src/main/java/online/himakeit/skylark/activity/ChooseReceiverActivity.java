@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -23,16 +23,16 @@ import butterknife.OnClick;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.Constant;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.adapter.WifiScanResultAdapter;
+import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.util.BaseTransfer;
-import online.himakeit.skylark.util.NavigatorUtils;
-import online.himakeit.skylark.util.WifiMgr;
-import online.himakeit.skylark.view.RadarScanView;
 import online.himakeit.skylark.util.LogUtils;
+import online.himakeit.skylark.util.NavigatorUtils;
 import online.himakeit.skylark.util.NetUtils;
 import online.himakeit.skylark.util.Toasts;
+import online.himakeit.skylark.util.WifiMgr;
+import online.himakeit.skylark.view.RadarScanView;
 
 /**
  * Created by：LiXueLong 李雪龙 on 17-7-4 下午4:45
@@ -49,7 +49,7 @@ public class ChooseReceiverActivity extends BaseActivity {
      * TopBar相关UI
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     /**
      * 雷达UI
      */

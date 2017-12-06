@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
@@ -12,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="6dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_icon_more_tools"/>
+        app:srcCompat="@drawable/ic_icon_more_tools"/>
 
     <TextView
         android:id="@+id/tv_item_mob_item_title"
