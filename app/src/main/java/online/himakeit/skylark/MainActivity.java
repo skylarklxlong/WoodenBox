@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity
 
         initfragment();
 
-        toolbarTitle("ReadHub");
+        toolbarTitle("日报&amp;头条");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.content_fragment, fragmentArrayList.get(0));
         fragmentTransaction.commit();
@@ -173,7 +173,7 @@ public class MainActivity extends BaseActivity
 
             // 这里的requestCode就是申请时设置的requestCode。
             // 和onActivityResult()的requestCode一样，用来区分多个不同的请求。
-            if(requestCode == 100) {
+            if (requestCode == 100) {
                 LogUtils.e("权限onSucceed:" + grantedPermissions.toString());
             }
         }
@@ -181,7 +181,7 @@ public class MainActivity extends BaseActivity
         @Override
         public void onFailed(int requestCode, List<String> deniedPermissions) {
             // 权限申请失败回调。
-            if(requestCode == 100) {
+            if (requestCode == 100) {
                 LogUtils.e("权限onFailed:" + deniedPermissions.toString());
                 // 权限申请失败回调。
                 // 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
@@ -230,14 +230,14 @@ public class MainActivity extends BaseActivity
         readFragment = new ReadFragment();
         gankFragment = new GankFragment();
         mobFragment = new MobFragment();
-        toolsFragment = new ToolsFragment();
-        kCFragment = new KCFragment();
+//        toolsFragment = new ToolsFragment();
+//        kCFragment = new KCFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
         fragmentArrayList.add(mobFragment);
-        fragmentArrayList.add(kCFragment);
-        fragmentArrayList.add(toolsFragment);
+//        fragmentArrayList.add(kCFragment);
+//        fragmentArrayList.add(toolsFragment);
     }
 
     private int preIndex = 0;
@@ -253,7 +253,6 @@ public class MainActivity extends BaseActivity
         } else {
             fragmentTransaction.hide(pfragment).show(fragment);
         }
-//        fragmentTransaction.replace(R.id.content_fragment,fragmentArrayList.get(index));
         fragmentTransaction.commit();
         preIndex = index;
 
@@ -325,11 +324,11 @@ public class MainActivity extends BaseActivity
         switch (item.getItemId()) {
             case R.id.nav_camera:
                 loadfragment(0);
-                toolbarTitle("ReadHub");
+                toolbarTitle("日报&amp;头条");
                 break;
             case R.id.nav_gallery:
                 loadfragment(1);
-                toolbarTitle("Gank.io");
+                toolbarTitle("干货营");
                 break;
             case R.id.nav_slideshow:
                 loadfragment(2);
@@ -337,15 +336,14 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_manage:
                 loadfragment(3);
-                toolbarTitle("00004");
+                toolbarTitle("Tools");
                 break;
             case R.id.nav_share:
                 loadfragment(4);
-                toolbarTitle("00005");
+                toolbarTitle("Share");
                 break;
             case R.id.nav_send:
-                loadfragment(4);
-                toolbarTitle("00006");
+
                 break;
             case R.id.nav_settings:
 

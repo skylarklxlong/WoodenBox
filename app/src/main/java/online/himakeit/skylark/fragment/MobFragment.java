@@ -46,6 +46,7 @@ public class MobFragment extends BaseFragment{
         mDatas.add("金融基金");
         mDatas.add("休闲旅游");
         mDatas.add("便民服务");
+        mDatas.add("自己留用");
         mobAdapter = new MobAdapter(mActivity,mDatas);
 
         linearLayoutManager = new WrapContentLinearLayoutManager(getContext());

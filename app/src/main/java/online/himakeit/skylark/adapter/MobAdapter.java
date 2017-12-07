@@ -16,6 +16,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
+import online.himakeit.skylark.activity.FxcSalaryActivity;
+import online.himakeit.skylark.activity.KuaiChuanActivity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.activity.mob.BankCardActivity;
 import online.himakeit.skylark.activity.mob.CarListActivity;
@@ -116,6 +118,9 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mDatasItem.add("全国省市今日油价");
                 mDatasItem.add("汽车信息查询");
                 mDatasItem.add("驾考题库");
+            } else if (position == 4) {
+                mDatasItem.add("文件快传");
+                mDatasItem.add("工资计算器");
             }
 
             final List<String> mDatasTitle = mDatasItem;
@@ -154,12 +159,12 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         mContext.startActivity(new Intent(mContext, GlobalStockActivity.class));
 //-------------------------------------------------------------------
                     } else if (title.equals("周公解梦")) {
-                        mContext.startActivity(WebActivity.newTntent(mContext,"http://tools.2345.com/zhgjm.htm","周公解梦"));
+                        mContext.startActivity(WebActivity.newTntent(mContext, "http://tools.2345.com/zhgjm.htm", "周公解梦"));
                     } else if (title.equals("婚姻匹配")) {
-                        mContext.startActivity(WebActivity.newTntent(mContext,"http://www.jjdzc.com/peidui/hehun.html","婚姻匹配"));
+                        mContext.startActivity(WebActivity.newTntent(mContext, "http://www.jjdzc.com/peidui/hehun.html", "婚姻匹配"));
                     } else if (title.equals("手机号码查吉凶")) {
                     } else if (title.equals("八字算命")) {
-                        mContext.startActivity(WebActivity.newTntent(mContext,"http://www.jjdzc.com/sm/bz.html","八字算命"));
+                        mContext.startActivity(WebActivity.newTntent(mContext, "http://www.jjdzc.com/sm/bz.html", "八字算命"));
                     } else if (title.equals("老黄历")) {
                         mContext.startActivity(new Intent(mContext, ChineseCalendarActivity.class));
                     } else if (title.equals("电影票房")) {
@@ -185,6 +190,11 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         mContext.startActivity(new Intent(mContext, CarListActivity.class));
                     } else if (title.equals("驾考题库")) {
                         mContext.startActivity(new Intent(mContext, DrivingExamActivity.class));
+//-------------------------------------------------------------------
+                    } else if (title.equals("文件快传")) {
+                        mContext.startActivity(new Intent(mContext, KuaiChuanActivity.class));
+                    } else if (title.equals("工资计算器")) {
+                        mContext.startActivity(new Intent(mContext, FxcSalaryActivity.class));
                     }
                 }
             });

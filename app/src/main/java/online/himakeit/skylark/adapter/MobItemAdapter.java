@@ -119,6 +119,11 @@ public class MobItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 mobItemViewHolder.mIvItem.setImageResource(R.drawable.ic_icon_tools_car);
             } else if (title.equals("驾考题库")) {
                 mobItemViewHolder.mIvItem.setImageResource(R.drawable.ic_icon_tools_tiku_car);
+//-------------------------------------------------------------------
+            }else if (title.equals("文件快传")){
+                mobItemViewHolder.mIvItem.setImageResource(R.drawable.ic_icon_tools_tiku_car);
+            }else if (title.equals("工资计算器")){
+                mobItemViewHolder.mIvItem.setImageResource(R.drawable.ic_icon_tools_tiku_car);
             }
         }
     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/layout_search_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_send"
+            style="@style/style_home_big_text_view"
+            android:text="@string/str_send" />
+        <Button
+            android:id="@+id/btn_get"
+            style="@style/style_home_big_text_view"
+            android:text="@string/str_receive"
+            android:layout_marginTop="32dp"/>
+        <Button
+            android:id="@+id/web_transfer"
+            style="@style/style_home_big_text_view"
+            android:text="网页传"
+            android:layout_marginTop="32dp" />
+    </LinearLayout>
+
+</LinearLayout>

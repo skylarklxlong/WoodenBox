@@ -51,7 +51,7 @@ public class ChooseFileActivity extends BaseActivity {
      * Topbar相关UI
      */
     @Bind(R.id.tv_back)
-    TextView tv_back;
+    ImageView tv_back;
     @Bind(R.id.iv_search)
     ImageView iv_search;
     @Bind(R.id.search_view)
