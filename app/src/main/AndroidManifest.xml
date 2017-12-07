@@ -150,6 +150,9 @@
             android:name=".activity.mob.FlightActivity"
             android:launchMode="singleTask" />
         <activity
+            android:name=".activity.mob.FlightListActivity"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".activity.mob.FootballLeagueActivity"
             android:launchMode="singleTask" />
         <activity

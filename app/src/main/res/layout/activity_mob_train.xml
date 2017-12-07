@@ -126,7 +126,7 @@
                     android:ellipsize="middle"
                     android:gravity="right"
                     android:hint="到达城市"
-                    android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="0dp"
                     android:text="武汉"
                     android:textColor="@color/black_text2_color"
