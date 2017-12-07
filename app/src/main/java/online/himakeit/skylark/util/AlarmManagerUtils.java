@@ -38,7 +38,7 @@ public class AlarmManagerUtils {
         AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(
                 mContext.ALARM_SERVICE);
         /**
-         * 从today.getTimeInMillis()开始，没过5 * 100提醒一次
+         * 从today.getTimeInMillis()开始，每过5 * 100提醒一次
          */
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, today.getTimeInMillis(),
                 5 * 100, pendingIntent);

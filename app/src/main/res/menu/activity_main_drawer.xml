@@ -19,26 +19,17 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />
         <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Share" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Setting" />
         <item
-            android:id="@+id/nav_send"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Send" />
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_share"
+            android:title="About" />
     </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Setting" />
-            <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_share"
-                android:title="About" />
-        </menu>
+    <item android:title="XueLong"
+        android:id="@+id/nav_xuelong">
     </item>
 
 </menu>

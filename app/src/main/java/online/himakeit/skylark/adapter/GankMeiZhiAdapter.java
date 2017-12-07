@@ -93,8 +93,8 @@ public class GankMeiZhiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         Glide.with(context)
                 .load(gankMeiZhi.getUrl())
-//                .placeholder(R.drawable.base_meizi)
-                .placeholder(R.drawable.imageview_loading)
+                .placeholder(R.drawable.nav_icon)
+//                .placeholder(R.drawable.imageview_loading)
                 .error(R.drawable.imageview_loading)
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override

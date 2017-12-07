@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -109,8 +108,10 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                startActivity(WebActivity.newTntent(MainActivity.this, "http://himakeit.online/", "XueLong"));
             }
         });
 
@@ -127,7 +128,7 @@ public class MainActivity extends BaseActivity
 
         initfragment();
 
-        toolbarTitle("日报&amp;头条");
+        toolbarTitle("日报&头条");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.content_fragment, fragmentArrayList.get(0));
         fragmentTransaction.commit();
@@ -324,7 +325,7 @@ public class MainActivity extends BaseActivity
         switch (item.getItemId()) {
             case R.id.nav_camera:
                 loadfragment(0);
-                toolbarTitle("日报&amp;头条");
+                toolbarTitle("日报&头条");
                 break;
             case R.id.nav_gallery:
                 loadfragment(1);
@@ -335,21 +336,16 @@ public class MainActivity extends BaseActivity
                 toolbarTitle("工具集合");
                 break;
             case R.id.nav_manage:
-                loadfragment(3);
-                toolbarTitle("Tools");
-                break;
-            case R.id.nav_share:
-                loadfragment(4);
-                toolbarTitle("Share");
-                break;
-            case R.id.nav_send:
-
+                Toasts.showShort("正在努力开发中。。。");
                 break;
             case R.id.nav_settings:
-
+                Toasts.showShort("正在努力开发中。。。");
                 break;
             case R.id.nav_about:
-
+                Toasts.showShort("正在努力开发中。。。");
+                break;
+            case R.id.nav_xuelong:
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
         }
 
