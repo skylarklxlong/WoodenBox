@@ -255,12 +255,24 @@ dependencies {
      * 下拉刷新框架
      */
     compile 'com.github.Aspsine:SwipeToLoadLayout:v1.0.4'
-    /*material风格的dialogs*/
+    /**
+     * material风格的dialogs
+     */
     compile 'com.afollestad.material-dialogs:core:0.9.3.0'
-    /* 版本升级 */
+    /**
+     * 版本升级
+     */
     compile 'com.github.maning0303:MNUpdateAPK:V1.0.5'
-    /* 日历 */
+    /**
+     * 日历
+     */
     compile 'com.github.maning0303:MNCalendar:V1.0.1'
-    /*显示更多文字*/
+    /**
+     * 显示更多文字
+     */
     compile 'com.ms-square:expandableTextView:0.1.4'
+    /**
+     * RecycleView的间隔线
+     */
+    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
 }

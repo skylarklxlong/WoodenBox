@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_mob_train_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -23,6 +24,7 @@
         app:srcCompat="@drawable/ic_icon_back_white" />
 
     <LinearLayout
+        android:id="@+id/ll_query"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -78,8 +80,8 @@
                     android:background="@null"
                     android:ellipsize="middle"
                     android:hint="出发城市"
-                    android:maxLines="1"
                     android:padding="0dp"
+                    android:singleLine="true"
                     android:text="北京"
                     android:textColor="@color/black_text2_color"
                     android:textColorHint="@color/black_text3_color"
@@ -187,5 +189,5 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-    
+
 </RelativeLayout>

@@ -55,6 +55,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider" />
         </provider>
+
         <activity
             android:name=".activity.SplashActivity"
             android:launchMode="singleTask"
@@ -195,6 +196,9 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.mob.TrainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.mob.TrainListActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.mob.WXArticleActivity"

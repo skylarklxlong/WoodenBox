@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_train_01"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="站序"
+        android:textColor="@color/black_text2_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_train_02"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="站名"
+        android:textColor="@color/black_text2_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_train_03"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="到时"
+        android:textColor="@color/black_text2_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_train_04"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="发时"
+        android:textColor="@color/black_text2_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_train_05"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="停留"
+        android:textColor="@color/black_text2_color"
+        android:textSize="12sp" />
+</LinearLayout>
