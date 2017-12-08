@@ -1,47 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
     <ImageView
-        android:id="@+id/iv_splash"
-        android:layout_centerInParent="true"
-        android:background="@drawable/back_splash"
+        android:id="@+id/splash_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/night" />
 
     <TextView
+        android:id="@+id/splash_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="©2017 木匣 github.com/skylarklxlong"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"/>
+        android:layout_marginTop="130dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_version_splash"
+        android:id="@+id/splash_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/splash_app_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50sp"
-        android:text="v1.0.0"
-        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="别让等待，成为遗憾！"
         android:textColor="@color/white"
-        android:textSize="16sp"/>
+        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/tv_desc_splash"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80sp"
-        android:text=""
+        android:layout_marginBottom="40dp"
+        android:background="@color/mid_grey"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"/>
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/splash_version_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/splash_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
 </RelativeLayout>

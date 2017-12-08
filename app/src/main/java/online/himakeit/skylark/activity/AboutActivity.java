@@ -63,7 +63,7 @@ public class AboutActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_about_share:
-                Shares.share(this, "发现了一款非常美观的App「妹纸&amp;gank.io」，每天一张精选妹纸图、一个精选小视频（视频源地址播放），一篇程序猿干货，完全开源不收费，太赞了! 推荐~：http://fir.im/mengmeizhi ");
+                Shares.share(this, "发现了一款非常美观的App「一个木匣」，每天一张精选妹纸图、一个精选小视频（视频源地址播放），一篇程序猿干货，完全开源不收费，太赞了! 推荐~：http://fir.im/woodenbox ");
                 return true;
             case android.R.id.home:
                 this.finish();

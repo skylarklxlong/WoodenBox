@@ -57,7 +57,7 @@ public class MobApiImpl {
                 if (response.isSuccessful()) {
                     AppUpdateInfo body = response.body();
                     if (body != null) {
-                        if (body.getName().equals("木匣")) {
+                        if (body.getName().equals("一个木匣")) {
                             myCallBack.onSuccess(what, body);
                         } else {
                             myCallBack.onFail(what, GET_DATA_FAIL);

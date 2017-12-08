@@ -228,12 +228,12 @@ public class MainActivity extends BaseActivity
         gankFragment = new GankFragment();
         mobFragment = new MobFragment();
 //        toolsFragment = new ToolsFragment();
-        kCFragment = new KCFragment();
+//        kCFragment = new KCFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
         fragmentArrayList.add(mobFragment);
-        fragmentArrayList.add(kCFragment);
+//        fragmentArrayList.add(kCFragment);
 //        fragmentArrayList.add(toolsFragment);
     }
 
@@ -332,13 +332,9 @@ public class MainActivity extends BaseActivity
                 toolbarTitle("工具集合");
                 break;
             case R.id.nav_manage:
-                loadfragment(3);
-                toolbarTitle("测试");
-                break;
-            case R.id.nav_settings:
                 Toasts.showShort("正在努力开发中。。。");
                 break;
-            case R.id.nav_about:
+            case R.id.nav_settings:
                 Toasts.showShort("正在努力开发中。。。");
                 break;
             case R.id.nav_xuelong:
@@ -450,7 +446,7 @@ public class MainActivity extends BaseActivity
                 })
                 .show();
 
-        new InstallUtils(MainActivity.this, appUpdateInfo.getInstall_url(), "木匣_" + appUpdateInfo.getVersionShort(), new InstallUtils.DownloadCallBack() {
+        new InstallUtils(MainActivity.this, appUpdateInfo.getInstall_url(), "一个木匣_" + appUpdateInfo.getVersionShort(), new InstallUtils.DownloadCallBack() {
             @Override
             public void onStart() {
                 LogUtils.i("installAPK-----onStart");

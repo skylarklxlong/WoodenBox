@@ -16,9 +16,9 @@ public class GankMeiZhi {
     public String desc;
     public String who;
     public boolean used;
-    public Date createAt;
+    public Date createdAt;
     public Date updateAt;
-    public Date publicAt;
+    public Date publishedAt;
     public int imageWidth;
     public int imageHeight;
     public boolean hasFadedIn = false;
@@ -72,11 +72,11 @@ public class GankMeiZhi {
     }
 
     public Date getCreateAt() {
-        return createAt;
+        return createdAt;
     }
 
     public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+        this.createdAt = createAt;
     }
 
     public Date getUpdateAt() {
@@ -88,11 +88,11 @@ public class GankMeiZhi {
     }
 
     public Date getPublicAt() {
-        return publicAt;
+        return publishedAt;
     }
 
     public void setPublicAt(Date publicAt) {
-        this.publicAt = publicAt;
+        this.publishedAt = publicAt;
     }
 
     public int getImageWidth() {

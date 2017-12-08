@@ -3,21 +3,26 @@ package online.himakeit.skylark.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import online.himakeit.skylark.MainActivity;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.model.gank.Gank;
-import online.himakeit.skylark.util.StringStyles;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/13 19:08
@@ -73,17 +78,36 @@ public class GankBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void bindViewHolderNomal(final GankBaseViewHolder holder, int position) {
         final Gank gank = gankArrayList.get(holder.getAdapterPosition());
 
-        SpannableStringBuilder builder = new SpannableStringBuilder(gank.getDesc())
+        /*SpannableStringBuilder builder = new SpannableStringBuilder(gank.getDesc())
                 .append(StringStyles.format(holder.mTvDesc.getContext(),
                         " (via. " + (gank.getWho() != null ?
                                 gank.getWho() : "这一定是一个很棒的人！") + ")",
                         R.style.ViaTextAppearance));
 
-        CharSequence gankText = builder.subSequence(0, builder.length());
+        CharSequence gankText = builder.subSequence(0, builder.length());*/
 
-        holder.mTvDesc.setText(gankText);
+        holder.mTvDesc.setText(gank.getDesc());
+        holder.mTvTime.setText(gank.getPublicAt().split("T")[0]);
+        holder.mTvWho.setText(gank.getWho());
 
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        //图片展示
+        String imageUrl = "";
+        List<String> images = gank.getImages();
+        if (images != null && images.size() > 0) {
+            imageUrl = images.get(0);
+        }
+        if (TextUtils.isEmpty(imageUrl)) {
+            holder.mIvShow.setVisibility(View.GONE);
+        } else {
+            holder.mIvShow.setVisibility(View.VISIBLE);
+            Glide.with(mContext)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.nav_icon)
+                    .error(R.drawable.imageview_loading)
+                    .into(holder.mIvShow);
+        }
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startDescribeActivity(gank, holder);
@@ -154,13 +178,20 @@ public class GankBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class GankBaseViewHolder extends RecyclerView.ViewHolder {
 
+        @Bind(R.id.tv_gank_desc)
         TextView mTvDesc;
-        LinearLayout linearLayout;
+        @Bind(R.id.tv_gank_who)
+        TextView mTvWho;
+        @Bind(R.id.tv_gank_time)
+        TextView mTvTime;
+        @Bind(R.id.iv_gank_show)
+        ImageView mIvShow;
+        @Bind(R.id.rl_gank_base)
+        RelativeLayout relativeLayout;
 
         public GankBaseViewHolder(View itemView) {
             super(itemView);
-            mTvDesc = (TextView) itemView.findViewById(R.id.tv_gank_desc);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.ll_gank_base);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

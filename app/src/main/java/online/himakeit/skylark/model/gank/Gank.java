@@ -1,5 +1,7 @@
 package online.himakeit.skylark.model.gank;
 
+import java.util.List;
+
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/6 8:49
  * <p>
@@ -8,15 +10,20 @@ package online.himakeit.skylark.model.gank;
  * Description:
  */
 public class Gank {
+
+    private static final long serialVersionUID = -2600330151554512031L;
+
     public String objectId;
     public String url;
     public String type;
     public String desc;
     public String who;
     public boolean used;
-    public String createAt;
+    public String createdAt;
     public String updateAt;
-    public String publicAt;
+    public String publishedAt;
+
+    private List<String> images;
 
     public String getObjectId() {
         return objectId;
@@ -67,11 +74,11 @@ public class Gank {
     }
 
     public String getCreateAt() {
-        return createAt;
+        return createdAt;
     }
 
     public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+        this.createdAt = createAt;
     }
 
     public String getUpdateAt() {
@@ -83,10 +90,18 @@ public class Gank {
     }
 
     public String getPublicAt() {
-        return publicAt;
+        return publishedAt;
     }
 
     public void setPublicAt(String publicAt) {
-        this.publicAt = publicAt;
+        this.publishedAt = publicAt;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }

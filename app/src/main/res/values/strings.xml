@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">木匣</string>
+    <string name="app_name">一个木匣</string>
 
     <string name="save_meizi" translatable="false">小主好眼力,快收了她</string>
 
@@ -73,7 +73,7 @@
     <string name="str_web_transfer">网页传</string>
 
     <!--<string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.MyFloatingButtonBehavior</string>-->
-    <string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.FooterBehaviorDependAppBar</string>
+    <!--<string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.FooterBehaviorDependAppBar</string>-->
 
 
     <string-array name="array_res">
@@ -99,10 +99,10 @@
     <string name="str_about_me">关于作者</string>
     <string name="tip_next_version_update">此功能下个版本更新</string>
     <string name="title_about_me">关于作者</string>
-    <string name="str_about_me_desc">作者：mayubao</string>
-    <string name="str_about_me_qq">QQ：345269374</string>
-    <string name="str_about_me_email">Emial:345269374@qq.com</string>
-    <string name="str_about_me_github">Github:https://github.com/mayubao/KuaiChuan/</string>
+    <string name="str_about_me_desc">作者：XueLong</string>
+    <string name="str_about_me_qq">QQ：898309569</string>
+    <string name="str_about_me_email">Emial:li_xuelong@126.com</string>
+    <string name="str_about_me_github">Github:https://github.com/skylarklxlong/WoodenBox/</string>
     <string name="str_weiguan">围观</string>
     <string name="tip_web_transfer_first_tip">
         第1步 \n
@@ -121,4 +121,5 @@
     <string name="tip_permission_denied_and_not_get_file_info_list">权限被拒绝，无法获取文件列表</string>
     <string name="tip_permission_denied_and_not_receive_file">权限被拒绝，无法接收文件</string>
     <string name="tip_permission_denied_and_not_send_file">权限被拒绝，无法发送文件文件</string>
+    <string name="splash_copyright">Copyright &#169; 2015 WoodenBox All Rights Reserved\nPowered by XueLong</string>
 </resources>
