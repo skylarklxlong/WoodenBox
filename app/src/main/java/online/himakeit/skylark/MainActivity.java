@@ -281,7 +281,7 @@ public class MainActivity extends BaseActivity
          */
         MenuItem item = menu.findItem(R.id.action_notification);
         PreferencesUtils preferencesUtils = new PreferencesUtils(this);
-        item.setChecked(preferencesUtils.getBoolean("每天提醒", true));
+        item.setChecked(preferencesUtils.getBoolean("每天提醒", false));
         return true;
     }
 
