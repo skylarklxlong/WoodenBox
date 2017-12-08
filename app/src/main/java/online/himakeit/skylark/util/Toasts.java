@@ -28,7 +28,7 @@ public class Toasts {
     private static void check() {
         if (sContext == null) {
             throw new NullPointerException(
-                    "Must initial call ToastUtils.register(Context context) in your " +
+                    "Must initial call Toasts.register(Context context) in your " +
                             "<? " +
                             "extends Application class>");
         }

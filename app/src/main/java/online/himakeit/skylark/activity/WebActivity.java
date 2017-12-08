@@ -23,6 +23,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.util.LogUtils;
+import online.himakeit.skylark.util.Shares;
+import online.himakeit.skylark.util.TextStrUtils;
 import online.himakeit.skylark.util.Toasts;
 
 /**
@@ -155,8 +157,7 @@ public class WebActivity extends ToolBarActivity {
                 refresh();
                 return true;
             case R.id.action_copy_url:
-                String copyDone = "复制成功";
-
+                TextStrUtils.copyText(mUrl);
                 return true;
             case R.id.action_open_url:
                 Intent intent = new Intent();
@@ -166,8 +167,11 @@ public class WebActivity extends ToolBarActivity {
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 } else {
-                    Toasts.showLong("打开失败，没有找到可以打开该链接的其它应用 :(");
+                    Toasts.showShort("打开失败，没有找到可以打开该链接的其它应用 :(");
                 }
+                return true;
+            case R.id.action_share_url:
+                Shares.share(WebActivity.this,"木匣链接分享：" + mUrl);
                 return true;
         }
         return super.onOptionsItemSelected(item);

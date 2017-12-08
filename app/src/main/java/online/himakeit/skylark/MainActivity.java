@@ -90,10 +90,6 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        int flag = getWindow().getDecorView().getSystemUiVisibility();
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-//        LogUtils.e(flag + "----");
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -232,12 +228,12 @@ public class MainActivity extends BaseActivity
         gankFragment = new GankFragment();
         mobFragment = new MobFragment();
 //        toolsFragment = new ToolsFragment();
-//        kCFragment = new KCFragment();
+        kCFragment = new KCFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
         fragmentArrayList.add(mobFragment);
-//        fragmentArrayList.add(kCFragment);
+        fragmentArrayList.add(kCFragment);
 //        fragmentArrayList.add(toolsFragment);
     }
 
@@ -329,14 +325,15 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_gallery:
                 loadfragment(1);
-                toolbarTitle("干货营");
+                toolbarTitle("干货集中营");
                 break;
             case R.id.nav_slideshow:
                 loadfragment(2);
                 toolbarTitle("工具集合");
                 break;
             case R.id.nav_manage:
-                Toasts.showShort("正在努力开发中。。。");
+                loadfragment(3);
+                toolbarTitle("测试");
                 break;
             case R.id.nav_settings:
                 Toasts.showShort("正在努力开发中。。。");

@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="干货营" />
+            android:title="干货集中营" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -17,7 +17,7 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="测试" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
@@ -28,8 +28,8 @@
             android:title="About" />
     </group>
 
-    <item android:title="XueLong"
-        android:id="@+id/nav_xuelong">
-    </item>
+    <item
+        android:id="@+id/nav_xuelong"
+        android:title="XueLong"></item>
 
 </menu>

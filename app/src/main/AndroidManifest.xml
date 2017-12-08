@@ -58,7 +58,6 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,151 +68,137 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".common.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ChooseFileActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ChooseReceiverActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FileReceiverActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FileSenderActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ReceiverWaitingActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WebTransferActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.TopNewsDescribeActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ZhiHuDescribeActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GankMeiZhiAcitvity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/translucent" />
         <activity
             android:name=".activity.WebActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AboutActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.KuaiChuanActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FxcSalaryActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.BankCardActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.CarListActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.ChineseCalendarActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.CookMenuActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.CookListActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.CookDetailsActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.CurrencyRateActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.DictionaryActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.DrivingExamActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.FlightActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.FlightListActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.FootballLeagueActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.GlobalStockActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.GoldDataActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.HealthActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.HistoryTodayActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.IDCardQueryActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.IdiomActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.IPQueryActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.LotteryCategoryActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.OilPriceActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.PhoneAddressActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.PiaoFangVipActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.PostCodeActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.PreciousMetalActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.SilverDataActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.TrainActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.TrainListActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.mob.WXArticleActivity"
-            android:launchMode="singleTask" />
+            android:screenOrientation="portrait" />
 
 
         <receiver android:name=".receiver.AlarmReceiver">
@@ -295,7 +280,7 @@
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
             android:exported="false"
-            android:theme="@style/MyDialogStyle"></activity>
+            android:theme="@style/MyDialogStyle"/>
 
         <!-- Required SDK核心功能-->
         <activity
@@ -341,7 +326,7 @@
         <receiver android:name=".receiver.MyJPushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="online.himakeit.skylark"></category>
+                <category android:name="online.himakeit.skylark"/>
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->

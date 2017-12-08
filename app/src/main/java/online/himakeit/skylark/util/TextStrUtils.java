@@ -1,6 +1,11 @@
 package online.himakeit.skylark.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.text.TextUtils;
+
+import online.himakeit.skylark.AppContext;
 
 /**
  * Created by：LiXueLong 李雪龙 on 17-6-24 上午9:59
@@ -22,10 +27,11 @@ public class TextStrUtils {
 
     /**
      * 验证手机号码格式
+     *
      * @param number
      * @return
      */
-    public static boolean isMobileNum(String number){
+    public static boolean isMobileNum(String number) {
         /**
          * 移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
          * 联通：130、131、132、152、155、156、185、186
@@ -38,11 +44,24 @@ public class TextStrUtils {
          * "\\d{9}"代表后面是可以是0～9的数字，有9位。
          */
         String num = "[1][3578]\\d{9}";
-        if (TextUtils.isEmpty(number)){
+        if (TextUtils.isEmpty(number)) {
             return false;
-        }else {
+        } else {
             //matches():字符串是否在给定的正则表达式匹配
-         return number.matches(num);
+            return number.matches(num);
         }
+    }
+
+    /**
+     * copy文本
+     * @param text
+     */
+    public static void copyText(String text) {
+        // 从API11开始android推荐使用android.content.ClipboardManager
+        ClipboardManager cm = (ClipboardManager) AppContext.getAppContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        // 将文本内容放到系统剪贴板里。
+        ClipData clipData = ClipData.newPlainText("text", text);
+        cm.setPrimaryClip(clipData);
+        Toasts.showShort("复制成功");
     }
 }
