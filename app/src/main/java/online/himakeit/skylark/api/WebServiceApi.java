@@ -113,6 +113,49 @@ public interface WebServiceApi {
     Call<AppUpdateInfo> getTheLastAppInfo();
     //--------------------------------Fir.im end-----------------------------
 
+    //--------------------------------NeiHan start-----------------------------
+
+    /**
+     * http://iu.snssdk.com/neihan/stream/mix/v1/
+     * ?mpic=1
+     * &webp=1  固定值 1
+     * &essence=1   固定值 1
+     * &content_type=-103   从获取 content_type 中获取得到的 list_id 字段值。目前推荐的是-101，视频的是-104，段友秀的是-301，图片的是-103，段子的是-102
+     * &message_cursor=-1   固定值-1
+     * &am_longitude=110    经度。可为空
+     * &am_latitude=120     纬度。可为空
+     * &am_city=%E5%8C%97%E4%BA%AC%E5%B8%82     城市名，例如：北京市。可为空
+     * &am_loc_time=1463225362314   当前时间 Unix 时间戳，毫秒为单位
+     * &count=30    返回数量
+     * &min_time=1465232121     上次更新时间的 Unix 时间戳，秒为单位
+     * &screen_width=1450       屏幕宽度，px为单位
+     * &do00le_col_mode=0       固定值0
+     * &iid=3216590132      一个长度为10的纯数字字符串，用于标识用户唯一性
+     * &device_id=32613520945   设备 id，一个长度为11的纯数字字符串
+     * &ac=wifi     网络环境，可取值 wifi
+     * &channel=360     网络环境，可取值 wifi
+     * &aid=7       固定值7
+     * &app_name=joke_essay     固定值joke_essay
+     * &version_code=612        版本号去除小数点，例如612
+     * &version_name=6.1.2      版本号，例如6.1.2
+     * &device_platform=android     设备平台，android 或 ios
+     * &ssmix=a     固定值 a
+     * &device_type=sansung     设备型号，例如 hongmi
+     * &device_brand=xiaomi     设备品牌，例如 xiaomi
+     * &os_api=28       操作系统版本，例如20
+     * &os_version=6.10.1       操作系统版本号，例如7.1.0
+     * &uuid=326135942187625        用户 id，一个长度为15的纯数字字符串
+     * &openudid=3dg6s95rhg2a3dg5   一个长度为16的数字和小写字母混合字符串
+     * &manifest_version_code=612   版本号去除小数点，例如612
+     * &resolution=1450*2800    屏幕宽高，例如 1920*1080
+     * &dpi=620     手机 dpi
+     * &update_version_code=6120    版本号去除小数点后乘10，例如6120
+     */
+//    @GET(Config.NEIHAN_BASE_URL + "")
+//     getNeiHanData();
+
+    //--------------------------------NeiHan end-----------------------------
+
     //--------------------------------Mob start-----------------------------
 
     //银行卡信息查询
@@ -256,7 +299,7 @@ public interface WebServiceApi {
     @Headers("Cache-Control: public, max-age=300")
     @GET(Config.MOB_BASE_URL + "/v1/weather/query")
     Call<MobWeatherEntity> queryMobCityWeather(@Query("key") String appkey,
-    @Query("city") String city, @Query("province") String province);
+                                               @Query("city") String city, @Query("province") String province);
 
     //微信精选列表查询
     //http://apicloud.mob.com/wx/article/search?key=123456&cid=1

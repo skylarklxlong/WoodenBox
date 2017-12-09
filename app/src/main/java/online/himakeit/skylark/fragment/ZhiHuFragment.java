@@ -6,13 +6,14 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseFragment;
 import online.himakeit.skylark.adapter.ZhiHuAdapter;
+import online.himakeit.skylark.common.BaseFragment;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.presenter.implPresenter.ZhiHuPresenterImpl;
 import online.himakeit.skylark.presenter.implView.IZhiHuFragment;
@@ -31,6 +32,8 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
     RecyclerView recyclerView;
     @Bind(R.id.progress)
     ProgressBar progressBar;
+    @Bind(R.id.iv_tip_fail)
+    ImageView mIvTipFail;
 
     ZhiHuPresenterImpl zhiHuPresenter;
     ZhiHuAdapter zhiHuAdapter;
@@ -114,8 +117,27 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
     @Override
     public void showError(String error) {
+        mIvTipFail.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+        mIvTipFail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mIvTipFail.setVisibility(View.INVISIBLE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        if (currentLoadDate.equals("0")) {
+                            zhiHuPresenter.getLastZhiHuNews();
+                        } else {
+                            zhiHuPresenter.getTheDaily(currentLoadDate);
+                        }
+                    }
+                }, 1000);
+            }
+        });
         if (recyclerView != null) {
-            Snackbar.make(recyclerView, "请检查网络！", Snackbar.LENGTH_SHORT)
+            Snackbar.make(recyclerView, "请检查网络！", Snackbar.LENGTH_LONG)
                     .setAction("重试", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

@@ -16,10 +16,10 @@
         android:id="@+id/recycle_zhihu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="1dp"
         android:clipToPadding="false"
+        android:elevation="1dp"
         android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
     <!--
     ProgressBar分为确定的和不确定的，如播放进度、缓存等就是确定的。
     相反地，不确定的就是不清楚、不确定一个操作需要多长时间来完成，
@@ -39,13 +39,15 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTint="?android:colorAccent"
-        android:indeterminateTintMode="src_in"/>
+        android:indeterminateTintMode="src_in" />
+
     <ViewStub
         android:id="@+id/stub_no_connection_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout="@layout/no_connection_text"/>
+        android:layout="@layout/no_connection_text" />
+
     <ViewStub
         android:id="@+id/stub_posting_progress"
         android:layout_width="wrap_content"
@@ -53,6 +55,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout="@layout/posting_progress"
-        />
+        android:layout="@layout/posting_progress" />
+
+    <ImageView
+        android:id="@+id/iv_tip_fail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_tip_fail"
+        android:visibility="invisible" />
 </FrameLayout>

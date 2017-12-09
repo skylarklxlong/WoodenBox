@@ -33,4 +33,6 @@ public class Config {
     //Mob ApiKey
     public static final String MOB_APP_KEY = "215df9177263d";
 
+    public static final String NEIHAN_BASE_URL = "http://iu.snssdk.com/neihan/stream/mix/v1";
+
 }

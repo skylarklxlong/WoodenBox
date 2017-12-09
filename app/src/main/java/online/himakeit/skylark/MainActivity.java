@@ -228,13 +228,13 @@ public class MainActivity extends BaseActivity
         fragmentArrayList = new ArrayList<Fragment>();
         readFragment = new ReadFragment();
         gankFragment = new GankFragment();
-        neiHanFragment = new NeiHanFragment();
+//        neiHanFragment = new NeiHanFragment();
         mobFragment = new MobFragment();
 //        toolsFragment = new ToolsFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
-        fragmentArrayList.add(neiHanFragment);
+//        fragmentArrayList.add(neiHanFragment);
         fragmentArrayList.add(mobFragment);
 //        fragmentArrayList.add(toolsFragment);
     }
@@ -330,8 +330,9 @@ public class MainActivity extends BaseActivity
                 toolbarTitle("干货集中营");
                 break;
             case R.id.nav_slideshow:
-                loadfragment(2);
-                toolbarTitle("内涵段子");
+//                loadfragment(2);
+//                toolbarTitle("内涵段子");
+                Toasts.showShort("正在努力开发中。。。");
                 break;
             case R.id.nav_manage:
                 loadfragment(3);
