@@ -33,31 +33,19 @@ public class SettingItemView extends FrameLayout {
 
     public SettingItemView(Context context) {
         super(context, null);
+        this.context = context;
+        //初始化View
+        initView();
     }
 
     public SettingItemView(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
-    }
-
-    public SettingItemView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-
+        super(context, attrs);
         this.context = context;
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SettingView);
-        for (int i = 0; i < typedArray.getIndexCount(); i++) {
-            int index = typedArray.getIndex(i);
-            switch (index) {
-                case R.styleable.SettingView_setting_title:
-                    title = typedArray.getString(R.styleable.SettingView_setting_title);
-                    break;
-                case R.styleable.SettingView_setting_right_text:
-                    isShowRedDot = typedArray.getBoolean(R.styleable.SettingView_setting_red_dot, false);
-                    break;
-                case R.styleable.SettingView_setting_red_dot:
-                    rightText = typedArray.getString(R.styleable.SettingView_setting_right_text);
-                    break;
-            }
-        }
+        //获取自定义属性
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SettingView,0,0);
+        title = typedArray.getString(R.styleable.SettingView_setting_title);
+        isShowRedDot = typedArray.getBoolean(R.styleable.SettingView_setting_red_dot, false);
+        rightText = typedArray.getString(R.styleable.SettingView_setting_right_text);
         //销毁
         typedArray.recycle();
 
@@ -66,15 +54,27 @@ public class SettingItemView extends FrameLayout {
     }
 
     private void initView() {
+
         View.inflate(context, R.layout.setting_item_view, this);
         tv_title = (TextView) findViewById(R.id.setting_tv_title);
         tv_right = (TextView) findViewById(R.id.setting_tv_right);
         iv_red_dot = (ImageView) findViewById(R.id.setting_iv_red);
 
         //赋值
-        tv_title.setText(title);
+        setTitleText(title);
         setRedDot(isShowRedDot);
         setRightText(rightText);
+
+    }
+
+    public void setTitleText(String title){
+        if (!TextUtils.isEmpty(title)){
+            tv_title.setText(title);
+        }
+    }
+
+    public String getTitleText(){
+        return tv_title.getText().toString();
     }
 
     public void setRedDot(boolean flag) {

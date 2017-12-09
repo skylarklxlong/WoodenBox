@@ -25,13 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="@color/colorPrimary" />
 
                 <online.himakeit.skylark.view.SettingItemView
                     android:id="@+id/setting_item_clean_cache"
@@ -52,6 +46,49 @@
                     android:layout_height="44dp"
                     app:setting_red_dot="true"
                     app:setting_title="版本更新" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <online.himakeit.skylark.view.SettingItemView
+                    android:id="@+id/setting_item_open_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:setting_red_dot="false"
+                    app:setting_title="开源框架使用" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <online.himakeit.skylark.view.SettingItemView
+                    android:id="@+id/setting_item_support"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:setting_red_dot="false"
+                    app:setting_title="请作者喝一杯咖啡 (￣▽￣)~*" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
             </LinearLayout>
 
         </LinearLayout>

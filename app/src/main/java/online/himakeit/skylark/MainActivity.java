@@ -39,10 +39,11 @@ import java.util.List;
 
 import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
+import online.himakeit.skylark.activity.SettingActivity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.fragment.GankFragment;
-import online.himakeit.skylark.fragment.KCFragment;
+import online.himakeit.skylark.fragment.NeiHanFragment;
 import online.himakeit.skylark.fragment.MobFragment;
 import online.himakeit.skylark.fragment.ReadFragment;
 import online.himakeit.skylark.fragment.ToolsFragment;
@@ -71,7 +72,7 @@ public class MainActivity extends BaseActivity
     FragmentManager fragmentManager;
     //FragmentTransaction fragmentTransaction;  FragmentTransaction只能被提交一次，最好不要用全局的
     ArrayList<Fragment> fragmentArrayList;
-    KCFragment kCFragment;
+    NeiHanFragment neiHanFragment;
     ReadFragment readFragment;
     GankFragment gankFragment;
     ToolsFragment toolsFragment;
@@ -227,14 +228,14 @@ public class MainActivity extends BaseActivity
         fragmentArrayList = new ArrayList<Fragment>();
         readFragment = new ReadFragment();
         gankFragment = new GankFragment();
+        neiHanFragment = new NeiHanFragment();
         mobFragment = new MobFragment();
 //        toolsFragment = new ToolsFragment();
-//        kCFragment = new KCFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
+        fragmentArrayList.add(neiHanFragment);
         fragmentArrayList.add(mobFragment);
-//        fragmentArrayList.add(kCFragment);
 //        fragmentArrayList.add(toolsFragment);
     }
 
@@ -330,14 +331,15 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_slideshow:
                 loadfragment(2);
-                toolbarTitle("工具集合");
+                toolbarTitle("内涵段子");
                 break;
             case R.id.nav_manage:
-                Toasts.showShort("正在努力开发中。。。");
+                loadfragment(3);
+                toolbarTitle("工具集合");
                 break;
             case R.id.nav_settings:
-                Toasts.showShort("正在努力开发中。。。");
-//                startActivity(new Intent(this, SettingActivity.class));
+//                Toasts.showShort("正在努力开发中。。。");
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
             case R.id.nav_xuelong:
                 startActivity(new Intent(this, AboutActivity.class));

@@ -49,7 +49,6 @@ public class SettingPresenterImpl extends BasePresenterImpl implements ISettingP
 
     @Override
     public void cleanCache() {
-        iSettingView.showBasesProgressSuccess("正在清理缓存。。。");
         //开启后台线程，清理缓存
         new Thread(new Runnable() {
             @Override
@@ -67,6 +66,14 @@ public class SettingPresenterImpl extends BasePresenterImpl implements ISettingP
                 });
             }
         }).start();
+    }
+
+    @Override
+    public void initAppUpdateState() {
+        boolean isUpdate = SharePreUtil.getBooleanData(context, Config.SPAppUpdate + AppContext.getVersionCode(), false);
+        if (iSettingView != null) {
+            iSettingView.setAppUpdateState(isUpdate);
+        }
     }
 
     @Override
@@ -109,10 +116,13 @@ public class SettingPresenterImpl extends BasePresenterImpl implements ISettingP
                         appUpdateInfo = new AppUpdateInfo();
                     }
                     if (AppContext.getVersionCode() < newVersion) {
-                        SharePreUtil.saveBooleanData(context, Config.SPAppUpdate + AppContext.getVersionCode(), true);
                         //需要版本更新
                         if (iSettingView != null) {
                             iSettingView.showAppUpdateDialog(appUpdateInfo);
+                        }
+                    }else {
+                        if (iSettingView != null) {
+                            iSettingView.showToast("当前版本是最新版");
                         }
                     }
 

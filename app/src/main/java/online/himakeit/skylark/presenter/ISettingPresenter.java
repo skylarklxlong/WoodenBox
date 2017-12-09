@@ -15,6 +15,9 @@ public interface ISettingPresenter extends BasePresenter {
     //清除缓存
     void cleanCache();
 
+    //初始化版本更新的状态
+    void initAppUpdateState();
+
     //检查更新
     void checkAppUpdate();
 

@@ -14,6 +14,8 @@ public interface ISettingView extends IBaseFragment {
 
     void setCacheSize(String cacheSize);
 
+    void setAppUpdateState(boolean flag);
+
     void showAppUpdateDialog(AppUpdateInfo appUpdateInfo);
 
     void showBasesProgressSuccess(String msg);

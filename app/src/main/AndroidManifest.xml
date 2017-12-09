@@ -110,6 +110,12 @@
             android:name=".activity.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.OpenFrameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SupportPayActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.KuaiChuanActivity"
             android:screenOrientation="portrait" />
         <activity

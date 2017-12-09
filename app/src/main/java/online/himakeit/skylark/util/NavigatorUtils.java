@@ -12,9 +12,10 @@ import online.himakeit.skylark.activity.ChooseFileActivity;
 import online.himakeit.skylark.activity.ChooseReceiverActivity;
 import online.himakeit.skylark.activity.FileReceiverActivity;
 import online.himakeit.skylark.activity.FileSenderActivity;
+import online.himakeit.skylark.activity.OpenFrameActivity;
 import online.himakeit.skylark.activity.ReceiverWaitingActivity;
+import online.himakeit.skylark.activity.SupportPayActivity;
 import online.himakeit.skylark.activity.WebTransferActivity;
-import online.himakeit.skylark.util.FileUtils;
 
 /**
  * Created by：LiXueLong 李雪龙 on 17-7-3 下午7:48
@@ -126,6 +127,22 @@ public class NavigatorUtils {
         }
 
         mIntent = new Intent(context, WebTransferActivity.class);
+        context.startActivity(mIntent);
+    }
+
+    public static void toOpenFrameUI(Context context){
+        if(context == null) {
+            throw new RuntimeException("Context not be null!!!");
+        }
+        mIntent = new Intent(context, OpenFrameActivity.class);
+        context.startActivity(mIntent);
+    }
+
+    public static void toSupportPayUI(Context context){
+        if(context == null) {
+            throw new RuntimeException("Context not be null!!!");
+        }
+        mIntent = new Intent(context, SupportPayActivity.class);
         context.startActivity(mIntent);
     }
 
