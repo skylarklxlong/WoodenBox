@@ -79,7 +79,6 @@ public class GankMeiZhiAcitvity extends BaseActivityForFullScreen {
                 .error(R.drawable.imageview_loading)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(dragPhotoView);
-//        Picasso.with(this).load(imageUrl).into(dragPhotoView);
         initialPhotoAttacher();
 
         dragPhotoView.setOnLongClickListener(new View.OnLongClickListener() {

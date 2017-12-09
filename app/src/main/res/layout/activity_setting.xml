@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_search_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <online.himakeit.skylark.view.SettingItemView
+                    android:id="@+id/setting_item_clean_cache"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:setting_red_dot="false"
+                    app:setting_right_text="0M"
+                    app:setting_title="图片缓存" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <online.himakeit.skylark.view.SettingItemView
+                    android:id="@+id/setting_item_check_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:setting_red_dot="true"
+                    app:setting_title="版本更新" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -107,6 +107,9 @@
             android:name=".activity.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.KuaiChuanActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -280,7 +283,7 @@
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
             android:exported="false"
-            android:theme="@style/MyDialogStyle"/>
+            android:theme="@style/MyDialogStyle" />
 
         <!-- Required SDK核心功能-->
         <activity
@@ -326,7 +329,7 @@
         <receiver android:name=".receiver.MyJPushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="online.himakeit.skylark"/>
+                <category android:name="online.himakeit.skylark" />
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->

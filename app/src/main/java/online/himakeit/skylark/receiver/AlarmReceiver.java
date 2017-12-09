@@ -21,10 +21,10 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         PreferencesUtils preferencesUtils = new PreferencesUtils(context);
-        if (preferencesUtils.getBoolean("每天提醒", true)) {
+        if (preferencesUtils.getBoolean("每天提醒", false)) {
             NotificationUtils.showNotification(context, MainActivity.class,
                     "一个木匣",
-                    "今天的妹纸已经准备好了，快来享用吧~",
+                    "今天的精彩内容已经准备好了，快来看看吧~",
                     R.mipmap.skylark,
                     R.mipmap.emoji_see_no_evil,
                     123123);

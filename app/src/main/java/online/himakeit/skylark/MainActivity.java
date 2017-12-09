@@ -98,6 +98,7 @@ public class MainActivity extends BaseActivity
 
         zuiMeiPresenterImpl = new ZuiMeiPresenterImpl(this, this);
         zuiMeiPresenterImpl.getBackground();
+        zuiMeiPresenterImpl.initAppUpdate();
 
         //下面的那个像邮件的按钮
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -336,6 +337,7 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_settings:
                 Toasts.showShort("正在努力开发中。。。");
+//                startActivity(new Intent(this, SettingActivity.class));
                 break;
             case R.id.nav_xuelong:
                 startActivity(new Intent(this, AboutActivity.class));

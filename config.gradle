@@ -1,9 +1,9 @@
-ext{
+ext {
     android = [compileSdkVersion: 25,
                buildToolsVersion: "25.0.1",
                applicationId    : "online.himakeit.skylark",
                minSdkVersion    : 17,
                targetSdkVersion : 23,
-               versionCode      : 5,
-               versionName      : "3.20171208"]
+               versionCode      : 6,
+               versionName      : "3.20171209"]
 }
