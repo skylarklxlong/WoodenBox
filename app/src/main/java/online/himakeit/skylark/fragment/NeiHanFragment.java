@@ -46,7 +46,7 @@ public class NeiHanFragment extends BaseFragment {
     public void initData() {
         String[] mTitleArray = new String[]{"推荐", "段子", "图片", "段友秀", "视频"};
 
-        // TODO: 2017/9/14 type: 福利/Android/iOS/休息视频/拓展资源/前端
+        // TODO: 2017/9/14 type: 推荐-101/段子-102/图片-103/段友秀-301/视频-104
         List<BaseFragment> mFragmentList = new ArrayList<BaseFragment>();
         neiHanTJFragment = new NeiHanBaseFragment().newInstance("推荐");
         neiHanDZFragment = new NeiHanBaseFragment().newInstance("段子");

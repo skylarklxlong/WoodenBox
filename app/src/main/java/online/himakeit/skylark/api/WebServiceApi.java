@@ -31,6 +31,7 @@ import online.himakeit.skylark.model.mob.MobTrainNoEntity;
 import online.himakeit.skylark.model.mob.MobWeatherEntity;
 import online.himakeit.skylark.model.mob.MobWxArticleEntity;
 import online.himakeit.skylark.model.mob.MobWxCategoryEntity;
+import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
 import online.himakeit.skylark.model.topnews.NewsList;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
@@ -133,7 +134,7 @@ public interface WebServiceApi {
      * &iid=3216590132      一个长度为10的纯数字字符串，用于标识用户唯一性
      * &device_id=32613520945   设备 id，一个长度为11的纯数字字符串
      * &ac=wifi     网络环境，可取值 wifi
-     * &channel=360     网络环境，可取值 wifi
+     * &channel=360     下载渠道，可360、tencent等
      * &aid=7       固定值7
      * &app_name=joke_essay     固定值joke_essay
      * &version_code=612        版本号去除小数点，例如612
@@ -151,8 +152,20 @@ public interface WebServiceApi {
      * &dpi=620     手机 dpi
      * &update_version_code=6120    版本号去除小数点后乘10，例如6120
      */
-//    @GET(Config.NEIHAN_BASE_URL + "")
-//     getNeiHanData();
+    @GET(Config.NEIHAN_BASE_URL + "/?mpic=1&webp=1&essence=1&content_type=-{type}" +
+            "&message_cursor=-1&am_longitude=116.39739&am_latitude=39.91037425263379&am_city=%E5%8C%97%E4%BA%AC%E5%B8%82" +
+            "&am_loc_time=1463225362314&count={count}&min_time=1465232121&screen_width={pWidth}&do00le_col_mode=0" +
+            "&iid={iid}&device_id={device_id}&ac=wifi&channel=360&aid=7&app_name=joke_essay&version_code=612" +
+            "&version_name=6.1.2&device_platform=android&ssmix=a&device_type={device_type}&device_brand={device_brand}" +
+            "&os_api={os_api}&os_version={os_version}&uuid={uuid}&openudid={openudid}&manifest_version_code=612" +
+            "&resolution={resolution}&dpi={dpi}&update_version_code=6120")
+    Call<NeiHanBaseEntity> getNeiHanData(@Path("type") String type, @Path("count") int count,
+                                         @Path("pWidth") int pWidth, @Path("iid") String iid,
+                                         @Path("device_id") String device_id, @Path("device_type") String device_type,
+                                         @Path("device_brand") String device_brand, @Path("os_api") int os_api,
+                                         @Path("os_version") String os_version, @Path("uuid") String uuid,
+                                         @Path("openudid") String openudid, @Path("resolution") String resolution,
+                                         @Path("dpi") int dpi);
 
     //--------------------------------NeiHan end-----------------------------
 

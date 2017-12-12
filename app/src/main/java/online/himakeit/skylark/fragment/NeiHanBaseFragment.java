@@ -48,7 +48,7 @@ public class NeiHanBaseFragment extends BaseFragment implements IGankFragment {
      */
     private boolean mHasLoadedOnce = false;
 
-    String mTtype = "Android";
+    String mTtype = "推荐";
 
     public NeiHanBaseFragment() {
         super();
