@@ -3,7 +3,7 @@ package online.himakeit.skylark.model.neihan;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/9 17:51
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class NeiHanDataDataEntity implements Serializable {
     @SerializedName("comments")
-    private List<String> comments;
+    private ArrayList<String> comments;
     @SerializedName("display_time")
     private int display_time;
     @SerializedName("group")
@@ -24,11 +24,11 @@ public class NeiHanDataDataEntity implements Serializable {
     @SerializedName("type")
     private int type;
 
-    public List<String> getComments() {
+    public ArrayList<String> getComments() {
         return comments;
     }
 
-    public void setComments(List<String> comments) {
+    public void setComments(ArrayList<String> comments) {
         this.comments = comments;
     }
 

@@ -3,7 +3,7 @@ package online.himakeit.skylark.model.neihan;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/9 17:48
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class NeiHanDataEntity implements Serializable {
     @SerializedName("data")
-    private List<NeiHanDataDataEntity> data;
+    private ArrayList<NeiHanDataDataEntity> data;
     @SerializedName("has_more")
     private boolean has_more;
     @SerializedName("has_new_message")
@@ -26,11 +26,11 @@ public class NeiHanDataEntity implements Serializable {
     @SerializedName("tip")
     private String tip;
 
-    public List<NeiHanDataDataEntity> getData() {
+    public ArrayList<NeiHanDataDataEntity> getData() {
         return data;
     }
 
-    public void setData(List<NeiHanDataDataEntity> data) {
+    public void setData(ArrayList<NeiHanDataDataEntity> data) {
         this.data = data;
     }
 

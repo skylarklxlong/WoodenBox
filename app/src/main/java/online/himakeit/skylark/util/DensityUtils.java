@@ -18,26 +18,29 @@ import android.view.WindowManager;
  */
 public class DensityUtils {
 
-    private static int[] deviceWidthHeight = new int[2];
+    private static int[] deviceWidthHeight = new int[3];
+
     public static int[] getDeviceInfo(Context context) {
-        if ((deviceWidthHeight[0] == 0) && (deviceWidthHeight[1] == 0)) {
+        if ((deviceWidthHeight[0] == 0) && (deviceWidthHeight[1] == 0) && (deviceWidthHeight[2] == 0)) {
             DisplayMetrics metrics = new DisplayMetrics();
             ((Activity) context).getWindowManager().getDefaultDisplay()
                     .getMetrics(metrics);
 
             deviceWidthHeight[0] = metrics.widthPixels;
             deviceWidthHeight[1] = metrics.heightPixels;
+            deviceWidthHeight[2] = metrics.densityDpi;
         }
         return deviceWidthHeight;
     }
 
     /**
      * dip 转 px
+     *
      * @param context
      * @param dpValue
      * @return
      */
-    public static int dip2px(Context context,float dpValue){
+    public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
@@ -47,22 +50,22 @@ public class DensityUtils {
      */
     @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    public static Point getScreenSize(Context context){
+    public static Point getScreenSize(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB_MR2){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB_MR2) {
             return new Point(display.getWidth(), display.getHeight());
-        }else{
+        } else {
             Point point = new Point();
             display.getSize(point);
             return point;
         }
     }
+
     /**
-     *
-     * @param context    上下文
-     * @param pxValue  px的数值
-     * @return  px to dp
+     * @param context 上下文
+     * @param pxValue px的数值
+     * @return px to dp
      */
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;

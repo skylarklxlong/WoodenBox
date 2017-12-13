@@ -1,8 +1,10 @@
 package online.himakeit.skylark.api;
 
+import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.listeners.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
-import online.himakeit.skylark.model.neihan.NeiHanRequestData;
+import online.himakeit.skylark.util.DensityUtils;
+import online.himakeit.skylark.util.DeviceUtils;
 import online.himakeit.skylark.util.LogUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,13 +22,15 @@ public class NeiHanApiImpl {
     public final static String GET_DATA_FAIL = "获取数据失败";
     public final static String NET_FAIL = "网络出问题了";
 
-    public static Call<NeiHanBaseEntity> getNeiHanData(NeiHanRequestData neiHanRequestData, final int what, final MobCallBack callBack) {
+    public static Call<NeiHanBaseEntity> getNeiHanData(int type, int count, final int what, final MobCallBack callBack) {
         Call<NeiHanBaseEntity> neiHanData = ApiManager.getInstence().getWebServiceApi().getNeiHanData(
-                neiHanRequestData.getType(), neiHanRequestData.getCount(), neiHanRequestData.getpWidth(),
-                neiHanRequestData.getIid(), neiHanRequestData.getDevice_id(), neiHanRequestData.getDevice_type(),
-                neiHanRequestData.getDevice_brand(), neiHanRequestData.getOs_api(), neiHanRequestData.getOs_version(),
-                neiHanRequestData.getUuid(), neiHanRequestData.getOpenudid(), neiHanRequestData.getResolution(),
-                neiHanRequestData.getDpi());
+                type, count, DensityUtils.getDeviceInfo(AppContext.getAppContext())[0],
+                "3216590132", "32613520945", DeviceUtils.getModel(),
+                DeviceUtils.getBrand(), DeviceUtils.getOSApi(), DeviceUtils.getOSVersion(),
+                "326135942187625", "3dg6s95rhg2a3dg5",
+                (DensityUtils.getDeviceInfo(AppContext.getAppContext())[0] +
+                        "*" + DensityUtils.getDeviceInfo(AppContext.getAppContext())[0]),
+                DensityUtils.getDeviceInfo(AppContext.getAppContext())[2]);
         neiHanData.enqueue(new Callback<NeiHanBaseEntity>() {
             @Override
             public void onResponse(Call<NeiHanBaseEntity> call, Response<NeiHanBaseEntity> response) {

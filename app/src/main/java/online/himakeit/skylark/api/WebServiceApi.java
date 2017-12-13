@@ -159,13 +159,15 @@ public interface WebServiceApi {
             "&version_name=6.1.2&device_platform=android&ssmix=a&device_type={device_type}&device_brand={device_brand}" +
             "&os_api={os_api}&os_version={os_version}&uuid={uuid}&openudid={openudid}&manifest_version_code=612" +
             "&resolution={resolution}&dpi={dpi}&update_version_code=6120")
-    Call<NeiHanBaseEntity> getNeiHanData(@Path("type") String type, @Path("count") int count,
+    Call<NeiHanBaseEntity> getNeiHanData(@Path("type") int type, @Path("count") int count,
                                          @Path("pWidth") int pWidth, @Path("iid") String iid,
                                          @Path("device_id") String device_id, @Path("device_type") String device_type,
                                          @Path("device_brand") String device_brand, @Path("os_api") int os_api,
                                          @Path("os_version") String os_version, @Path("uuid") String uuid,
                                          @Path("openudid") String openudid, @Path("resolution") String resolution,
                                          @Path("dpi") int dpi);
+
+    Call<NeiHanBaseEntity> getNeiHanData1(@Query("card") String card);
 
     //--------------------------------NeiHan end-----------------------------
 

@@ -4,8 +4,14 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.text.TextUtils;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,90 @@ import java.util.List;
  * Description:
  */
 public class DeviceUtils {
+
+    private DeviceUtils() {
+        throw new UnsupportedOperationException("u can't fuck me...");
+    }
+
+    /**
+     * 获取设备MAC地址
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
+     *
+     * @param context 上下文
+     * @return MAC地址
+     */
+    public static String getMacAddress(Context context) {
+        WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        if (info != null) {
+            String macAddress = info.getMacAddress();
+            if (macAddress != null) {
+                return macAddress.replace(":", "");
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取设备MAC地址
+     * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>}</p>
+     *
+     * @return MAC地址
+     */
+
+    public static String getMacAddress() {
+        String macAddress = null;
+        LineNumberReader lnr = null;
+        InputStreamReader isr = null;
+        try {
+            Process pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address");
+            isr = new InputStreamReader(pp.getInputStream());
+            lnr = new LineNumberReader(isr);
+            macAddress = lnr.readLine().replace(":", "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            FileUtils.closeIO(lnr, isr);
+        }
+        return macAddress == null ? "" : macAddress;
+    }
+
+    /**
+     * 获取设备厂商，如Xiaomi
+     *
+     * @return 设备厂商
+     */
+    public static String getBrand() {
+        return Build.BRAND;
+    }
+
+    /**
+     * 获取设备型号，如MI2SC
+     *
+     * @return 设备型号
+     */
+    public static String getModel() {
+        String model = Build.MODEL;
+        if (model != null) {
+            model = model.trim().replaceAll("\\s*", "");
+        } else {
+            model = "";
+        }
+        return model;
+    }
+
+    /**
+     * 获取当前手机系统版本号
+     *
+     * @return 系统版本号
+     */
+    public static String getOSVersion() {
+        return android.os.Build.VERSION.RELEASE;
+    }
+
+    public static int getOSApi() {
+        return Build.VERSION.SDK_INT;
+    }
 
     /**
      * 获取程序最大可用运行内存
