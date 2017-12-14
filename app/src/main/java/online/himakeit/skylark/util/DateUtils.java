@@ -16,6 +16,15 @@ import java.util.Date;
  */
 public class DateUtils {
 
+    public static String Millis2Date(long mills){
+        System.currentTimeMillis();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date=sdf.format(new Date(mills * 1000L));
+
+        Log.e("skylark","时间为： "+date);
+        return date;
+    }
+
     /**
      * 获取当前时间
      * @return

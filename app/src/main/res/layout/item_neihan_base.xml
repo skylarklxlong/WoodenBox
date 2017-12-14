@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_gank_base"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
-
-    <ImageView
-        android:id="@+id/iv_gank_show"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/pic_gray_bg"
-        android:scaleType="centerCrop"
-        android:visibility="visible" />
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="5dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_toRightOf="@id/iv_gank_show">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_neihan_user"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tv_gank_desc"
+            android:id="@+id/tv_neihan_who"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="一种新的 Header View + RecyclerView 实现方式asdasdasdasdasdasdasdasdasdasdasda"
+            android:layout_alignBottom="@id/iv_neihan_user"
+            android:layout_alignTop="@id/iv_neihan_user"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_neihan_user"
+            android:gravity="center"
             android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_neihan_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_neihan_who"
+            android:layout_marginTop="5dp"
             android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp">
+        <ImageView
+            android:id="@+id/iv_neihan_show"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_below="@id/tv_neihan_desc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_gray_bg"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tv_gank_who"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:text="daimajia"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_neihan_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_neihan_show"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_gank_time"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:gravity="center"
-                android:text="2017-11-26"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_neihan_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_neihan_show"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="14sp" />
     </RelativeLayout>
+</android.support.v7.widget.CardView>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1.5px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/black" />
-
-</RelativeLayout>

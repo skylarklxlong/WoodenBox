@@ -56,9 +56,121 @@ public class NeiHanDataDataGroupEntity implements Serializable {
     private String video_height;
     @SerializedName("video_width")
     private String video_width;
+    @SerializedName("middle_image")
+    private Mimage middle_image;
+    @SerializedName("large_image")
+    private Limage large_image;
+    @SerializedName("gifvideo")
+    private GifVideo gifvideo;
+    @SerializedName("medium_cover")
+    private MCover medium_cover;
+    @SerializedName("large_cover")
+    private LCover large_cover;
 
 
-    public static class UserBean implements Serializable{
+    public static class Mimage implements Serializable {
+        private String suffix = ".webp";
+        private String url = "http://p9.pstatp.com/";
+        @SerializedName("r_height")
+        private int height;
+        @SerializedName("r_width")
+        private int width;
+        @SerializedName("uri")
+        private String uri;
+
+        public String getSuffix() {
+            return suffix;
+        }
+
+        public void setSuffix(String suffix) {
+            this.suffix = suffix;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+    }
+
+    public static class Limage implements Serializable {
+        private String suffix = ".webp";
+        private String url = "http://p9.pstatp.com/";
+        @SerializedName("r_height")
+        private int height;
+        @SerializedName("r_width")
+        private int width;
+        @SerializedName("uri")
+        private String uri;
+
+        public String getSuffix() {
+            return suffix;
+        }
+
+        public void setSuffix(String suffix) {
+            this.suffix = suffix;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+    }
+
+    public static class UserBean implements Serializable {
         @SerializedName("avatar_url")
         private String avatar_url;
         @SerializedName("name")
@@ -89,6 +201,138 @@ public class NeiHanDataDataGroupEntity implements Serializable {
         public void setUser_id(long user_id) {
             this.user_id = user_id;
         }
+    }
+
+    public static class GifVideo implements Serializable {
+        @SerializedName("mp4_url")
+        private String mp4_url;
+        @SerializedName("video_height")
+        private int video_height;
+        @SerializedName("video_width")
+        private int video_width;
+        @SerializedName("video_id")
+        private String video_id;
+
+        public String getMp4_url() {
+            return mp4_url;
+        }
+
+        public void setMp4_url(String mp4_url) {
+            this.mp4_url = mp4_url;
+        }
+
+        public int getVideo_height() {
+            return video_height;
+        }
+
+        public void setVideo_height(int video_height) {
+            this.video_height = video_height;
+        }
+
+        public int getVideo_width() {
+            return video_width;
+        }
+
+        public void setVideo_width(int video_width) {
+            this.video_width = video_width;
+        }
+
+        public String getVideo_id() {
+            return video_id;
+        }
+
+        public void setVideo_id(String video_id) {
+            this.video_id = video_id;
+        }
+    }
+
+    public static class MCover implements Serializable {
+        private String suffix = ".webp";
+        private String url = "http://p3.pstatp.com/";
+        @SerializedName("uri")
+        private String uri;
+
+        public String getSuffix() {
+            return suffix;
+        }
+
+
+        public String getUrl() {
+            return url;
+        }
+
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+    }
+
+    public static class LCover implements Serializable {
+        private String suffix = ".webp";
+        private String url = "http://p3.pstatp.com/";
+        @SerializedName("uri")
+        private String uri;
+
+        public String getSuffix() {
+            return suffix;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+    }
+
+
+    public MCover getMedium_cover() {
+        return medium_cover;
+    }
+
+    public void setMedium_cover(MCover medium_cover) {
+        this.medium_cover = medium_cover;
+    }
+
+    public LCover getLarge_cover() {
+        return large_cover;
+    }
+
+    public void setLarge_cover(LCover large_cover) {
+        this.large_cover = large_cover;
+    }
+
+    public GifVideo getGifvideo() {
+        return gifvideo;
+    }
+
+    public void setGifvideo(GifVideo gifvideo) {
+        this.gifvideo = gifvideo;
+    }
+
+    public Mimage getMiddle_image() {
+        return middle_image;
+    }
+
+    public void setMiddle_image(Mimage middle_image) {
+        this.middle_image = middle_image;
+    }
+
+    public Limage getLarge_image() {
+        return large_image;
+    }
+
+    public void setLarge_image(Limage large_image) {
+        this.large_image = large_image;
     }
 
     public boolean isAllow_dislike() {

@@ -1,6 +1,6 @@
 package online.himakeit.skylark.presenter.implView;
 
-import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
+import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/13 16:14
@@ -10,5 +10,5 @@ import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
  * Description:
  */
 public interface INeiHanFragment extends IBaseFragment {
-    void updateNeiHanData(NeiHanBaseEntity entity);
+    void updateNeiHanData(NeiHanDataEntity entity);
 }

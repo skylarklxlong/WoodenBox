@@ -2,14 +2,17 @@ package online.himakeit.skylark.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,8 +21,9 @@ import butterknife.ButterKnife;
 import online.himakeit.skylark.MainActivity;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.activity.WebActivity;
-import online.himakeit.skylark.model.gank.Gank;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataEntity;
+import online.himakeit.skylark.model.neihan.NeiHanDataDataGroupEntity;
+import online.himakeit.skylark.util.DateUtils;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/13 19:08
@@ -75,38 +79,70 @@ public class NeiHanBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private void bindViewHolderNomal(final NeiHanBaseViewHolder holder, int position) {
         final NeiHanDataDataEntity dataEntity = neiHanArrayList.get(holder.getAdapterPosition());
 
-        holder.mTvDesc.setText(dataEntity.getGroup().getContent());
-        holder.mTvTime.setText(dataEntity.getGroup().getCreate_time()+"");
+        String content = dataEntity.getGroup().getContent();
+        if (content != null && !content.equals("")) {
+            holder.mTvDesc.setText(dataEntity.getGroup().getContent());
+        } else {
+            holder.mTvDesc.setVisibility(View.GONE);
+        }
+        holder.mTvCate.setText("#" + dataEntity.getGroup().getCategory_name() + "#");
+        holder.mTvTime.setText(DateUtils.Millis2Date(dataEntity.getGroup().getCreate_time()) + "");
         holder.mTvWho.setText(dataEntity.getGroup().getUser().getName());
 
-        /*//图片展示
-        String imageUrl = "";
-        List<String> images = gank.getImages();
-        if (images != null && images.size() > 0) {
-            imageUrl = images.get(0);
+        Glide.with(mContext)
+                .load(dataEntity.getGroup().getUser().getAvatar_url())
+                .asBitmap()
+                .placeholder(R.drawable.pic_gray_bg)
+                .into(holder.mIvUser);
+
+        //普通图片
+        NeiHanDataDataGroupEntity.Mimage middle_image = dataEntity.getGroup().getMiddle_image();
+        if (middle_image != null) {
+            String middle_imageUri = middle_image.getUri();
+            if (!TextUtils.isEmpty(middle_imageUri)) {
+                holder.mIvShow.setVisibility(View.VISIBLE);
+                Glide.with(mContext)
+                        .load(middle_image.getUrl() + middle_imageUri + middle_image.getSuffix())
+                        .asBitmap()
+                        .placeholder(R.drawable.pic_gray_bg)
+                        .into(holder.mIvShow);
+            }
         }
-        if (TextUtils.isEmpty(imageUrl)) {
-            holder.mIvShow.setVisibility(View.GONE);
-        } else {
-            holder.mIvShow.setVisibility(View.VISIBLE);
-            Glide.with(mContext)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.nav_icon)
-                    .error(R.drawable.imageview_loading)
-                    .into(holder.mIvShow);
+        //动图
+        NeiHanDataDataGroupEntity.GifVideo gifvideo = dataEntity.getGroup().getGifvideo();
+        if (gifvideo != null) {
+            String mp4_url = gifvideo.getMp4_url();
+            if (!TextUtils.isEmpty(mp4_url)) {
+                // TODO: 2017/12/14 表明是动图
+            }
         }
-*/
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+
+        //视频
+        NeiHanDataDataGroupEntity.MCover medium_cover = dataEntity.getGroup().getMedium_cover();
+        if (medium_cover != null) {
+            String medium_coverUri = medium_cover.getUri();
+            if (!TextUtils.isEmpty(medium_coverUri)) {
+                holder.mIvShow.setVisibility(View.VISIBLE);
+                Glide.with(mContext)
+                        .load(medium_cover.getUrl() + medium_coverUri + medium_cover.getSuffix())
+                        .asBitmap()
+                        .placeholder(R.drawable.pic_gray_bg)
+                        .into(holder.mIvShow);
+            }
+        }
+
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startDescribeActivity(dataEntity, holder);
+                startDescribeActivity(dataEntity, holder);
             }
         });
 
     }
 
-    private void startDescribeActivity(Gank gank, RecyclerView.ViewHolder holder) {
-        Intent intent = WebActivity.newTntent(mContext, gank.getUrl(), gank.getDesc());
+    private void startDescribeActivity(NeiHanDataDataEntity dataEntity, RecyclerView.ViewHolder holder) {
+        Intent intent = WebActivity.newTntent(mContext, dataEntity.getGroup().getShare_url(), dataEntity.getGroup().getContent());
         mContext.startActivity(intent);
     }
 
@@ -167,16 +203,20 @@ public class NeiHanBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     class NeiHanBaseViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.tv_gank_desc)
+        @Bind(R.id.tv_neihan_desc)
         TextView mTvDesc;
-        @Bind(R.id.tv_gank_who)
+        @Bind(R.id.tv_neihan_category)
+        TextView mTvCate;
+        @Bind(R.id.tv_neihan_who)
         TextView mTvWho;
-        @Bind(R.id.tv_gank_time)
+        @Bind(R.id.iv_neihan_user)
+        ImageView mIvUser;
+        @Bind(R.id.tv_neihan_time)
         TextView mTvTime;
-        @Bind(R.id.iv_gank_show)
+        @Bind(R.id.iv_neihan_show)
         ImageView mIvShow;
-        @Bind(R.id.rl_gank_base)
-        RelativeLayout relativeLayout;
+        @Bind(R.id.card)
+        CardView cardView;
 
         public NeiHanBaseViewHolder(View itemView) {
             super(itemView);

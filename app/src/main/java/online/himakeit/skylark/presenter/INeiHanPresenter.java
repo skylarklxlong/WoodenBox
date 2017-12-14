@@ -8,5 +8,5 @@ package online.himakeit.skylark.presenter;
  * Description:
  */
 public interface INeiHanPresenter extends BasePresenter {
-    void getNeiHanData(int type, int count);
+    void getNeiHanData(String type, int count);
 }

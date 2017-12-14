@@ -29,7 +29,7 @@ public class NeiHanFragment extends BaseFragment {
     ViewPager viewPager;
 
     ReadViewPagerAdapter adapter;
-    NeiHanBaseFragment neiHanTJFragment;
+    NeiHanTJFragment neiHanTJFragment;
     NeiHanBaseFragment neiHanDZFragment;
     NeiHanBaseFragment neiHanPicFragment;
     NeiHanBaseFragment neiHanDYXFragment;
@@ -48,7 +48,7 @@ public class NeiHanFragment extends BaseFragment {
 
         // TODO: 2017/9/14 type: 推荐-101/段子-102/图片-103/段友秀-301/视频-104
         List<BaseFragment> mFragmentList = new ArrayList<BaseFragment>();
-        neiHanTJFragment = new NeiHanBaseFragment().newInstance("推荐");
+        neiHanTJFragment = new NeiHanTJFragment();
         neiHanDZFragment = new NeiHanBaseFragment().newInstance("段子");
         neiHanPicFragment = new NeiHanBaseFragment().newInstance("图片");
         neiHanDYXFragment = new NeiHanBaseFragment().newInstance("段友秀");

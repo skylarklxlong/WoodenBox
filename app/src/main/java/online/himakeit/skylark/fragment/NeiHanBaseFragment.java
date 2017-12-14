@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.NeiHanBaseAdapter;
 import online.himakeit.skylark.common.BaseFragment;
-import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
+import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 import online.himakeit.skylark.presenter.implPresenter.NeiHanPresenterImpl;
 import online.himakeit.skylark.presenter.implView.INeiHanFragment;
 import online.himakeit.skylark.widget.WrapContentLinearLayoutManager;
@@ -33,10 +33,10 @@ public class NeiHanBaseFragment extends BaseFragment implements INeiHanFragment 
     @Bind(R.id.progress)
     ProgressBar progressBar;
 
-    NeiHanPresenterImpl neiHanPresenterImpl;
-    NeiHanBaseAdapter neiHanBaseAdapter;
-    LinearLayoutManager linearLayoutManager;
-    RecyclerView.OnScrollListener loadingMoreListener;
+    NeiHanPresenterImpl neiHanPresenterImpl = null;
+    NeiHanBaseAdapter neiHanBaseAdapter = null;
+    LinearLayoutManager linearLayoutManager = null;
+    RecyclerView.OnScrollListener loadingMoreListener = null;
 
     boolean isLoading;
     int currentLoadData = 10;
@@ -46,7 +46,7 @@ public class NeiHanBaseFragment extends BaseFragment implements INeiHanFragment 
      */
     private boolean mHasLoadedOnce = false;
 
-    int mTtype = 101;
+    String mTtype = "-101";
 
     public NeiHanBaseFragment() {
         super();
@@ -56,15 +56,15 @@ public class NeiHanBaseFragment extends BaseFragment implements INeiHanFragment 
     public NeiHanBaseFragment(String type) {
         super();
         if (type.equals("推荐")) {
-            mTtype = 101;
+            mTtype = "-101";
         } else if (type.equals("段子")) {
-            mTtype = 102;
+            mTtype = "-102";
         } else if (type.equals("图片")) {
-            mTtype = 103;
+            mTtype = "-103";
         } else if (type.equals("段友秀")) {
-            mTtype = 301;
+            mTtype = "-301";
         } else if (type.equals("视频")) {
-            mTtype = 104;
+            mTtype = "-104";
         }
     }
 
@@ -184,9 +184,9 @@ public class NeiHanBaseFragment extends BaseFragment implements INeiHanFragment 
     }
 
     @Override
-    public void updateNeiHanData(NeiHanBaseEntity entity) {
+    public void updateNeiHanData(NeiHanDataEntity entity) {
         neiHanBaseAdapter.loadingFinish();
         isLoading = false;
-        neiHanBaseAdapter.addItems(entity.getData().getData());
+        neiHanBaseAdapter.addItems(entity.getData());
     }
 }

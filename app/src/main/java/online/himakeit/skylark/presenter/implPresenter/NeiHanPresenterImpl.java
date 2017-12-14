@@ -7,7 +7,7 @@ import java.util.List;
 
 import online.himakeit.skylark.api.NeiHanApiImpl;
 import online.himakeit.skylark.listeners.MobCallBack;
-import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
+import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 import online.himakeit.skylark.presenter.INeiHanPresenter;
 import online.himakeit.skylark.presenter.implView.INeiHanFragment;
 
@@ -32,8 +32,8 @@ public class NeiHanPresenterImpl extends BasePresenterImpl implements INeiHanPre
     }
 
     @Override
-    public void getNeiHanData(int type, int count) {
-        NeiHanApiImpl.getNeiHanData(type, count, 0x001, httpCallBack);
+    public void getNeiHanData(String type, int count) {
+        NeiHanApiImpl.getNeiHanData(context, type, count, 0x001, httpCallBack);
     }
 
     private MobCallBack httpCallBack = new MobCallBack() {
@@ -46,13 +46,14 @@ public class NeiHanPresenterImpl extends BasePresenterImpl implements INeiHanPre
             if (iNeiHanFragment == null) {
                 return;
             }
+            iNeiHanFragment.hideProgressDialog();
             switch (what) {
                 case 0x001:
                     if (result == null) {
                         return;
                     }
                     if (iNeiHanFragment != null) {
-                        iNeiHanFragment.updateNeiHanData((NeiHanBaseEntity) result);
+                        iNeiHanFragment.updateNeiHanData((NeiHanDataEntity) result);
                     }
                     break;
             }
@@ -61,6 +62,7 @@ public class NeiHanPresenterImpl extends BasePresenterImpl implements INeiHanPre
         @Override
         public void onFail(int what, String result) {
             if (!TextUtils.isEmpty(result)) {
+                iNeiHanFragment.hideProgressDialog();
                 iNeiHanFragment.showError(result);
             }
         }

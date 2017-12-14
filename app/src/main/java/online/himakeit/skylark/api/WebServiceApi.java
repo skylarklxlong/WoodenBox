@@ -125,7 +125,7 @@ public interface WebServiceApi {
      * &message_cursor=-1   固定值-1
      * &am_longitude=110    经度。可为空
      * &am_latitude=120     纬度。可为空
-     * &am_city=%E5%8C%97%E4%BA%AC%E5%B8%82     城市名，例如：北京市。可为空
+     * &am_city=%E5%8C%97%E4%BA%AC%E5%B8%82     城市名，例如：北京市。可为空%E5%8C%97%E4%BA%AC
      * &am_loc_time=1463225362314   当前时间 Unix 时间戳，毫秒为单位
      * &count=30    返回数量
      * &min_time=1465232121     上次更新时间的 Unix 时间戳，秒为单位
@@ -152,22 +152,40 @@ public interface WebServiceApi {
      * &dpi=620     手机 dpi
      * &update_version_code=6120    版本号去除小数点后乘10，例如6120
      */
-    @GET(Config.NEIHAN_BASE_URL + "/?mpic=1&webp=1&essence=1&content_type=-{type}" +
-            "&message_cursor=-1&am_longitude=116.39739&am_latitude=39.91037425263379&am_city=%E5%8C%97%E4%BA%AC%E5%B8%82" +
-            "&am_loc_time=1463225362314&count={count}&min_time=1465232121&screen_width={pWidth}&do00le_col_mode=0" +
-            "&iid={iid}&device_id={device_id}&ac=wifi&channel=360&aid=7&app_name=joke_essay&version_code=612" +
-            "&version_name=6.1.2&device_platform=android&ssmix=a&device_type={device_type}&device_brand={device_brand}" +
-            "&os_api={os_api}&os_version={os_version}&uuid={uuid}&openudid={openudid}&manifest_version_code=612" +
-            "&resolution={resolution}&dpi={dpi}&update_version_code=6120")
-    Call<NeiHanBaseEntity> getNeiHanData(@Path("type") int type, @Path("count") int count,
-                                         @Path("pWidth") int pWidth, @Path("iid") String iid,
-                                         @Path("device_id") String device_id, @Path("device_type") String device_type,
-                                         @Path("device_brand") String device_brand, @Path("os_api") int os_api,
-                                         @Path("os_version") String os_version, @Path("uuid") String uuid,
-                                         @Path("openudid") String openudid, @Path("resolution") String resolution,
-                                         @Path("dpi") int dpi);
-
-    Call<NeiHanBaseEntity> getNeiHanData1(@Query("card") String card);
+    @GET(Config.NEIHAN_BASE_URL + "/")
+    Call<NeiHanBaseEntity> getNeiHanData(@Query("mpic") int mpic,
+                                         @Query("webp") int webp,
+                                         @Query("essence") int essence,
+                                         @Query("content_type") String content_type,
+                                         @Query("message_cursor") String message_cursor,
+                                         @Query("am_longitude") String am_longitude,
+                                         @Query("am_latitude") String am_latitude,
+                                         @Query("am_city") String am_city,
+                                         @Query("am_loc_time") long am_loc_time,
+                                         @Query("count") int count,
+                                         @Query("min_time") String min_time,
+                                         @Query("screen_width") int screen_width,
+                                         @Query("do00le_col_mode") int do00le_col_mode,
+                                         @Query("iid") String iid,
+                                         @Query("device_id") String device_id,
+                                         @Query("ac") String ac,
+                                         @Query("channel") String channel,
+                                         @Query("aid") int aid,
+                                         @Query("app_name") String app_name,
+                                         @Query("version_code") String version_code,
+                                         @Query("version_name") String version_name,
+                                         @Query("device_platform") String device_platform,
+                                         @Query("ssmix") String ssmix,
+                                         @Query("device_type") String device_type,
+                                         @Query("device_brand") String device_brand,
+                                         @Query("os_api") int os_api,
+                                         @Query("os_version") String os_version,
+                                         @Query("uuid") String uuid,
+                                         @Query("openudid") String openudid,
+                                         @Query("manifest_version_code") String manifest_version_code,
+                                         @Query("resolution") String resolution,
+                                         @Query("dpi") int dpi,
+                                         @Query("update_version_code") String update_version_code);
 
     //--------------------------------NeiHan end-----------------------------
 
