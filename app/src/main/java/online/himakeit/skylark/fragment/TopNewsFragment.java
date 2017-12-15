@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.litesuits.orm.db.assit.QueryBuilder;
 import com.litesuits.orm.db.model.ConflictAlgorithm;
@@ -17,14 +16,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseFragment;
 import online.himakeit.skylark.adapter.TopNewsAdapter;
+import online.himakeit.skylark.common.BaseFragment;
 import online.himakeit.skylark.model.topnews.NewsBean;
 import online.himakeit.skylark.model.topnews.NewsList;
 import online.himakeit.skylark.presenter.implPresenter.TopNewsNewPresenterImpl;
 import online.himakeit.skylark.presenter.implView.ITopNewsFragment;
-import online.himakeit.skylark.widget.WrapContentLinearLayoutManager;
 import online.himakeit.skylark.view.MultiSwipeRefreshLayout;
+import online.himakeit.skylark.widget.WrapContentLinearLayoutManager;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/8/22 15:04
@@ -39,8 +38,6 @@ public class TopNewsFragment extends BaseFragment implements ITopNewsFragment {
     MultiSwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recycle_topnews)
     RecyclerView recyclerView;
-    @Bind(R.id.progress)
-    ProgressBar progressBar;
     @Bind(R.id.iv_tip_fail)
     ImageView mIvTipFail;
 

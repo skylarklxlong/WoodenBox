@@ -1,6 +1,7 @@
 package online.himakeit.skylark.fragment;
 
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,14 +10,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.litesuits.orm.db.assit.QueryBuilder;
+import com.litesuits.orm.db.model.ConflictAlgorithm;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.ZhiHuAdapter;
 import online.himakeit.skylark.common.BaseFragment;
 import online.himakeit.skylark.model.zhuhu.ZhiHuDaily;
+import online.himakeit.skylark.model.zhuhu.ZhiHuDailyItem;
 import online.himakeit.skylark.presenter.implPresenter.ZhiHuPresenterImpl;
 import online.himakeit.skylark.presenter.implView.IZhiHuFragment;
+import online.himakeit.skylark.view.MultiSwipeRefreshLayout;
 import online.himakeit.skylark.widget.WrapContentLinearLayoutManager;
 
 /**
@@ -28,6 +35,8 @@ import online.himakeit.skylark.widget.WrapContentLinearLayoutManager;
  */
 public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
+    @Bind(R.id.swipe_refresh_layout)
+    MultiSwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recycle_zhihu)
     RecyclerView recyclerView;
     @Bind(R.id.progress)
@@ -43,6 +52,11 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
     boolean loading;
     private String currentLoadDate;
+
+    /**
+     * 是否已被加载过一次，第二次就不再去请求数据了
+     */
+    private boolean mHasLoadedOnce = false;
 
     @Override
     public View initViews() {
@@ -68,8 +82,9 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
                     int visibleItemCount = linearLayoutManager.getChildCount();
                     int totalItemCount = linearLayoutManager.getItemCount();
                     int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
-                    if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                    if (!mSwipeRefreshLayout.isRefreshing() && !loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                         loading = true;
+                        mSwipeRefreshLayout.setRefreshing(true);
                         loadMoreData();
                     }
                 }
@@ -85,7 +100,37 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
         recyclerView.setAdapter(zhiHuAdapter);
         recyclerView.setOnScrollListener(loadingMoreListener);
 
-        loadData();
+        QueryBuilder queryBuilder = new QueryBuilder(ZhiHuDailyItem.class);
+        queryBuilder.appendOrderDescBy("date");
+        queryBuilder.limit(0,10);
+        if (AppContext.liteOrmDB.query(queryBuilder).size() > 0){
+            zhiHuAdapter.addItems(AppContext.liteOrmDB.query(queryBuilder));
+        }
+
+        trySetupSwipeRefresh();
+    }
+
+    private void trySetupSwipeRefresh(){
+        if (mSwipeRefreshLayout != null){
+            mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_progress_3,
+                    R.color.refresh_progress_2, R.color.refresh_progress_1);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    // 防止刷新消失太快，让子弹飞一会儿.
+                    mSwipeRefreshLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mSwipeRefreshLayout != null) {
+                                mSwipeRefreshLayout.setRefreshing(true);
+                                loadData();
+                            }
+                        }
+                    }, 1000);
+
+                }
+            });
+        }
     }
 
     private void loadData() {
@@ -103,21 +148,25 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
     @Override
     public void showProgressDialog() {
-        if (progressBar != null) {
+        if (progressBar != null && !mHasLoadedOnce) {
             progressBar.setVisibility(View.VISIBLE);
+            mHasLoadedOnce = true;
         }
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideProgressDialog() {
         if (progressBar != null) {
-            progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.GONE);
         }
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void showError(String error) {
-        mIvTipFail.setVisibility(View.VISIBLE);
+        mSwipeRefreshLayout.setRefreshing(false);
+        /*mIvTipFail.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
         mIvTipFail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,12 +184,13 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
                     }
                 }, 1000);
             }
-        });
+        });*/
         if (recyclerView != null) {
             Snackbar.make(recyclerView, "请检查网络！", Snackbar.LENGTH_LONG)
                     .setAction("重试", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            mSwipeRefreshLayout.setRefreshing(true);
                             if (currentLoadDate.equals("0")) {
                                 zhiHuPresenter.getLastZhiHuNews();
                             } else {
@@ -158,8 +208,9 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
             zhiHuAdapter.loadingFinish();
         }
         currentLoadDate = zhiHuDaily.getDate();
+        AppContext.liteOrmDB.insert(zhiHuDaily.getStories(), ConflictAlgorithm.Replace);
         zhiHuAdapter.addItems(zhiHuDaily.getStories());
-
+        mSwipeRefreshLayout.setRefreshing(false);
         if (!recyclerView.canScrollVertically(View.SCROLL_INDICATOR_BOTTOM)) {
             loadMoreData();
         }

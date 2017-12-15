@@ -1,6 +1,12 @@
 package online.himakeit.skylark.model.zhuhu;
 
 import com.google.gson.annotations.SerializedName;
+import com.litesuits.orm.db.annotation.Column;
+import com.litesuits.orm.db.annotation.PrimaryKey;
+import com.litesuits.orm.db.annotation.Table;
+import com.litesuits.orm.db.enums.AssignType;
+
+import java.io.Serializable;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/8/22 19:07
@@ -9,16 +15,23 @@ import com.google.gson.annotations.SerializedName;
  * <p>
  * Description:
  */
-public class ZhiHuDailyItem {
+@Table("zhihu")
+public class ZhiHuDailyItem implements Serializable{
 
+    @Column("images")
     @SerializedName("images")
     private String[] images;
+    @Column("type")
     @SerializedName("type")
     private int type;
+    @PrimaryKey(AssignType.BY_MYSELF)
+    @Column("_id")
     @SerializedName("id")
     private String id;
+    @Column("title")
     @SerializedName("title")
     private String title;
+    @Column("date")
     @SerializedName("date")
     private String date;
 
