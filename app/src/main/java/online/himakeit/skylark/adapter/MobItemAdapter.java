@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.listeners.OnItemClickListener;
+import online.himakeit.skylark.callback.OnItemClickListener;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/10/18 8:03

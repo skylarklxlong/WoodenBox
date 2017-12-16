@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.listeners.OnItemClickListener;
+import online.himakeit.skylark.callback.OnItemClickListener;
 import online.himakeit.skylark.model.mob.MobWxArticleEntity;
 
 /**

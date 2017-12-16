@@ -28,8 +28,8 @@ import online.himakeit.skylark.adapter.MobWXArticleCategoryRecyclerAdapter;
 import online.himakeit.skylark.adapter.MobWXArticleRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.common.BaseActivity;
-import online.himakeit.skylark.listeners.MobCallBack;
-import online.himakeit.skylark.listeners.OnItemClickListener;
+import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.callback.OnItemClickListener;
 import online.himakeit.skylark.model.mob.MobWxArticleEntity;
 import online.himakeit.skylark.model.mob.MobWxCategoryEntity;
 

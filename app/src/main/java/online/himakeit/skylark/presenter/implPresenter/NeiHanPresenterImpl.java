@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import java.util.List;
 
 import online.himakeit.skylark.api.NeiHanApiImpl;
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 import online.himakeit.skylark.presenter.INeiHanPresenter;
 import online.himakeit.skylark.presenter.implView.INeiHanFragment;

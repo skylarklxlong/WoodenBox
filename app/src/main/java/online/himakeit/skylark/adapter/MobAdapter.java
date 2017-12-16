@@ -44,7 +44,7 @@ import online.himakeit.skylark.activity.mob.PreciousMetalActivity;
 import online.himakeit.skylark.activity.mob.SilverDataActivity;
 import online.himakeit.skylark.activity.mob.TrainActivity;
 import online.himakeit.skylark.activity.mob.WXArticleActivity;
-import online.himakeit.skylark.listeners.OnItemClickListener;
+import online.himakeit.skylark.callback.OnItemClickListener;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/10/17 19:59

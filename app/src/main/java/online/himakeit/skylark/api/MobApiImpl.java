@@ -2,7 +2,7 @@ package online.himakeit.skylark.api;
 
 import java.util.ArrayList;
 
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.model.mob.MobBankCard;

@@ -26,7 +26,7 @@ import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.common.BaseActivity;
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.mob.MobFlightEntity;
 import online.himakeit.skylark.util.KeyboardUtils;
 

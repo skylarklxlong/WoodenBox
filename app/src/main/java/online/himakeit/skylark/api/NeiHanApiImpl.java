@@ -2,7 +2,7 @@ package online.himakeit.skylark.api;
 
 import android.content.Context;
 
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
 import online.himakeit.skylark.util.DensityUtils;
 import online.himakeit.skylark.util.DeviceUtils;

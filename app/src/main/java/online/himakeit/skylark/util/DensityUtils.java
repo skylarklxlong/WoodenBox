@@ -72,4 +72,12 @@ public class DensityUtils {
         return (int) (pxValue / scale + 0.5f);
 
     }
+
+    public static int getScreenWidth(Activity activity) {
+        return activity.getWindowManager().getDefaultDisplay().getWidth();
+    }
+
+    public static int getScreenHeight(Activity activity) {
+        return activity.getWindowManager().getDefaultDisplay().getHeight();
+    }
 }

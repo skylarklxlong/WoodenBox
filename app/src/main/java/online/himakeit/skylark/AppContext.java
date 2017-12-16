@@ -10,6 +10,8 @@ import com.litesuits.orm.LiteOrm;
 import com.readystatesoftware.chuck.ChuckInterceptor;
 import com.umeng.analytics.MobclickAgent;
 
+import org.xutils.x;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -72,6 +74,8 @@ public class AppContext extends Application {
         mAppContext = this;
         mHandler = new Handler();
 
+        initXUtils3();
+
         initJPush();
 
         initUmengAnalytics();
@@ -94,6 +98,11 @@ public class AppContext extends Application {
          * facebook调试工具
          */
         Stetho.initializeWithDefaults(this);
+    }
+
+    private void initXUtils3() {
+        x.Ext.init(this);
+        x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
     }
 
     public static Handler getHandler() {

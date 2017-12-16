@@ -8,7 +8,7 @@ import java.util.List;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.api.ZuiMeiApiImpl;
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.presenter.IZuiMeiPresenter;

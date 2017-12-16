@@ -18,7 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.activity.mob.TrainListActivity;
-import online.himakeit.skylark.listeners.OnItemClickListener;
+import online.himakeit.skylark.callback.OnItemClickListener;
 import online.himakeit.skylark.model.mob.MobTrainEntity;
 import online.himakeit.skylark.model.mob.MobTrainNoEntity;
 

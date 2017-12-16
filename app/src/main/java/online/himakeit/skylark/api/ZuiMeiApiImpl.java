@@ -1,6 +1,6 @@
 package online.himakeit.skylark.api;
 
-import online.himakeit.skylark.listeners.MobCallBack;
+import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.zuimei.ZuiMeiImageResponse;
 import online.himakeit.skylark.presenter.implView.IZuiMeiPic;
 import online.himakeit.skylark.util.LogUtils;

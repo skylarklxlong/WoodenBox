@@ -14,6 +14,8 @@ import java.io.Serializable;
 public class NeiHanDataDataGroupEntity implements Serializable {
     @SerializedName("allow_dislike")
     private boolean allow_dislike;
+    @SerializedName("bury_count")
+    private int bury_count;
     @SerializedName("category_id")
     private String category_id;
     @SerializedName("category_name")
@@ -28,6 +30,8 @@ public class NeiHanDataDataGroupEntity implements Serializable {
     private String content;
     @SerializedName("create_time")
     private Long create_time;
+    @SerializedName("digg_count")
+    private int digg_count;
     @SerializedName("duration")
     private double duration;
     @SerializedName("favorite_count")
@@ -509,5 +513,21 @@ public class NeiHanDataDataGroupEntity implements Serializable {
 
     public void setVideo_width(String video_width) {
         this.video_width = video_width;
+    }
+
+    public int getBury_count() {
+        return bury_count;
+    }
+
+    public void setBury_count(int bury_count) {
+        this.bury_count = bury_count;
+    }
+
+    public int getDigg_count() {
+        return digg_count;
+    }
+
+    public void setDigg_count(int digg_count) {
+        this.digg_count = digg_count;
     }
 }
