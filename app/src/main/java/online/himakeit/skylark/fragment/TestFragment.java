@@ -70,9 +70,9 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
                 }
             }
         });
-
+        mRecyclerView.setOnPauseListenerParams(false, true);
         try {
-            mAdapter = new TestAdapter(getActivity(), mRecyclerView, this);
+            mAdapter = new TestAdapter("-103", getActivity(), mRecyclerView, this);
         } catch (DbException e) {
             e.printStackTrace();
         }

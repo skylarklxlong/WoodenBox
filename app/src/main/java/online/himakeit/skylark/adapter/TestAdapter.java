@@ -1,6 +1,7 @@
 package online.himakeit.skylark.adapter;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +13,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import org.xutils.ex.DbException;
 
@@ -29,9 +33,12 @@ import online.himakeit.skylark.callback.LoadFinishCallBack;
 import online.himakeit.skylark.callback.LoadResultCallBack;
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataEntity;
+import online.himakeit.skylark.model.neihan.NeiHanDataDataGroupEntity;
 import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 import online.himakeit.skylark.util.DateUtils;
+import online.himakeit.skylark.util.ImageLoadProxy;
 import online.himakeit.skylark.util.Toasts;
+import online.himakeit.skylark.view.ShowMaxImageView;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/16 13:41
@@ -48,12 +55,15 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     private Activity mActivity;
     private LoadResultCallBack mLoadResultCallBack;
     private LoadFinishCallBack mLoadFinisCallBack;
+    private String mType;
 
-    public TestAdapter(Activity mActivity, LoadFinishCallBack mLoadFinisCallBack, LoadResultCallBack mLoadResultCallBack) throws DbException {
+    public TestAdapter(String mType, Activity mActivity, LoadFinishCallBack mLoadFinisCallBack, LoadResultCallBack mLoadResultCallBack) throws DbException {
+        this.mType = mType;
         this.mActivity = mActivity;
         this.mLoadResultCallBack = mLoadResultCallBack;
         this.mLoadFinisCallBack = mLoadFinisCallBack;
         neiHanArrayList = new ArrayList<NeiHanDataDataEntity>();
+        ImageLoadProxy.initImageLoader(mActivity);
     }
 
     protected void setAnimation(View viewToAnimate, int position) {
@@ -79,7 +89,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     }
 
     @Override
-    public void onBindViewHolder(TestViewHolder holder, int position) {
+    public void onBindViewHolder(final TestViewHolder holder, int position) {
         final NeiHanDataDataEntity dataEntity = neiHanArrayList.get(position);
         if (dataEntity.getGroup() != null) {
             holder.tv_content.setText(dataEntity.getGroup().getContent());
@@ -88,6 +98,68 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             holder.tv_like.setText(dataEntity.getGroup().getDigg_count() + "");
             holder.tv_comment_count.setText(dataEntity.getGroup().getComment_count());
             holder.tv_unlike.setText(dataEntity.getGroup().getBury_count() + "");
+
+            ImageLoadProxy.displayImageList(dataEntity.getGroup().getUser().getAvatar_url(),
+                    holder.iv_user, R.drawable.pic_gray_bg, new
+                            SimpleImageLoadingListener() {
+                                @Override
+                                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                                    super.onLoadingComplete(imageUri, view, loadedImage);
+                                }
+                            },
+                    new ImageLoadingProgressListener() {
+                        @Override
+                        public void onProgressUpdate(String imageUri, View view, int current, int total) {
+                        }
+                    });
+
+            //普通图片
+            NeiHanDataDataGroupEntity.Mimage middle_image = dataEntity.getGroup().getMiddle_image();
+            if (middle_image != null) {
+                String middle_imageUri = middle_image.getUri();
+                if (!TextUtils.isEmpty(middle_imageUri)) {
+
+                    holder.iv_gif.setVisibility(View.GONE);
+                    //动图
+                    NeiHanDataDataGroupEntity.GifVideo gifvideo = dataEntity.getGroup().getGifvideo();
+                    if (gifvideo != null) {
+                        String mp4_url = gifvideo.getMp4_url();
+                        if (!TextUtils.isEmpty(mp4_url)) {
+                            // TODO: 2017/12/14 表明是动图
+                            holder.iv_gif.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    holder.pb_gif.setProgress(0);
+                    holder.pb_gif.setVisibility(View.VISIBLE);
+                    ImageLoadProxy.displayImageList(middle_image.getUrl() + middle_imageUri + middle_image.getSuffix(),
+                            holder.iv_img_show, R.drawable.pic_gray_bg, new
+                                    SimpleImageLoadingListener() {
+                                        @Override
+                                        public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                                            super.onLoadingComplete(imageUri, view, loadedImage);
+                                            holder.pb_gif.setVisibility(View.GONE);
+                                        }
+                                    },
+                            new ImageLoadingProgressListener() {
+                                @Override
+                                public void onProgressUpdate(String imageUri, View view, int current, int total) {
+                                    holder.pb_gif.setProgress((int) (current * 100f / total));
+                                }
+                            });
+                }
+            }
+
+            //视频
+            NeiHanDataDataGroupEntity.MCover medium_cover = dataEntity.getGroup().getMedium_cover();
+            if (medium_cover != null) {
+                String medium_coverUri = medium_cover.getUri();
+                if (!TextUtils.isEmpty(medium_coverUri)) {
+                    holder.iv_gif.setVisibility(View.GONE);
+                    holder.pb_gif.setProgress(0);
+                    holder.pb_gif.setVisibility(View.VISIBLE);
+                }
+            }
         }
 
         holder.img_share.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +220,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     }
 
     private void loadData() {
-        NeiHanApiImpl.getNeiHanData(mActivity, "-102", 10, 0x001, new MobCallBack() {
+        NeiHanApiImpl.getNeiHanData(mActivity, mType, 10, 0x001, new MobCallBack() {
             @Override
             public void onSuccessList(int what, List results) {
             }
@@ -255,6 +327,14 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         CardView card;
         @Bind(R.id.ll_comment)
         LinearLayout ll_comment;
+        @Bind(R.id.pb_gif)
+        ProgressBar pb_gif;
+        @Bind(R.id.iv_img_show)
+        ShowMaxImageView iv_img_show;
+        @Bind(R.id.iv_gif)
+        ImageView iv_gif;
+        @Bind(R.id.iv_user)
+        ImageView iv_user;
 
         public TestViewHolder(View itemView) {
             super(itemView);

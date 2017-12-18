@@ -39,7 +39,6 @@ import java.util.List;
 
 import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
-import online.himakeit.skylark.activity.SettingActivity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.fragment.GankFragment;
@@ -343,9 +342,9 @@ public class MainActivity extends BaseActivity
                 toolbarTitle("工具集合");
                 break;
             case R.id.nav_settings:
-                startActivity(new Intent(this, SettingActivity.class));
-//                loadfragment(4);
-//                toolbarTitle("工具集合");
+//                startActivity(new Intent(this, SettingActivity.class));
+                loadfragment(4);
+                toolbarTitle("test");
                 break;
             case R.id.nav_xuelong:
                 startActivity(new Intent(this, AboutActivity.class));

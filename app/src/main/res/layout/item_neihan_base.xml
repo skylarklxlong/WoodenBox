@@ -23,6 +23,7 @@
             android:scaleType="centerCrop" />
 
         <TextView
+            android:text="XueLong"
             android:id="@+id/tv_neihan_who"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,6 +36,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:text="由XueLong开发于2017年12月"
             android:id="@+id/tv_neihan_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
             android:visibility="gone" />
 
         <TextView
+            android:text="#搞笑#"
             android:id="@+id/tv_neihan_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:text="2017-12-12"
             android:id="@+id/tv_neihan_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

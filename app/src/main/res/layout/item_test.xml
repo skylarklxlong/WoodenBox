@@ -10,7 +10,7 @@
     app:cardCornerRadius="2dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    app:contentPadding="16dp">
+    app:contentPadding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,23 +21,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/iv_user"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop" />
+
             <TextView
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/iv_user"
                 android:id="@+id/tv_author"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:singleLine="true"
                 android:text="XueLong"
-                android:textColor="@color/black_text1_color"
-                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_author"
+                android:layout_below="@id/tv_author"
+                android:layout_alignParentRight="true"
                 android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@id/tv_author"
                 android:text="2017-12-12"
                 android:textColor="@color/black_text1_color"
                 android:textSize="12sp" />
@@ -53,6 +62,44 @@
             android:textColor="@color/black_text1_color"
             android:textSize="15sp" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#FFF"
+            android:visibility="visible">
+
+            <ProgressBar
+                android:id="@+id/pb_gif"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_alignParentTop="true"
+                android:indeterminate="false"
+                android:indeterminateDrawable="@drawable/progress_indeterminate_horizontal_holo"
+                android:indeterminateOnly="false"
+                android:mirrorForRtl="true"
+                android:progress="0"
+                android:progressDrawable="@drawable/progress_horizontal_holo_dark"
+                android:visibility="gone" />
+
+            <online.himakeit.skylark.view.ShowMaxImageView
+                android:id="@+id/iv_img_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pb_gif"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/iv_gif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_play_gif"
+                android:visibility="gone" />
+        </RelativeLayout>
 
         <!-- 神评论-->
         <LinearLayout

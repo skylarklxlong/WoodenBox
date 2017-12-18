@@ -3,9 +3,11 @@ package online.himakeit.skylark.view;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Canvas;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
 import online.himakeit.skylark.util.DensityUtils;
 
@@ -16,7 +18,7 @@ import online.himakeit.skylark.util.DensityUtils;
  * <p>
  * Description:
  */
-public class ShowMaxImageView extends android.support.v7.widget.AppCompatImageView {
+public class ShowMaxImageView extends ImageView {
     private float mHeight = 0;
 
     public ShowMaxImageView(Context context) {
@@ -90,8 +92,15 @@ public class ShowMaxImageView extends android.support.v7.widget.AppCompatImageVi
     private Bitmap drawableToBitamp(Drawable drawable) {
 
         if (drawable != null) {
-            BitmapDrawable bd = (BitmapDrawable) drawable;
-            return bd.getBitmap();
+            Bitmap bitmap = Bitmap.createBitmap(
+                    drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(),
+                    drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bitmap);
+            //canvas.setBitmap(bitmap);
+            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            drawable.draw(canvas);
+            return bitmap;
         } else {
             return null;
         }
