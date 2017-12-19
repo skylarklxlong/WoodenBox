@@ -329,9 +329,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         dataBaseCrete.delete(page,Constants.menu4);*/
 
         NeiHanDataBase data = new NeiHanDataBase();
-        data.setId(page);
+        data.setId(page + 1);
         data.setData(request);
-        data.setPage(page);
+        data.setPage(page + 1);
         data.setType(mType);
         AppContext.liteOrmDB.insert(data, ConflictAlgorithm.Replace);
     }
