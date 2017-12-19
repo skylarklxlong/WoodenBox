@@ -39,13 +39,13 @@ import java.util.List;
 
 import online.himakeit.skylark.activity.AboutActivity;
 import online.himakeit.skylark.activity.GankMeiZhiAcitvity;
+import online.himakeit.skylark.activity.SettingActivity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.fragment.GankFragment;
 import online.himakeit.skylark.fragment.MobFragment;
 import online.himakeit.skylark.fragment.NeiHanFragment;
 import online.himakeit.skylark.fragment.ReadFragment;
-import online.himakeit.skylark.fragment.TestFragment;
 import online.himakeit.skylark.fragment.ToolsFragment;
 import online.himakeit.skylark.model.Config;
 import online.himakeit.skylark.model.fir.AppUpdateInfo;
@@ -77,7 +77,6 @@ public class MainActivity extends BaseActivity
     GankFragment gankFragment;
     ToolsFragment toolsFragment;
     MobFragment mobFragment;
-    TestFragment testFragment;
 
     Toolbar toolbar;
     NavigationView navigationView;
@@ -231,15 +230,13 @@ public class MainActivity extends BaseActivity
         gankFragment = new GankFragment();
         neiHanFragment = new NeiHanFragment();
         mobFragment = new MobFragment();
-//        toolsFragment = new ToolsFragment();
-        testFragment = new TestFragment();
+        toolsFragment = new ToolsFragment();
 
         fragmentArrayList.add(readFragment);
         fragmentArrayList.add(gankFragment);
         fragmentArrayList.add(neiHanFragment);
         fragmentArrayList.add(mobFragment);
-//        fragmentArrayList.add(toolsFragment);
-        fragmentArrayList.add(testFragment);
+        fragmentArrayList.add(toolsFragment);
     }
 
     private int preIndex = 0;
@@ -342,9 +339,9 @@ public class MainActivity extends BaseActivity
                 toolbarTitle("工具集合");
                 break;
             case R.id.nav_settings:
-//                startActivity(new Intent(this, SettingActivity.class));
-                loadfragment(4);
-                toolbarTitle("test");
+                startActivity(new Intent(this, SettingActivity.class));
+//                loadfragment(4);
+//                toolbarTitle("test");
                 break;
             case R.id.nav_xuelong:
                 startActivity(new Intent(this, AboutActivity.class));

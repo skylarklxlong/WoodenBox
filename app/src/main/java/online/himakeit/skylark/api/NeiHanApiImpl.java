@@ -1,6 +1,7 @@
 package online.himakeit.skylark.api;
 
 import android.content.Context;
+import android.util.Log;
 
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
@@ -22,7 +23,7 @@ public class NeiHanApiImpl {
     public final static String GET_DATA_FAIL = "获取数据失败";
     public final static String NET_FAIL = "网络出问题了";
 
-    public static Call<NeiHanBaseEntity> getNeiHanData(Context context, String type, int count, final int what, final MobCallBack callBack) {
+    public Call<NeiHanBaseEntity> getNeiHanData(Context context, String type, int count, final int what, final MobCallBack callBack) {
         Call<NeiHanBaseEntity> neiHanData = ApiManager.getInstence().getWebServiceApi().getNeiHanData(
                 1, 1, 1, type, "-1", "39.91037425263379",
                 "116.39739", "%E5%8C%97%E4%BA%AC", System.currentTimeMillis(), count,
@@ -51,6 +52,7 @@ public class NeiHanApiImpl {
             @Override
             public void onFailure(Call<NeiHanBaseEntity> call, Throwable t) {
                 callBack.onFail(what, NET_FAIL);
+                Log.e(TAG, "onFailure: " + t);
             }
         });
 

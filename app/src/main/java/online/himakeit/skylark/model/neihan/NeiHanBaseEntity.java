@@ -10,6 +10,7 @@ import java.io.Serializable;
  * Mail : skylarklxlong@outlook.com
  * <p>
  * Description:
+ * 错误的时候{"delay": 1000, "message": "retry"}
  */
 public class NeiHanBaseEntity implements Serializable {
     private static final long serialVersionUID = -4553802208756427393L;

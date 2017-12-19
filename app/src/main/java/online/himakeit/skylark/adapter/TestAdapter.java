@@ -17,6 +17,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.litesuits.orm.db.assit.QueryBuilder;
+import com.litesuits.orm.db.model.ConflictAlgorithm;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
@@ -27,16 +29,20 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.NeiHanApiImpl;
 import online.himakeit.skylark.callback.LoadFinishCallBack;
 import online.himakeit.skylark.callback.LoadResultCallBack;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.model.neihan.NeiHanDataBase;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataEntity;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataGroupEntity;
 import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
 import online.himakeit.skylark.util.DateUtils;
 import online.himakeit.skylark.util.ImageLoadProxy;
+import online.himakeit.skylark.util.JsonUtils;
+import online.himakeit.skylark.util.NetUtils;
 import online.himakeit.skylark.util.Toasts;
 import online.himakeit.skylark.view.ShowMaxImageView;
 
@@ -158,6 +164,21 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                     holder.iv_gif.setVisibility(View.GONE);
                     holder.pb_gif.setProgress(0);
                     holder.pb_gif.setVisibility(View.VISIBLE);
+                    ImageLoadProxy.displayImageList(medium_cover.getUrl() + medium_coverUri + medium_cover.getSuffix(),
+                            holder.iv_img_show, R.drawable.pic_gray_bg, new
+                                    SimpleImageLoadingListener() {
+                                        @Override
+                                        public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                                            super.onLoadingComplete(imageUri, view, loadedImage);
+                                            holder.pb_gif.setVisibility(View.GONE);
+                                        }
+                                    },
+                            new ImageLoadingProgressListener() {
+                                @Override
+                                public void onProgressUpdate(String imageUri, View view, int current, int total) {
+                                    holder.pb_gif.setProgress((int) (current * 100f / total));
+                                }
+                            });
                 }
             }
         }
@@ -211,16 +232,16 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
     private void loadDataByNetworkType() throws DbException {
 
-//        if (NetUtils.isNetWorkConnected(mActivity)) {
-        loadData();
-//        } else {
-//            loadCache();
-//        }
+        if (NetUtils.isNetWorkConnected(mActivity)) {
+            loadData();
+        } else {
+            loadCache();
+        }
 
     }
 
     private void loadData() {
-        NeiHanApiImpl.getNeiHanData(mActivity, mType, 10, 0x001, new MobCallBack() {
+        new NeiHanApiImpl().getNeiHanData(mActivity, mType, 10, 0x001, new MobCallBack() {
             @Override
             public void onSuccessList(int what, List results) {
             }
@@ -230,14 +251,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                 switch (what) {
                     case 0x001:
                         if (result == null) {
+                            mLoadResultCallBack.onError();
                             return;
                         }
                         try {
                             mLoadFinisCallBack.loadFinish(null);
-//                            JSONObject object = new JSONObject(responseInfo.result);
-//                            JSONObject data = object.getJSONObject("data");
-//
-//                            Joke joke = GsonUtil.jsonToBean(data.toString(), Joke.class);
+                            String data = JsonUtils.serialize((NeiHanDataEntity) result);
                             if (page == 1) {
                                 neiHanArrayList.clear();
                             }
@@ -246,12 +265,11 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                             notifyDataSetChanged();
                             mLoadResultCallBack.onSuccess();
 
-
                             //缓存
-//                            SaveDataBase(data.toString());
+                            SaveDataBase(data);
                         } catch (Exception e) {
+                            mLoadResultCallBack.onError();
                             e.printStackTrace();
-
                         }
                         break;
                 }
@@ -272,6 +290,19 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     }
 
     private void loadCache() throws DbException {
+        QueryBuilder queryBuilder = new QueryBuilder(NeiHanDataBase.class);
+        queryBuilder.whereEquals("type", mType);
+        queryBuilder.limit(0, 10);
+        if (AppContext.liteOrmDB.query(queryBuilder).size() > 0) {
+            ArrayList<NeiHanDataBase> neiHanDataBaseArrayList = AppContext.liteOrmDB.query(queryBuilder);
+            NeiHanDataEntity neiHanDataEntity = JsonUtils.deserialize(neiHanDataBaseArrayList.get(0).getData(), NeiHanDataEntity.class);
+            neiHanArrayList.addAll(neiHanDataEntity.getData());
+            notifyDataSetChanged();
+            mLoadResultCallBack.onSuccess();
+            mLoadFinisCallBack.loadFinish(null);
+        }else {
+            mLoadResultCallBack.onError();
+        }
         /*if (dataBaseCrete == null) {
             dataBaseCrete = new DataBaseCrete(mActivity);
         }
@@ -279,8 +310,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         if (null != db) {
             String request = db.getRequest();
             Joke joke = GsonUtil.jsonToBean(request, Joke.class);
-
-
             list.addAll(joke.getData());
             notifyDataSetChanged();
             mLoadResultCallBack.onSuccess();
@@ -297,14 +326,14 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
      */
     private void SaveDataBase(String request) throws DbException {
         /*dataBaseCrete = new DataBaseCrete(mActivity);
-        dataBaseCrete.delete(page,Constants.menu4);
+        dataBaseCrete.delete(page,Constants.menu4);*/
 
-        DataBase data = new DataBase();
+        NeiHanDataBase data = new NeiHanDataBase();
         data.setId(page);
-        data.setRequest(request);
+        data.setData(request);
         data.setPage(page);
-        data.setMenuNumber(Constants.menu4);
-        dataBaseCrete.sava(data);*/
+        data.setType(mType);
+        AppContext.liteOrmDB.insert(data, ConflictAlgorithm.Replace);
     }
 
     class TestViewHolder extends RecyclerView.ViewHolder {

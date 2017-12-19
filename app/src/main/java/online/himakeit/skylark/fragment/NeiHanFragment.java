@@ -34,6 +34,11 @@ public class NeiHanFragment extends BaseFragment {
     NeiHanBaseFragment neiHanPicFragment;
     NeiHanBaseFragment neiHanDYXFragment;
     NeiHanBaseFragment neiHanVideoFragment;
+    TestFragment tjFragment;
+    TestFragment dzFragment;
+    TestFragment tpFragment;
+    TestFragment dyFragment;
+    TestFragment spFragment;
 
     @Override
     public View initViews() {
@@ -48,16 +53,26 @@ public class NeiHanFragment extends BaseFragment {
 
         // TODO: 2017/9/14 type: 推荐-101/段子-102/图片-103/段友秀-301/视频-104
         List<BaseFragment> mFragmentList = new ArrayList<BaseFragment>();
-        neiHanTJFragment = new NeiHanTJFragment();
-        neiHanDZFragment = new NeiHanBaseFragment().newInstance("段子");
-        neiHanPicFragment = new NeiHanBaseFragment().newInstance("图片");
-        neiHanDYXFragment = new NeiHanBaseFragment().newInstance("段友秀");
-        neiHanVideoFragment = new NeiHanBaseFragment().newInstance("视频");
-        mFragmentList.add(neiHanTJFragment);
-        mFragmentList.add(neiHanDZFragment);
-        mFragmentList.add(neiHanPicFragment);
-        mFragmentList.add(neiHanDYXFragment);
-        mFragmentList.add(neiHanVideoFragment);
+        tjFragment = TestFragment.newInstance("推荐");
+        dzFragment = TestFragment.newInstance("段子");
+        tpFragment = TestFragment.newInstance("图片");
+        dyFragment = TestFragment.newInstance("段友秀");
+        spFragment = TestFragment.newInstance("视频");
+//        neiHanTJFragment = new NeiHanTJFragment();
+//        neiHanDZFragment = new NeiHanBaseFragment().newInstance("段子");
+//        neiHanPicFragment = new NeiHanBaseFragment().newInstance("图片");
+//        neiHanDYXFragment = new NeiHanBaseFragment().newInstance("段友秀");
+//        neiHanVideoFragment = new NeiHanBaseFragment().newInstance("视频");
+        mFragmentList.add(tjFragment);
+        mFragmentList.add(dzFragment);
+        mFragmentList.add(tpFragment);
+        mFragmentList.add(dyFragment);
+        mFragmentList.add(spFragment);
+//        mFragmentList.add(neiHanTJFragment);
+//        mFragmentList.add(neiHanDZFragment);
+//        mFragmentList.add(neiHanPicFragment);
+//        mFragmentList.add(neiHanDYXFragment);
+//        mFragmentList.add(neiHanVideoFragment);
 
         /**
          * 在Fragment中的ViewPager中添加Fragment时，获取FragmentManager不能使用getFragmentManager，

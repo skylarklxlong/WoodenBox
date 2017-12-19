@@ -13,27 +13,27 @@ import java.io.Serializable;
  */
 public class NeiHanDataDataEntity implements Serializable {
     @SerializedName("display_time")
-    private long display_time;
+    private String display_time;
     @SerializedName("group")
     private NeiHanDataDataGroupEntity group;
     @SerializedName("online_time")
-    private long online_time;
+    private String online_time;
     @SerializedName("type")
     private int type;
 
-    public long getDisplay_time() {
+    public String getDisplay_time() {
         return display_time;
     }
 
-    public void setDisplay_time(long display_time) {
+    public void setDisplay_time(String display_time) {
         this.display_time = display_time;
     }
 
-    public long getOnline_time() {
+    public String getOnline_time() {
         return online_time;
     }
 
-    public void setOnline_time(long online_time) {
+    public void setOnline_time(String online_time) {
         this.online_time = online_time;
     }
 

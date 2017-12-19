@@ -1,7 +1,5 @@
 package online.himakeit.skylark.util;
 
-import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +19,7 @@ public class DateUtils {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String date=sdf.format(new Date(mills * 1000L));
 
-        Log.e("skylark","时间为： "+date);
+//        Log.e("skylark","时间为： "+date);
         return date;
     }
 
@@ -33,7 +31,7 @@ public class DateUtils {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String date=sdf.format(new Date());
 
-        Log.e("skylark","当前时间为： "+date);
+//        Log.e("skylark","当前时间为： "+date);
         return date;
     }
 
@@ -75,7 +73,7 @@ public class DateUtils {
         Date today = calendar.getTime();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String result = format.format(today);
-        Log.e(null, result);
+//        Log.e(null, result);
         return result;
     }
 
@@ -90,7 +88,7 @@ public class DateUtils {
         Date today = calendar.getTime();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String result = format.format(today);
-        Log.e(null, result);
+//        Log.e(null, result);
         return result;
     }
 }

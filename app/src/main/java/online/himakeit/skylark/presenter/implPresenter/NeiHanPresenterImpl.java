@@ -33,7 +33,7 @@ public class NeiHanPresenterImpl extends BasePresenterImpl implements INeiHanPre
 
     @Override
     public void getNeiHanData(String type, int count) {
-        NeiHanApiImpl.getNeiHanData(context, type, count, 0x001, httpCallBack);
+        new NeiHanApiImpl().getNeiHanData(context, type, count, 0x001, httpCallBack);
     }
 
     private MobCallBack httpCallBack = new MobCallBack() {

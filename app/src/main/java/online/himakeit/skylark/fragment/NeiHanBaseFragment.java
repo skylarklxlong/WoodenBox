@@ -51,7 +51,6 @@ public class NeiHanBaseFragment extends BaseFragment implements INeiHanFragment 
     public NeiHanBaseFragment() {
         super();
     }
-
     @SuppressLint("ValidFragment")
     public NeiHanBaseFragment(String type) {
         super();

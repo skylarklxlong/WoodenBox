@@ -1,5 +1,6 @@
 package online.himakeit.skylark.fragment;
 
+import android.annotation.SuppressLint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -35,7 +36,31 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
 
     TestAdapter mAdapter;
 
+    String mTtype = "-101";
+
     public TestFragment() {
+        super();
+    }
+
+    @SuppressLint("ValidFragment")
+    public TestFragment(String type) {
+        super();
+        if (type.equals("推荐")) {
+            mTtype = "-101";
+        } else if (type.equals("段子")) {
+            mTtype = "-102";
+        } else if (type.equals("图片")) {
+            mTtype = "-103";
+        } else if (type.equals("段友秀")) {
+            mTtype = "-301";
+        } else if (type.equals("视频")) {
+            mTtype = "-104";
+        }
+    }
+
+    public static TestFragment newInstance(String type) {
+        TestFragment testFragment = new TestFragment(type);
+        return testFragment;
     }
 
     @Override
@@ -72,7 +97,7 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
         });
         mRecyclerView.setOnPauseListenerParams(false, true);
         try {
-            mAdapter = new TestAdapter("-103", getActivity(), mRecyclerView, this);
+            mAdapter = new TestAdapter(mTtype, getActivity(), mRecyclerView, this);
         } catch (DbException e) {
             e.printStackTrace();
         }
