@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Table("neihan")
 public class NeiHanDataBase implements Serializable {
     @Column("_id")
-    private int id;
+    private long id;
     @Column("data")
     private String data;//请求json数据
     @Column("page")
@@ -23,11 +23,11 @@ public class NeiHanDataBase implements Serializable {
     @Column("type")
     private String type;//类型
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

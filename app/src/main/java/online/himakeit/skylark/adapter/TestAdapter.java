@@ -211,7 +211,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                         }).show();
             }
         });
-
         setAnimation(holder.card, position);
     }
 
@@ -237,7 +236,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         } else {
             loadCache();
         }
-
     }
 
     private void loadData() {
@@ -260,7 +258,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                             if (page == 1) {
                                 neiHanArrayList.clear();
                             }
-
                             neiHanArrayList.addAll(((NeiHanDataEntity) result).getData());
                             notifyDataSetChanged();
                             mLoadResultCallBack.onSuccess();
@@ -273,8 +270,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                         }
                         break;
                 }
-
-
             }
 
             @Override
@@ -289,9 +284,15 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
     }
 
+    /**
+     * 从数据库中加载缓存
+     *
+     * @throws DbException
+     */
     private void loadCache() throws DbException {
         QueryBuilder queryBuilder = new QueryBuilder(NeiHanDataBase.class);
         queryBuilder.whereEquals("type", mType);
+        queryBuilder.appendOrderDescBy("_id");
         queryBuilder.limit(0, 10);
         if (AppContext.liteOrmDB.query(queryBuilder).size() > 0) {
             ArrayList<NeiHanDataBase> neiHanDataBaseArrayList = AppContext.liteOrmDB.query(queryBuilder);
@@ -300,22 +301,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             notifyDataSetChanged();
             mLoadResultCallBack.onSuccess();
             mLoadFinisCallBack.loadFinish(null);
-        }else {
+        } else {
             mLoadResultCallBack.onError();
         }
-        /*if (dataBaseCrete == null) {
-            dataBaseCrete = new DataBaseCrete(mActivity);
-        }
-        DataBase db = dataBaseCrete.findPage(page, Constants.menu4);
-        if (null != db) {
-            String request = db.getRequest();
-            Joke joke = GsonUtil.jsonToBean(request, Joke.class);
-            list.addAll(joke.getData());
-            notifyDataSetChanged();
-            mLoadResultCallBack.onSuccess();
-            mLoadFinisCallBack.loadFinish(null);
-        }*/
-
     }
 
     /**
@@ -325,11 +313,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
      * @throws DbException
      */
     private void SaveDataBase(String request) throws DbException {
-        /*dataBaseCrete = new DataBaseCrete(mActivity);
-        dataBaseCrete.delete(page,Constants.menu4);*/
-
         NeiHanDataBase data = new NeiHanDataBase();
-        data.setId(page + 1);
+        data.setId(System.currentTimeMillis());
         data.setData(request);
         data.setPage(page + 1);
         data.setType(mType);
