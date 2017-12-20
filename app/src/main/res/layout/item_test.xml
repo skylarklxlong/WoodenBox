@@ -28,28 +28,20 @@
                 android:scaleType="centerCrop" />
 
             <TextView
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@id/iv_user"
                 android:id="@+id/tv_author"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_user"
+                android:layout_alignTop="@id/iv_user"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_user"
+                android:gravity="center"
                 android:singleLine="true"
                 android:text="XueLong"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_author"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                android:text="2017-12-12"
-                android:textColor="@color/black_text1_color"
-                android:textSize="12sp" />
         </RelativeLayout>
 
         <TextView
@@ -92,10 +84,10 @@
                 android:scaleType="centerCrop" />
 
             <cn.jzvd.JZVideoPlayerStandard
-                android:visibility="gone"
                 android:id="@+id/videoplayer"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="200dp"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/iv_gif"
@@ -140,6 +132,31 @@
 
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="#搞笑#"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:text="2017-12-12"
+                android:textColor="@color/black_text1_color"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/bottom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -167,7 +184,7 @@
                         android:gravity="center"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:text="OO"
+                        android:text="顶"
                         android:textColor="@color/black_text1_color"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -200,7 +217,7 @@
                         android:gravity="center"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:text="XX"
+                        android:text="踩"
                         android:textColor="@color/black_text1_color"
                         android:textSize="14sp"
                         android:textStyle="normal" />

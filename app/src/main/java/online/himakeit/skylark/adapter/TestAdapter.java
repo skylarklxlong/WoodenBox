@@ -1,12 +1,11 @@
 package online.himakeit.skylark.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.litesuits.orm.db.assit.QueryBuilder;
 import com.litesuits.orm.db.model.ConflictAlgorithm;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
@@ -33,6 +31,7 @@ import butterknife.ButterKnife;
 import cn.jzvd.JZVideoPlayerStandard;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.R;
+import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.api.NeiHanApiImpl;
 import online.himakeit.skylark.callback.LoadFinishCallBack;
 import online.himakeit.skylark.callback.LoadResultCallBack;
@@ -45,6 +44,7 @@ import online.himakeit.skylark.util.DateUtils;
 import online.himakeit.skylark.util.ImageLoadProxy;
 import online.himakeit.skylark.util.JsonUtils;
 import online.himakeit.skylark.util.NetUtils;
+import online.himakeit.skylark.util.Shares;
 import online.himakeit.skylark.util.Toasts;
 import online.himakeit.skylark.view.ShowMaxImageView;
 
@@ -106,13 +106,14 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             } else {
                 holder.tv_content.setVisibility(View.GONE);
             }
+            holder.tv_category.setText("#" + dataEntity.getGroup().getCategory_name() + "#");
             holder.tv_author.setText(dataEntity.getGroup().getUser().getName());
             holder.tv_time.setText(DateUtils.Millis2Date(dataEntity.getGroup().getCreate_time()));
             holder.tv_like.setText(dataEntity.getGroup().getDigg_count() + "");
             holder.tv_comment_count.setText(dataEntity.getGroup().getComment_count());
             holder.tv_unlike.setText(dataEntity.getGroup().getBury_count() + "");
 
-            ImageLoadProxy.displayImageList(dataEntity.getGroup().getUser().getAvatar_url(),
+            ImageLoadProxy.displayImageList(dataEntity.getGroup().getUser().getAvatar_url().replace("medium", "w50"),
                     holder.iv_user, R.drawable.pic_gray_bg, new
                             SimpleImageLoadingListener() {
                                 @Override
@@ -154,7 +155,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
                     holder.pb_gif.setProgress(0);
                     holder.pb_gif.setVisibility(View.VISIBLE);
-                    ImageLoadProxy.displayImageList(middle_image.getUrl() + middle_imageUri + middle_image.getSuffix(),
+                    ImageLoadProxy.displayImageList(middle_image.getUrl() +
+                                    middle_imageUri.replace("w" + middle_image.getWidth(), "w100")
+                                    + middle_image.getSuffix(),
                             holder.iv_img_show, R.drawable.pic_gray_bg, new
                                     SimpleImageLoadingListener() {
                                         @Override
@@ -180,38 +183,46 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                 holder.iv_img_show.setVisibility(View.GONE);
                 holder.videoplayer.setVisibility(View.VISIBLE);
                 holder.videoplayer.setUp(mp4_url, JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
-                ImageLoadProxy.displayHeadIcon(medium_cover.getUrl() + medium_cover.getUri() + medium_cover.getSuffix(), holder.videoplayer.thumbImageView);
+                ImageLoadProxy.displayHeadIcon(medium_cover.getUrl() + medium_cover.getUri()
+                                .replace("w202", "w100") + medium_cover.getSuffix(),
+                        holder.videoplayer.thumbImageView);
             }
+
+            holder.img_share.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Shares.share(mActivity, "一个木匣链接分享：" + dataEntity.getGroup().getDETAIL() + dataEntity.getGroup().getGroup_id());
+                }
+            });
+            holder.tv_content.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = WebActivity.newTntent(mActivity, dataEntity.getGroup().getDETAIL() + dataEntity.getGroup().getGroup_id(), dataEntity.getGroup().getContent());
+                    mActivity.startActivity(intent);
+                }
+            });
+            holder.tv_author.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = WebActivity.newTntent(mActivity, dataEntity.getGroup().getDETAIL() + dataEntity.getGroup().getGroup_id(), dataEntity.getGroup().getContent());
+                    mActivity.startActivity(intent);
+                }
+            });
+            holder.tv_category.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = WebActivity.newTntent(mActivity, dataEntity.getGroup().getDETAIL() + dataEntity.getGroup().getGroup_id(), dataEntity.getGroup().getContent());
+                    mActivity.startActivity(intent);
+                }
+            });
+        } else {
+            holder.iv_gif.setVisibility(View.GONE);
+            holder.iv_img_show.setVisibility(View.GONE);
+            holder.videoplayer.setVisibility(View.VISIBLE);
+            holder.videoplayer.setUp("http://i.snssdk.com/neihan/video/playback/?video_id=39bb5f9aaf88427d97fccbb824fc5a9d&amp;quality=480p&amp;line=0&amp;is_gif=0.mp4", JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
+            ImageLoadProxy.displayHeadIcon("http://p2.pstatp.com/w100/71a00139b5e614a294a", holder.videoplayer.thumbImageView);
+
         }
-
-        holder.img_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new MaterialDialog.Builder(mActivity)
-                        .title(R.string.app_name)
-                        .titleColor(Color.BLACK)
-//                        .items(R.array.joke_dialog)
-                        .backgroundColor(mActivity.getResources().getColor(R.color.colorPrimary))
-                        .contentColor(Color.BLACK)
-                        .itemsCallback(new MaterialDialog.ListCallback() {
-                            @Override
-                            public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-
-//                                switch (which) {
-//                                    //分享
-//                                    case 0:
-//                                        ShareUtil.shareText(mActivity, bean.getGroup().getContent().trim());
-//                                        break;
-//                                    //复制
-//                                    case 1:
-//                                        TextUtil.copy(mActivity, bean.getGroup().getContent());
-//                                        break;
-//                                }
-
-                            }
-                        }).show();
-            }
-        });
         setAnimation(holder.card, position);
     }
 
@@ -361,6 +372,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         ImageView iv_user;
         @Bind(R.id.videoplayer)
         JZVideoPlayerStandard videoplayer;
+        @Bind(R.id.tv_category)
+        TextView tv_category;
 
         public TestViewHolder(View itemView) {
             super(itemView);

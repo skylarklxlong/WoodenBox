@@ -114,9 +114,11 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
 
             @Override
             public void onChildViewDetachedFromWindow(View view) {
-                JZVideoPlayer jzvd = (JZVideoPlayer) view.findViewById(R.id.videoplayer);
-                if (jzvd != null && JZUtils.dataSourceObjectsContainsUri(jzvd.dataSourceObjects, JZMediaManager.getCurrentDataSource())) {
-                    JZVideoPlayer.releaseAllVideos();
+                if (mTtype.equals("-301") || mTtype.equals("-104")){
+                    JZVideoPlayer jzvd = (JZVideoPlayer) view.findViewById(R.id.videoplayer);
+                    if (jzvd != null && JZUtils.dataSourceObjectsContainsUri(jzvd.dataSourceObjects, JZMediaManager.getCurrentDataSource())) {
+                        JZVideoPlayer.releaseAllVideos();
+                    }
                 }
             }
         });

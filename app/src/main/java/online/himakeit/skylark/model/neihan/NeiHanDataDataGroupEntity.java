@@ -10,8 +10,13 @@ import java.io.Serializable;
  * Mail : skylarklxlong@outlook.com
  * <p>
  * Description:
+ *
+ * 详情连接
+ * http://m.neihanshequ.com/share/group/80584525434/?iid=3216590132&app=joke_essay
+ * http://m.neihanshequ.com/group/80584525434/
  */
 public class NeiHanDataDataGroupEntity implements Serializable {
+    private String DETAIL = "http://m.neihanshequ.com/group/";
     @SerializedName("allow_dislike")
     private boolean allow_dislike;
     @SerializedName("bury_count")
@@ -70,6 +75,8 @@ public class NeiHanDataDataGroupEntity implements Serializable {
     private MCover medium_cover;
     @SerializedName("large_cover")
     private LCover large_cover;
+    @SerializedName("group_id")
+    private String group_id;
 
 
     public static class Mimage implements Serializable {
@@ -298,6 +305,17 @@ public class NeiHanDataDataGroupEntity implements Serializable {
         }
     }
 
+    public String getDETAIL() {
+        return DETAIL;
+    }
+
+    public String getGroup_id() {
+        return group_id;
+    }
+
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
+    }
 
     public MCover getMedium_cover() {
         return medium_cover;
