@@ -45,7 +45,6 @@ import online.himakeit.skylark.util.ImageLoadProxy;
 import online.himakeit.skylark.util.JsonUtils;
 import online.himakeit.skylark.util.NetUtils;
 import online.himakeit.skylark.util.Shares;
-import online.himakeit.skylark.util.Toasts;
 import online.himakeit.skylark.view.ShowMaxImageView;
 
 /**
@@ -286,9 +285,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
             @Override
             public void onFail(int what, String result) {
-                if (!TextUtils.isEmpty(result)) {
-                    Toasts.showShort(result);
-                }
+//                if (!TextUtils.isEmpty(result)) {
+//                    Toasts.showShort(result);
+//                }
                 mLoadResultCallBack.onError();
                 mLoadFinisCallBack.loadFinish(null);
             }

@@ -25,4 +25,11 @@
         app:loading_color="@color/colorPrimary"
         app:loading_width="5dp" />
 
+    <ImageView
+        android:id="@+id/iv_fail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_tip_fail"
+        android:visibility="gone" />
 </FrameLayout>

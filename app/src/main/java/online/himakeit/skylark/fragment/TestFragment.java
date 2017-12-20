@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.victor.loading.rotate.RotateLoading;
 
@@ -37,6 +38,8 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
     SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.loading)
     RotateLoading loading;
+    @Bind(R.id.iv_fail)
+    ImageView iv_fail;
 
     TestAdapter mAdapter;
 
@@ -93,6 +96,7 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
             @Override
             public void onRefresh() {
                 try {
+                    iv_fail.setVisibility(View.GONE);
                     mAdapter.loadFirst();
                 } catch (DbException e) {
                     e.printStackTrace();
@@ -144,6 +148,7 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
         if (mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
+        iv_fail.setVisibility(View.VISIBLE);
     }
 
     @Override

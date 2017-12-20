@@ -40,7 +40,11 @@ public class NeiHanApiImpl {
                 if (response.isSuccessful()) {
                     NeiHanBaseEntity body = response.body();
                     if (body != null) {
-                        callBack.onSuccess(what, body.getData());
+                        if (body.getMessage().equals("success")) {
+                            callBack.onSuccess(what, body.getData());
+                        } else {
+                            callBack.onFail(what, GET_DATA_FAIL);
+                        }
                     } else {
                         callBack.onFail(what, GET_DATA_FAIL);
                     }
