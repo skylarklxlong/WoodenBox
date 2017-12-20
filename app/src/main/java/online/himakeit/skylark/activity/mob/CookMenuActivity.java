@@ -58,7 +58,11 @@ public class CookMenuActivity extends BaseActivity {
         init();
         initDatas();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initDatas() {
         showProgressDialog();
         MobApiImpl.queryMobCookCategory(0x001, new MobCallBack() {

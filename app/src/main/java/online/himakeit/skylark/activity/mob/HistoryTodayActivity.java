@@ -78,7 +78,11 @@ public class HistoryTodayActivity extends BaseActivity {
 
         queryData();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initMyToolBar() {
         tv_title.setText("历史上的今天");
     }

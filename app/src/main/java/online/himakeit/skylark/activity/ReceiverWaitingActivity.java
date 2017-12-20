@@ -90,7 +90,11 @@ public class ReceiverWaitingActivity extends BaseActivity {
 
         init();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/setting_tv_title"
@@ -20,7 +21,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="6dp"
-        android:background="@drawable/ic_icon_arrow_right" />
+        app:srcCompat="@drawable/ic_icon_arrow_right" />
 
     <TextView
         android:id="@+id/setting_tv_right"

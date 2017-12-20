@@ -67,7 +67,11 @@ public class IDCardQueryActivity extends BaseActivity {
     private void init() {
         tv_title.setText("身份证号码查询");
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @OnClick({R.id.tv_back, R.id.iv_idcard_query, R.id.btn_idcard_query})
     public void onClick(View view) {
         switch (view.getId()) {

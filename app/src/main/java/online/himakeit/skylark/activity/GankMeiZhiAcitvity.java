@@ -110,7 +110,11 @@ public class GankMeiZhiAcitvity extends BaseActivityForFullScreen {
         });
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     protected void onResume() {
         super.onResume();

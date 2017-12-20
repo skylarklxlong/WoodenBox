@@ -83,7 +83,11 @@ public class WXArticleActivity extends BaseActivity implements OnRefreshListener
 
         queryWXCategory();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initViews() {
 
         tv_title.setText("微信精选");

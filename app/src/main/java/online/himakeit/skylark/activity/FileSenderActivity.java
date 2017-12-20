@@ -142,7 +142,11 @@ public class FileSenderActivity extends BaseActivity {
         }
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

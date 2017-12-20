@@ -29,4 +29,9 @@ public class NeiHanTJFragment extends BaseFragment {
     public void initData() {
 
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
 }

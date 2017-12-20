@@ -64,7 +64,11 @@ public class FlightListActivity extends BaseActivity {
         sortStartTime();
         initAdapter();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initAdapter() {
         if (flightListRecycleAdapter == null) {
             flightListRecycleAdapter = new MobFlightListRecycleAdapter(this, mDatas);

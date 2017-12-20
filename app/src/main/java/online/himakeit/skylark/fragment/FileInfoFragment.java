@@ -160,6 +160,11 @@ public class FileInfoFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     /**
      * 显示进度
      */

@@ -63,7 +63,11 @@ public class IPQueryActivity extends BaseActivity {
         ButterKnife.bind(this);
         init();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void init() {
         tv_title.setText("IP地址查询");
     }

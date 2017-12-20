@@ -74,7 +74,11 @@ public class FxcSalaryActivity extends BaseActivity {
     double zfgjj = 0;
     double grsds = 0;
     double shsfze = 0;
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

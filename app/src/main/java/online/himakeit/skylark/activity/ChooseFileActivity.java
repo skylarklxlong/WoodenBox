@@ -115,6 +115,7 @@ public class ChooseFileActivity extends BaseActivity {
             seletedFileListChangedBroadcastReceiver = null;
         }
         super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     private void init() {

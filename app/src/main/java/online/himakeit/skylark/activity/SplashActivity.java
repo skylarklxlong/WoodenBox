@@ -34,7 +34,11 @@ public class SplashActivity extends BaseActivityForFullScreen implements ISplash
 
     SplashPresenterImpl splashPresenter = null;
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

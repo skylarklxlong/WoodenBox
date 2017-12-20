@@ -78,7 +78,11 @@ public class CookListActivity extends BaseActivity implements OnRefreshListener,
         }, 100);
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void loadNewDatas() {
         pageIndex = 1;
         MobApiImpl.queryMobCookDetailsList(mobCookCategoryEntity.getCategoryInfo().getCtgId(), pageIndex, pageSize, 0x001, mobCallBack);

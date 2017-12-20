@@ -106,7 +106,11 @@ public class TopNewsDescribeActivity extends BaseActivity implements ITopNewsDes
     };
 
     HtmlSpanner htmlSpanner;
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

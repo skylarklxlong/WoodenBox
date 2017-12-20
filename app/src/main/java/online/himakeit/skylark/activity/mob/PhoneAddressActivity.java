@@ -67,7 +67,11 @@ public class PhoneAddressActivity extends BaseActivity {
 
         init();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void init() {
         tv_title.setText("手机号码归属地查询");
     }

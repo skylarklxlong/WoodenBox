@@ -47,7 +47,11 @@ public class CookDetailsActivity extends BaseActivity {
 
         initAdapter();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initAdapter() {
         adapter = new MobCookDetailsRecyclerAdapter(mContext,mData);
         recyclerView.setAdapter(adapter);

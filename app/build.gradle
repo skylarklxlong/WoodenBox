@@ -308,6 +308,16 @@ dependencies {
      *   xUtils3
      */
     compile 'org.xutils:xutils:3.5.0'
+    /**
+     * 图片加载
+     */
     compile files('libs/universal-image-loader-1.9.3.jar')
+    /**
+     * loading progress view
+     */
     compile 'com.victor:lib:1.0.1'
+    /**
+     * jiaozivideoplayer 视频播放
+     */
+    compile 'cn.jzvd:jiaozivideoplayer:6.2.3'
 }

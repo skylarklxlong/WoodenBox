@@ -65,7 +65,11 @@ public class PostCodeActivity extends BaseActivity {
 
         init();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void init() {
         tv_title.setText("邮编查询");
     }

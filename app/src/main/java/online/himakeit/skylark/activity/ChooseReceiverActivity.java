@@ -172,7 +172,11 @@ public class ChooseReceiverActivity extends BaseActivity {
                 break;
         }
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     /**
      * 创建发送ＵＤＰ消息到 文件接收方 的服务线程
      * @param serverIp

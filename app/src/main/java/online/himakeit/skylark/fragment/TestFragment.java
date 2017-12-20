@@ -3,6 +3,7 @@ package online.himakeit.skylark.fragment;
 import android.annotation.SuppressLint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.victor.loading.rotate.RotateLoading;
@@ -11,6 +12,9 @@ import org.xutils.ex.DbException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.jzvd.JZMediaManager;
+import cn.jzvd.JZUtils;
+import cn.jzvd.JZVideoPlayer;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.TestAdapter;
 import online.himakeit.skylark.callback.LoadMoreListener;
@@ -102,6 +106,20 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
             e.printStackTrace();
         }
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
+            @Override
+            public void onChildViewAttachedToWindow(View view) {
+
+            }
+
+            @Override
+            public void onChildViewDetachedFromWindow(View view) {
+                JZVideoPlayer jzvd = (JZVideoPlayer) view.findViewById(R.id.videoplayer);
+                if (jzvd != null && JZUtils.dataSourceObjectsContainsUri(jzvd.dataSourceObjects, JZMediaManager.getCurrentDataSource())) {
+                    JZVideoPlayer.releaseAllVideos();
+                }
+            }
+        });
         try {
             mAdapter.loadFirst();
         } catch (DbException e) {
@@ -124,5 +142,16 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
         if (mSwipeRefreshLayout.isRefreshing()) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JZVideoPlayer.releaseAllVideos();
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }

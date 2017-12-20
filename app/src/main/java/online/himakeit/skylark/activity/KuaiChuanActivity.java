@@ -32,7 +32,11 @@ public class KuaiChuanActivity extends BaseActivity {
 
         tv_title.setText("文件快传");
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @OnClick({R.id.tv_back,R.id.btn_send,R.id.btn_get,R.id.web_transfer})
     public void onClick(View view){
         switch (view.getId()){

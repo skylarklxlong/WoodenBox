@@ -134,7 +134,11 @@ public class ZhiHuDescribeActivity extends BaseActivity implements IZhiHuStory {
         mZhiHuStoryPresenter = new ZhiHuStoryPresenterImpl(this);
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void getData() {
         mZhiHuStoryPresenter.getZhiHuStory(docid);
     }

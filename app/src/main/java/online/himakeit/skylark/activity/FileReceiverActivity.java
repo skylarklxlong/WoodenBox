@@ -125,7 +125,11 @@ public class FileReceiverActivity extends BaseActivity {
             }
         }
     };
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

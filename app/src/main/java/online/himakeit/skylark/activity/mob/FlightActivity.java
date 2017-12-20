@@ -70,7 +70,11 @@ public class FlightActivity extends BaseActivity {
 
         initData();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initData() {
         Date date = new Date();
         tv_time_query.setText(sdf.format(date));

@@ -69,7 +69,11 @@ public class TrainListActivity extends BaseActivity {
         sortStartTime();
         initAdapter();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
     private void initAdapter() {
         if (trainListRecycleAdapter == null) {
             trainListRecycleAdapter = new MobTrainListRecycleAdapter(this, mDatas);
