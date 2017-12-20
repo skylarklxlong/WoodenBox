@@ -376,7 +376,7 @@ public class MainActivity extends BaseActivity
             TextView textView = (TextView) headerView.findViewById(R.id.tv_msg);
             textView.setText(zuiMeiImageItem.getDescription());
             Picasso.with(MainActivity.this).load(Config.ZUIMEI_PIC_BASE_URL + zuiMeiImageItem.getImageUrl()
-                    + "?imageMogr/v2/auto-orient/thumbnail/480x320/quality/100")
+                    + "?imageMogr/v2/auto-orient/thumbnail/240x160/quality/100")
                     .resize(headerView.getWidth(), headerView.getHeight())
                     .into(imageView);
             LogUtils.e(TAG, "updateZuiMeiPic Picasso load pic finish!");
