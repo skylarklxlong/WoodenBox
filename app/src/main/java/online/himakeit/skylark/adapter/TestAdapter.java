@@ -143,11 +143,10 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                             holder.iv_gif.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Log.e("00000", "onClick: ");
                                     holder.iv_gif.setVisibility(View.GONE);
                                     holder.iv_img_show.setVisibility(View.GONE);
                                     holder.videoplayer.setVisibility(View.VISIBLE);
-                                    holder.videoplayer.setUp(mp4_url,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL);
+                                    holder.videoplayer.setUp(mp4_url, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL);
                                 }
                             });
                         }
@@ -176,12 +175,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             //视频
             NeiHanDataDataGroupEntity.MCover medium_cover = dataEntity.getGroup().getMedium_cover();
             String mp4_url = dataEntity.getGroup().getMp4_url();
-            if (mp4_url != null && !mp4_url.equals("")){
+            if (mp4_url != null && !mp4_url.equals("")) {
                 holder.iv_gif.setVisibility(View.GONE);
                 holder.iv_img_show.setVisibility(View.GONE);
                 holder.videoplayer.setVisibility(View.VISIBLE);
-                holder.videoplayer.setUp(mp4_url,JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
-                ImageLoadProxy.displayHeadIcon(medium_cover.getUrl() + medium_cover.getUri() + medium_cover.getSuffix(),holder.videoplayer.thumbImageView);
+                holder.videoplayer.setUp(mp4_url, JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
+                ImageLoadProxy.displayHeadIcon(medium_cover.getUrl() + medium_cover.getUri() + medium_cover.getSuffix(), holder.videoplayer.thumbImageView);
             }
         }
 
@@ -241,7 +240,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     }
 
     private void loadData() {
-        new NeiHanApiImpl().getNeiHanData(mActivity, mType, 10, 0x001, new MobCallBack() {
+        new NeiHanApiImpl().getNeiHanData(mActivity, mType, 20, 0x001, new MobCallBack() {
             @Override
             public void onSuccessList(int what, List results) {
             }
@@ -294,8 +293,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     private void loadCache() throws DbException {
         QueryBuilder queryBuilder = new QueryBuilder(NeiHanDataBase.class);
         queryBuilder.whereEquals("type", mType);
-        queryBuilder.appendOrderDescBy("_id");
-        queryBuilder.limit(0, 10);
+        queryBuilder.limit(0, 20);
         if (AppContext.liteOrmDB.query(queryBuilder).size() > 0) {
             ArrayList<NeiHanDataBase> neiHanDataBaseArrayList = AppContext.liteOrmDB.query(queryBuilder);
             NeiHanDataEntity neiHanDataEntity = JsonUtils.deserialize(neiHanDataBaseArrayList.get(0).getData(), NeiHanDataEntity.class);
@@ -316,9 +314,19 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
      */
     private void SaveDataBase(String request) throws DbException {
         NeiHanDataBase data = new NeiHanDataBase();
-        data.setId(System.currentTimeMillis());
+        if (mType.equals("-101")) {
+            data.setId(101);
+        } else if (mType.equals("-102")) {
+            data.setId(102);
+        } else if (mType.equals("-103")) {
+            data.setId(103);
+        } else if (mType.equals("-104")) {
+            data.setId(104);
+        } else if (mType.equals("-301")) {
+            data.setId(301);
+        }
         data.setData(request);
-        data.setPage(page + 1);
+        data.setPage(page);
         data.setType(mType);
         AppContext.liteOrmDB.insert(data, ConflictAlgorithm.Replace);
     }
