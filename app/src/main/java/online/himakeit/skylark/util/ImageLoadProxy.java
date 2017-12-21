@@ -149,9 +149,9 @@ public class ImageLoadProxy {
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
-                .showImageForEmptyUri(R.drawable.nav_icon)
-                .showImageOnFail(R.drawable.nav_icon)
-                .showImageOnLoading(R.drawable.nav_icon)
+                .showImageForEmptyUri(R.drawable.pic_gray_bg)
+                .showImageOnFail(R.drawable.pic_gray_bg)
+                .showImageOnLoading(R.drawable.pic_gray_bg)
                 .build();
     }
 

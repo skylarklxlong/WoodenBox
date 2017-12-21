@@ -102,7 +102,7 @@ public class GankBaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             holder.mIvShow.setVisibility(View.VISIBLE);
             Glide.with(mContext)
                     .load(imageUrl + "?imageView2/0/w/100")
-                    .placeholder(R.drawable.nav_icon)
+                    .placeholder(R.drawable.pic_gray_bg)
                     .error(R.drawable.imageview_loading)
                     .into(holder.mIvShow);
         }
