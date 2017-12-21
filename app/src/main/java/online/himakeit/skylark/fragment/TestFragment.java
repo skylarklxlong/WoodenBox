@@ -118,10 +118,19 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
 
             @Override
             public void onChildViewDetachedFromWindow(View view) {
-                if (mTtype.equals("-301") || mTtype.equals("-104")){
+                /*if (mTtype.equals("-301") || mTtype.equals("-104")){
                     JZVideoPlayer jzvd = (JZVideoPlayer) view.findViewById(R.id.videoplayer);
                     if (jzvd != null && JZUtils.dataSourceObjectsContainsUri(jzvd.dataSourceObjects, JZMediaManager.getCurrentDataSource())) {
                         JZVideoPlayer.releaseAllVideos();
+                    }
+                }*/
+
+                JZVideoPlayer jzvd = (JZVideoPlayer) view.findViewById(R.id.videoplayer);
+                if (jzvd != null) {
+                    if (jzvd.dataSourceObjects != null) {
+                        if (JZUtils.dataSourceObjectsContainsUri(jzvd.dataSourceObjects, JZMediaManager.getCurrentDataSource())) {
+                            JZVideoPlayer.releaseAllVideos();
+                        }
                     }
                 }
             }
@@ -156,6 +165,7 @@ public class TestFragment extends BaseFragment implements LoadResultCallBack {
         super.onPause();
         JZVideoPlayer.releaseAllVideos();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

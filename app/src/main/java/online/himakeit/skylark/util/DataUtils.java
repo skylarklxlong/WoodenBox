@@ -14,7 +14,7 @@ public class DataUtils {
 
         int fz = Math.abs(width); //取分子分母的绝对值
         int fm = Math.abs(height);
-        int mod = fz % fm;
+        int mod = fz % fm;//求分子除以分母的余数
         while (mod > 0) { //求分子分母的最大公因数
             fz = fm;
             fm = mod;

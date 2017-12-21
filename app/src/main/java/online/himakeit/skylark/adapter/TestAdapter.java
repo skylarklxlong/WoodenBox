@@ -151,6 +151,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                                     int[] reduce = DataUtils.reduce(gifvideo.getVideo_width(), gifvideo.getVideo_height());
                                     holder.videoplayer.widthRatio = reduce[0];
                                     holder.videoplayer.heightRatio = reduce[1];
+                                    holder.videoplayer.topContainer.setVisibility(View.GONE);
+                                    holder.videoplayer.bottomContainer.setVisibility(View.GONE);
+                                    holder.videoplayer.startButton.performClick();
                                 }
                             });
                         }
