@@ -5,5 +5,5 @@ ext {
                minSdkVersion    : 17,
                targetSdkVersion : 23,
                versionCode      : 7,
-               versionName      : "3.20171220"]
+               versionName      : "3.20171221"]
 }

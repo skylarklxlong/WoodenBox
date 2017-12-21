@@ -92,7 +92,7 @@ public class GankMeiZhiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         });
 
         Glide.with(context)
-                .load(gankMeiZhi.getUrl()  + "?imageView2/0/w/250")
+                .load(gankMeiZhi.getUrl()  + "?imageView2/0/w/300")
                 .placeholder(R.drawable.nav_icon)
 //                .placeholder(R.drawable.imageview_loading)
                 .error(R.drawable.imageview_loading)

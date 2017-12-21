@@ -105,7 +105,7 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
         Glide.with(mContext)
-                .load(newsBeanItem.getImgsrc()+"?imageView&thumbnail=80x0")
+                .load(newsBeanItem.getImgsrc()+"?imageView&thumbnail=100x0")
                 .placeholder(R.drawable.imageview_loading)
                 .error(R.drawable.imageview_loading)
                 .listener(new RequestListener<String, GlideDrawable>() {

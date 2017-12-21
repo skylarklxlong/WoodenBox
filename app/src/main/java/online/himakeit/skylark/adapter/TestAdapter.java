@@ -40,6 +40,7 @@ import online.himakeit.skylark.model.neihan.NeiHanDataBase;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataEntity;
 import online.himakeit.skylark.model.neihan.NeiHanDataDataGroupEntity;
 import online.himakeit.skylark.model.neihan.NeiHanDataEntity;
+import online.himakeit.skylark.util.DataUtils;
 import online.himakeit.skylark.util.DateUtils;
 import online.himakeit.skylark.util.ImageLoadProxy;
 import online.himakeit.skylark.util.JsonUtils;
@@ -134,7 +135,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
                     holder.iv_gif.setVisibility(View.GONE);
                     //动图
-                    NeiHanDataDataGroupEntity.GifVideo gifvideo = dataEntity.getGroup().getGifvideo();
+                    final NeiHanDataDataGroupEntity.GifVideo gifvideo = dataEntity.getGroup().getGifvideo();
                     if (gifvideo != null) {
                         final String mp4_url = gifvideo.getMp4_url();
                         if (!TextUtils.isEmpty(mp4_url)) {
@@ -147,6 +148,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                                     holder.iv_img_show.setVisibility(View.GONE);
                                     holder.videoplayer.setVisibility(View.VISIBLE);
                                     holder.videoplayer.setUp(mp4_url, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL);
+                                    int[] reduce = DataUtils.reduce(gifvideo.getVideo_width(), gifvideo.getVideo_height());
+                                    holder.videoplayer.widthRatio = reduce[0];
+                                    holder.videoplayer.heightRatio = reduce[1];
                                 }
                             });
                         }
@@ -155,7 +159,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                     holder.pb_gif.setProgress(0);
                     holder.pb_gif.setVisibility(View.VISIBLE);
                     ImageLoadProxy.displayImageList(middle_image.getUrl() +
-                                    middle_imageUri.replace("w" + middle_image.getWidth(), "w100")
+                                    middle_imageUri.replace("w" + middle_image.getWidth(), "w150")
                                     + middle_image.getSuffix(),
                             holder.iv_img_show, R.drawable.pic_gray_bg, new
                                     SimpleImageLoadingListener() {
@@ -183,8 +187,11 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                 holder.videoplayer.setVisibility(View.VISIBLE);
                 holder.videoplayer.setUp(mp4_url, JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
                 ImageLoadProxy.displayHeadIcon(medium_cover.getUrl() + medium_cover.getUri()
-                                .replace("w202", "w100") + medium_cover.getSuffix(),
+                                .replace("w202", "w150") + medium_cover.getSuffix(),
                         holder.videoplayer.thumbImageView);
+                int[] reduce = DataUtils.reduce(dataEntity.getGroup().getVideo_width(), dataEntity.getGroup().getVideo_height());
+                holder.videoplayer.widthRatio = reduce[0];
+                holder.videoplayer.heightRatio = reduce[1];
             }
 
             holder.img_share.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +226,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             holder.iv_img_show.setVisibility(View.GONE);
             holder.videoplayer.setVisibility(View.VISIBLE);
             holder.videoplayer.setUp("http://i.snssdk.com/neihan/video/playback/?video_id=39bb5f9aaf88427d97fccbb824fc5a9d&amp;quality=480p&amp;line=0&amp;is_gif=0.mp4", JZVideoPlayerStandard.SCREEN_WINDOW_LIST);
-            ImageLoadProxy.displayHeadIcon("http://p2.pstatp.com/w100/71a00139b5e614a294a", holder.videoplayer.thumbImageView);
+            ImageLoadProxy.displayHeadIcon("http://p2.pstatp.com/w150/71a00139b5e614a294a", holder.videoplayer.thumbImageView);
+            holder.videoplayer.widthRatio = 16;
+            holder.videoplayer.heightRatio = 9;
 
         }
         setAnimation(holder.card, position);

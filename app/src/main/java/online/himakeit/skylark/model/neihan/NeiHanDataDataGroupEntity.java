@@ -62,9 +62,9 @@ public class NeiHanDataDataGroupEntity implements Serializable {
     @SerializedName("video_id")
     private String video_id;
     @SerializedName("video_height")
-    private String video_height;
+    private int video_height;
     @SerializedName("video_width")
-    private String video_width;
+    private int video_width;
     @SerializedName("middle_image")
     private Mimage middle_image;
     @SerializedName("large_image")
@@ -517,19 +517,19 @@ public class NeiHanDataDataGroupEntity implements Serializable {
         this.video_id = video_id;
     }
 
-    public String getVideo_height() {
+    public int getVideo_height() {
         return video_height;
     }
 
-    public void setVideo_height(String video_height) {
+    public void setVideo_height(int video_height) {
         this.video_height = video_height;
     }
 
-    public String getVideo_width() {
+    public int getVideo_width() {
         return video_width;
     }
 
-    public void setVideo_width(String video_width) {
+    public void setVideo_width(int video_width) {
         this.video_width = video_width;
     }
 
