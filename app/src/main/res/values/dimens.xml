@@ -65,6 +65,7 @@
     <dimen name="refresh_header_height_cook">90dp</dimen>
     <dimen name="refresh_header_height_twitter">50dp</dimen>
     <dimen name="load_more_footer_height_twitter">50dp</dimen>
+    <dimen name="textsize_large">18sp</dimen>
 
 </resources>
 

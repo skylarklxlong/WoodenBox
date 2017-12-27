@@ -1,5 +1,7 @@
 package online.himakeit.skylark;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.maning.updatelibrary.InstallUtils;
 import com.squareup.picasso.Picasso;
 import com.yanzhenjie.permission.AndPermission;
@@ -61,10 +64,12 @@ import online.himakeit.skylark.util.LogUtils;
 import online.himakeit.skylark.util.NetUtils;
 import online.himakeit.skylark.util.NotifyUtil;
 import online.himakeit.skylark.util.PreferencesUtils;
+import online.himakeit.skylark.util.ThemeHelper;
 import online.himakeit.skylark.util.Toasts;
+import online.himakeit.skylark.widget.CardPickerDialog;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, IZuiMeiPic {
+        implements NavigationView.OnNavigationItemSelectedListener, IZuiMeiPic, CardPickerDialog.ClickListener {
 
     private static final String TAG = "MainActivity";
     public static boolean isForeground = false;
@@ -109,7 +114,10 @@ public class MainActivity extends BaseActivity
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
 
-                startActivity(WebActivity.newTntent(MainActivity.this, "http://himakeit.online/", "XueLong"));
+//                startActivity(WebActivity.newTntent(MainActivity.this, "http://himakeit.online/", "XueLong"));
+                CardPickerDialog dialog = new CardPickerDialog();
+                dialog.setClickListener(MainActivity.this);
+                dialog.show(getSupportFragmentManager(), CardPickerDialog.TAG);
             }
         });
 
@@ -530,6 +538,34 @@ public class MainActivity extends BaseActivity
         //实例化工具类，并且调用接口
         notifyUtils = new NotifyUtil(this, 0);
         notifyUtils.notify_progress(rightPendIntent, smallIcon, ticker, "木匣 下载", "正在下载中...", false, false, false);
+    }
+
+    @Override
+    public void onConfirm(int currentTheme) {
+        if (ThemeHelper.getTheme(MainActivity.this) != currentTheme) {
+            ThemeHelper.setTheme(MainActivity.this, currentTheme);
+            ThemeUtils.refreshUI(MainActivity.this, new ThemeUtils.ExtraRefreshable() {
+                        @Override
+                        public void refreshGlobal(Activity activity) {
+                            //for global setting, just do once
+                            if (Build.VERSION.SDK_INT >= 21) {
+                                final MainActivity context = MainActivity.this;
+                                ActivityManager.TaskDescription taskDescription =
+                                        new ActivityManager.TaskDescription(null, null,
+                                                ThemeUtils.getThemeAttrColor(context, android.R.attr.colorPrimary));
+                                setTaskDescription(taskDescription);
+                                getWindow().setStatusBarColor(
+                                        ThemeUtils.getColorById(context, R.color.theme_color_primary_dark));
+                            }
+                        }
+
+                        @Override
+                        public void refreshSpecificView(View view) {
+                            //TODO: will do this for each traversal
+                        }
+                    }
+            );
+        }
     }
 
     public interface LoadingMore {

@@ -1,10 +1,14 @@
 package online.himakeit.skylark;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 
+import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.facebook.stetho.Stetho;
 import com.litesuits.orm.LiteOrm;
 import com.readystatesoftware.chuck.ChuckInterceptor;
@@ -30,6 +34,7 @@ import okhttp3.Response;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.util.LogUtils;
 import online.himakeit.skylark.util.NetUtils;
+import online.himakeit.skylark.util.ThemeHelper;
 import online.himakeit.skylark.util.Toasts;
 
 /**
@@ -39,7 +44,7 @@ import online.himakeit.skylark.util.Toasts;
  * <p>
  * Description:
  */
-public class AppContext extends Application {
+public class AppContext extends Application implements ThemeUtils.switchColor {
 
     private static final String TAG = "AppContext";
     /**
@@ -72,6 +77,7 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         mAppContext = this;
+        ThemeUtils.setSwitchColor(this);
         mHandler = new Handler();
 
         initXUtils3();
@@ -82,7 +88,7 @@ public class AppContext extends Application {
 
         Toasts.register(this);
 
-        liteOrmDB = LiteOrm.newSingleInstance(this,DB_NAME);
+        liteOrmDB = LiteOrm.newSingleInstance(this, DB_NAME);
         liteOrmDB.setDebugged(true);
 
         /*//memory leak testing
@@ -112,11 +118,11 @@ public class AppContext extends Application {
         return mHandler;
     }
 
-    private void initJPush(){
+    private void initJPush() {
         try {
-            JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-            JPushInterface.init(this);     		// 初始化 JPush
-        }catch (Exception e){
+            JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
+            JPushInterface.init(this);            // 初始化 JPush
+        } catch (Exception e) {
             LogUtils.e(e);
         }
     }
@@ -137,9 +143,10 @@ public class AppContext extends Application {
 
     /**
      * 获取全局的AppContext
+     *
      * @return
      */
-    public static AppContext getAppContext(){
+    public static AppContext getAppContext() {
         return mAppContext;
     }
 
@@ -153,12 +160,12 @@ public class AppContext extends Application {
         return getPackageInfo().versionCode;
     }
 
-    private static PackageInfo getPackageInfo(){
+    private static PackageInfo getPackageInfo() {
         PackageInfo info = null;
 
         try {
             PackageManager packageManager = mAppContext.getPackageManager();
-            info = packageManager.getPackageInfo(mAppContext.getPackageName(),PackageManager.GET_CONFIGURATIONS);
+            info = packageManager.getPackageInfo(mAppContext.getPackageName(), PackageManager.GET_CONFIGURATIONS);
             return info;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -168,11 +175,11 @@ public class AppContext extends Application {
     }
 
 
-    public static OkHttpClient defaultOkHttpClient(){
+    public static OkHttpClient defaultOkHttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
-        client.writeTimeout(30 * 1000 , TimeUnit.MILLISECONDS);
+        client.writeTimeout(30 * 1000, TimeUnit.MILLISECONDS);
         client.readTimeout(30 * 1000, TimeUnit.MILLISECONDS);
-        client.connectTimeout(30 * 1000 , TimeUnit.MILLISECONDS);
+        client.connectTimeout(30 * 1000, TimeUnit.MILLISECONDS);
         //设置缓存路径
         File httpCacheDirectory = new File(mAppContext.getCacheDir(), "okhttpCache");
         //设置缓存 10M
@@ -260,48 +267,53 @@ public class AppContext extends Application {
     //==========================================================================
     //==========================================================================
     //发送方
+
     /**
      * 添加一个FileInfo
+     *
      * @param fileInfo
      */
-    public void addFileInfo(FileInfo fileInfo){
+    public void addFileInfo(FileInfo fileInfo) {
 //        if(!mFileInfoSet.contains(fileInfo)){
 //            mFileInfoSet.add(fileInfo);
 //        }
 
-        if(!mFileInfoMap.containsKey(fileInfo.getFilePath())){
+        if (!mFileInfoMap.containsKey(fileInfo.getFilePath())) {
             mFileInfoMap.put(fileInfo.getFilePath(), fileInfo);
         }
     }
 
     /**
      * 更新FileInfo
+     *
      * @param fileInfo
      */
-    public void updateFileInfo(FileInfo fileInfo){
+    public void updateFileInfo(FileInfo fileInfo) {
         mFileInfoMap.put(fileInfo.getFilePath(), fileInfo);
     }
 
     /**
      * 删除一个FileInfo
+     *
      * @param fileInfo
      */
-    public void delFileInfo(FileInfo fileInfo){
+    public void delFileInfo(FileInfo fileInfo) {
 //        if(mFileInfoSet.contains(fileInfo)){
 //            mFileInfoSet.remove(fileInfo);
 //        }
-        if(mFileInfoMap.containsKey(fileInfo.getFilePath())){
+        if (mFileInfoMap.containsKey(fileInfo.getFilePath())) {
             mFileInfoMap.remove(fileInfo.getFilePath());
         }
     }
 
     /**
      * 是否存在FileInfo
+     *
      * @param fileInfo
      * @return
      */
-    public boolean isExist(FileInfo fileInfo){
-        if(mFileInfoMap == null){
+    public boolean isExist(FileInfo fileInfo) {
+        if (mFileInfoMap == null) {
             return false;
         }
         return mFileInfoMap.containsKey(fileInfo.getFilePath());
@@ -309,10 +321,11 @@ public class AppContext extends Application {
 
     /**
      * 判断文件集合是否有元素
+     *
      * @return 有返回true， 反之
      */
-    public boolean isFileInfoMapExist(){
-        if(mFileInfoMap == null || mFileInfoMap.size() <= 0){
+    public boolean isFileInfoMapExist() {
+        if (mFileInfoMap == null || mFileInfoMap.size() <= 0) {
             return false;
         }
         return true;
@@ -320,20 +333,22 @@ public class AppContext extends Application {
 
     /**
      * 获取全局变量中的FileInfoMap
+     *
      * @return
      */
-    public Map<String, FileInfo> getFileInfoMap(){
+    public Map<String, FileInfo> getFileInfoMap() {
         return mFileInfoMap;
     }
 
     /**
      * 获取即将发送文件列表的总长度
+     *
      * @return
      */
-    public long getAllSendFileInfoSize(){
+    public long getAllSendFileInfoSize() {
         long total = 0;
-        for(FileInfo fileInfo : mFileInfoMap.values()){
-            if(fileInfo != null){
+        for (FileInfo fileInfo : mFileInfoMap.values()) {
+            if (fileInfo != null) {
                 total = total + fileInfo.getSize();
             }
         }
@@ -344,54 +359,59 @@ public class AppContext extends Application {
     //==========================================================================
 
 
-
     //==========================================================================
     //==========================================================================
     //发送方
+
     /**
      * 添加一个FileInfo
+     *
      * @param fileInfo
      */
-    public void addReceiverFileInfo(FileInfo fileInfo){
-        if(!mReceiverFileInfoMap.containsKey(fileInfo.getFilePath())){
+    public void addReceiverFileInfo(FileInfo fileInfo) {
+        if (!mReceiverFileInfoMap.containsKey(fileInfo.getFilePath())) {
             mReceiverFileInfoMap.put(fileInfo.getFilePath(), fileInfo);
         }
     }
 
     /**
      * 更新FileInfo
+     *
      * @param fileInfo
      */
-    public void updateReceiverFileInfo(FileInfo fileInfo){
+    public void updateReceiverFileInfo(FileInfo fileInfo) {
         mReceiverFileInfoMap.put(fileInfo.getFilePath(), fileInfo);
     }
 
     /**
      * 删除一个FileInfo
+     *
      * @param fileInfo
      */
-    public void delReceiverFileInfo(FileInfo fileInfo){
-        if(mReceiverFileInfoMap.containsKey(fileInfo.getFilePath())){
+    public void delReceiverFileInfo(FileInfo fileInfo) {
+        if (mReceiverFileInfoMap.containsKey(fileInfo.getFilePath())) {
             mReceiverFileInfoMap.remove(fileInfo.getFilePath());
         }
     }
 
     /**
      * 是否存在FileInfo
+     *
      * @param fileInfo
      * @return
      */
-    public boolean isReceiverInfoExist(FileInfo fileInfo){
-        if(mReceiverFileInfoMap == null) return false;
+    public boolean isReceiverInfoExist(FileInfo fileInfo) {
+        if (mReceiverFileInfoMap == null) return false;
         return mReceiverFileInfoMap.containsKey(fileInfo.getFilePath());
     }
 
     /**
      * 判断文件集合是否有元素
+     *
      * @return 有返回true， 反之
      */
-    public boolean isReceiverFileInfoMapExist(){
-        if(mReceiverFileInfoMap == null || mReceiverFileInfoMap.size() <= 0){
+    public boolean isReceiverFileInfoMapExist() {
+        if (mReceiverFileInfoMap == null || mReceiverFileInfoMap.size() <= 0) {
             return false;
         }
         return true;
@@ -399,21 +419,23 @@ public class AppContext extends Application {
 
     /**
      * 获取全局变量中的FileInfoMap
+     *
      * @return
      */
-    public Map<String, FileInfo> getReceiverFileInfoMap(){
+    public Map<String, FileInfo> getReceiverFileInfoMap() {
         return mReceiverFileInfoMap;
     }
 
 
     /**
      * 获取即将接收文件列表的总长度
+     *
      * @return
      */
-    public long getAllReceiverFileInfoSize(){
+    public long getAllReceiverFileInfoSize() {
         long total = 0;
-        for(FileInfo fileInfo : mReceiverFileInfoMap.values()){
-            if(fileInfo != null){
+        for (FileInfo fileInfo : mReceiverFileInfoMap.values()) {
+            if (fileInfo != null) {
                 total = total + fileInfo.getSize();
             }
         }
@@ -423,4 +445,76 @@ public class AppContext extends Application {
     //==========================================================================
     //==========================================================================
 
+    @Override
+    public int replaceColorById(Context context, @ColorRes int colorId) {
+        if (ThemeHelper.isDefaultTheme(context)) {
+            return context.getResources().getColor(colorId);
+        }
+        String theme = getTheme(context);
+        if (theme != null) {
+            colorId = getThemeColorId(context, colorId, theme);
+        }
+        return context.getResources().getColor(colorId);
+    }
+
+    @Override
+    public int replaceColor(Context context, @ColorInt int originColor) {
+        if (ThemeHelper.isDefaultTheme(context)) {
+            return originColor;
+        }
+        String theme = getTheme(context);
+        int colorId = -1;
+
+        if (theme != null) {
+            colorId = getThemeColor(context, originColor, theme);
+        }
+        return colorId != -1 ? getResources().getColor(colorId) : originColor;
+    }
+
+    private String getTheme(Context context) {
+        if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_STORM) {
+            return "blue";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_HOPE) {
+            return "purple";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_WOOD) {
+            return "green";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_LIGHT) {
+            return "green_light";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_THUNDER) {
+            return "yellow";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_SAND) {
+            return "orange";
+        } else if (ThemeHelper.getTheme(context) == ThemeHelper.CARD_FIREY) {
+            return "red";
+        }
+        return null;
+    }
+
+    private
+    @ColorRes
+    int getThemeColorId(Context context, int colorId, String theme) {
+        switch (colorId) {
+            case R.color.theme_color_primary:
+                return context.getResources().getIdentifier(theme, "color", getPackageName());
+            case R.color.theme_color_primary_dark:
+                return context.getResources().getIdentifier(theme + "_dark", "color", getPackageName());
+            case R.color.theme_color_primary_trans:
+                return context.getResources().getIdentifier(theme + "_trans", "color", getPackageName());
+        }
+        return colorId;
+    }
+
+    private
+    @ColorRes
+    int getThemeColor(Context context, int color, String theme) {
+        switch (color) {
+            case 0xfffb7299:
+                return context.getResources().getIdentifier(theme, "color", getPackageName());
+            case 0xffb85671:
+                return context.getResources().getIdentifier(theme + "_dark", "color", getPackageName());
+            case 0x99f0486c:
+                return context.getResources().getIdentifier(theme + "_trans", "color", getPackageName());
+        }
+        return -1;
+    }
 }
