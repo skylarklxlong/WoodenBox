@@ -25,8 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobFlightEntity;
 import online.himakeit.skylark.util.KeyboardUtils;
 
@@ -37,7 +37,7 @@ import online.himakeit.skylark.util.KeyboardUtils;
  * <p>
  * Description:
  */
-public class FlightActivity extends BaseActivity {
+public class FlightActivity extends OtherBaseActivity {
 
     @Bind(R.id.rl_mob_flight_root)
     RelativeLayout rl_root;

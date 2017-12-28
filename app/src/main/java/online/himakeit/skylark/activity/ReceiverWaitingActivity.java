@@ -19,16 +19,16 @@ import butterknife.OnClick;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.Constant;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.model.kuaichuan.IpPortInfo;
 import online.himakeit.skylark.receiver.WifiAPBroadcastReceiver;
 import online.himakeit.skylark.util.ApMgr;
+import online.himakeit.skylark.util.LogUtils;
 import online.himakeit.skylark.util.NavigatorUtils;
+import online.himakeit.skylark.util.TextStrUtils;
 import online.himakeit.skylark.util.WifiMgr;
 import online.himakeit.skylark.view.RadarLayout;
-import online.himakeit.skylark.util.LogUtils;
-import online.himakeit.skylark.util.TextStrUtils;
 
 /**
  * Created by：LiXueLong 李雪龙 on 17-7-4 下午5:08
@@ -37,7 +37,7 @@ import online.himakeit.skylark.util.TextStrUtils;
  * <p>
  * Description:
  */
-public class ReceiverWaitingActivity extends BaseActivity {
+public class ReceiverWaitingActivity extends OtherBaseActivity {
 
     private static final String TAG = ReceiverWaitingActivity.class.getSimpleName();
     /**

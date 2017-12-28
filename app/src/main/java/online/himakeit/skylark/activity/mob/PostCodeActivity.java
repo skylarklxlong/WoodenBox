@@ -16,8 +16,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobPostCodeEntity;
 
 /**
@@ -27,7 +27,7 @@ import online.himakeit.skylark.model.mob.MobPostCodeEntity;
  * <p>
  * Description:
  */
-public class PostCodeActivity extends BaseActivity {
+public class PostCodeActivity extends OtherBaseActivity {
 
     /**
      * toolbar

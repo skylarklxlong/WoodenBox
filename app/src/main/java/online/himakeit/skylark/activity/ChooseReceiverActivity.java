@@ -24,7 +24,7 @@ import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.Constant;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.WifiScanResultAdapter;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.util.BaseTransfer;
 import online.himakeit.skylark.util.LogUtils;
@@ -41,7 +41,7 @@ import online.himakeit.skylark.view.RadarScanView;
  * <p>
  * Description:
  */
-public class ChooseReceiverActivity extends BaseActivity {
+public class ChooseReceiverActivity extends OtherBaseActivity {
 
     private static final String TAG = ChooseReceiverActivity.class.getSimpleName();
 

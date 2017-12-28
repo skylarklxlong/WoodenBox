@@ -12,7 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.BuildConfig;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.util.Shares;
 
 
@@ -23,7 +23,7 @@ import online.himakeit.skylark.util.Shares;
  * <p>
  * Description:
  */
-public class AboutActivity extends BaseActivity {
+public class AboutActivity extends OtherBaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;

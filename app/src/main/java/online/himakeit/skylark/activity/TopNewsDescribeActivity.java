@@ -30,7 +30,7 @@ import java.net.URL;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.topnews.NewsDetailBean;
 import online.himakeit.skylark.presenter.implPresenter.TopNewsNewDesPresenterImpl;
 import online.himakeit.skylark.presenter.implView.ITopNewsDesFragment;
@@ -45,7 +45,7 @@ import online.himakeit.skylark.util.LogUtils;
  * <p>
  * Description:
  */
-public class TopNewsDescribeActivity extends BaseActivity implements ITopNewsDesFragment {
+public class TopNewsDescribeActivity extends OtherBaseActivity implements ITopNewsDesFragment {
 
     /**
      * topbar

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/9/13 15:43
@@ -19,7 +19,7 @@ import online.himakeit.skylark.common.BaseActivity;
  * <p>
  * Description:
  */
-public abstract class ToolBarActivity extends BaseActivity {
+public abstract class ToolBarActivity extends OtherBaseActivity {
 
     abstract protected int provideContentViewId();
 

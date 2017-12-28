@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.MobFlightListRecycleAdapter;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobFlightEntity;
 
 /**
@@ -32,7 +32,7 @@ import online.himakeit.skylark.model.mob.MobFlightEntity;
  * <p>
  * Description:
  */
-public class FlightListActivity extends BaseActivity {
+public class FlightListActivity extends OtherBaseActivity {
 
     /**
      * toolbar

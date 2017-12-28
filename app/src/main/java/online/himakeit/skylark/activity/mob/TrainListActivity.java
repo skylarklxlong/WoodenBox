@@ -25,8 +25,8 @@ import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.MobTrainListRecycleAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobTrainEntity;
 import online.himakeit.skylark.model.mob.MobTrainNoEntity;
 
@@ -37,7 +37,7 @@ import online.himakeit.skylark.model.mob.MobTrainNoEntity;
  * <p>
  * Description:
  */
-public class TrainListActivity extends BaseActivity {
+public class TrainListActivity extends OtherBaseActivity {
 
     /**
      * toolbar

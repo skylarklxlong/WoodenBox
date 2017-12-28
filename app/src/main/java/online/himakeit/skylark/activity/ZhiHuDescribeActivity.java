@@ -23,7 +23,7 @@ import net.nightwhistler.htmlspanner.LinkMovementMethodExt;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.zhuhu.ZhiHuStory;
 import online.himakeit.skylark.presenter.implPresenter.ZhiHuStoryPresenterImpl;
 import online.himakeit.skylark.presenter.implView.IZhiHuStory;
@@ -36,7 +36,7 @@ import online.himakeit.skylark.util.DensityUtils;
  * <p>
  * Description:
  */
-public class ZhiHuDescribeActivity extends BaseActivity implements IZhiHuStory {
+public class ZhiHuDescribeActivity extends OtherBaseActivity implements IZhiHuStory {
 
     /**
      * topbar

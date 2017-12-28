@@ -3,7 +3,7 @@ package online.himakeit.skylark.activity;
 import android.os.Bundle;
 
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/9 14:57
@@ -12,7 +12,7 @@ import online.himakeit.skylark.common.BaseActivity;
  * <p>
  * Description:
  */
-public class OpenFrameActivity extends BaseActivity {
+public class OpenFrameActivity extends OtherBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

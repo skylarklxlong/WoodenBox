@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.MainActivity;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.fir.AppUpdateInfo;
 import online.himakeit.skylark.presenter.implPresenter.SettingPresenterImpl;
 import online.himakeit.skylark.presenter.implView.ISettingView;
@@ -40,7 +40,7 @@ import online.himakeit.skylark.view.SettingItemView;
  * <p>
  * Description:
  */
-public class SettingActivity extends BaseActivity implements ISettingView {
+public class SettingActivity extends OtherBaseActivity implements ISettingView {
 
     private static final String TAG = "FxcSalaryActivity";
     @Bind(R.id.tv_title)

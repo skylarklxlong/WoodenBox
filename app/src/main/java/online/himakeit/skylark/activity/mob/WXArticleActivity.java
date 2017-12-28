@@ -27,9 +27,9 @@ import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.adapter.MobWXArticleCategoryRecyclerAdapter;
 import online.himakeit.skylark.adapter.MobWXArticleRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.callback.OnItemClickListener;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobWxArticleEntity;
 import online.himakeit.skylark.model.mob.MobWxCategoryEntity;
 
@@ -40,7 +40,7 @@ import online.himakeit.skylark.model.mob.MobWxCategoryEntity;
  * <p>
  * Description:
  */
-public class WXArticleActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener {
+public class WXArticleActivity extends OtherBaseActivity implements OnRefreshListener, OnLoadMoreListener {
 
     /**
      * toolbar

@@ -24,8 +24,8 @@ import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.MobHistoryTodayRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobHistoryTodayEntity;
 
 /**
@@ -35,7 +35,7 @@ import online.himakeit.skylark.model.mob.MobHistoryTodayEntity;
  * <p>
  * Description:
  */
-public class HistoryTodayActivity extends BaseActivity {
+public class HistoryTodayActivity extends OtherBaseActivity {
 
     /**
      * toolbar

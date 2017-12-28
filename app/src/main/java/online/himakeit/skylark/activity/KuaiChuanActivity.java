@@ -9,7 +9,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.util.NavigatorUtils;
 
 /**
@@ -19,7 +19,7 @@ import online.himakeit.skylark.util.NavigatorUtils;
  * <p>
  * Description:
  */
-public class KuaiChuanActivity extends BaseActivity {
+public class KuaiChuanActivity extends OtherBaseActivity {
 
     @Bind(R.id.tv_title)
     TextView tv_title;

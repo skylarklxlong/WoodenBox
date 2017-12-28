@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.MobCookDetailsRecyclerAdapter;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobCookDetailEntity;
 
 /**
@@ -23,7 +23,7 @@ import online.himakeit.skylark.model.mob.MobCookDetailEntity;
  * <p>
  * Description:
  */
-public class CookDetailsActivity extends BaseActivity {
+public class CookDetailsActivity extends OtherBaseActivity {
 
     public static final String IntentKey_Cook = "IntentKey_Cook";
     @Bind(R.id.tv_back)

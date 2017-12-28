@@ -17,8 +17,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobIpEntity;
 
 /**
@@ -28,7 +28,7 @@ import online.himakeit.skylark.model.mob.MobIpEntity;
  * <p>
  * Description:
  */
-public class IPQueryActivity extends BaseActivity {
+public class IPQueryActivity extends OtherBaseActivity {
 
     /**
      * toolbar

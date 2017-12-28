@@ -61,6 +61,7 @@ import online.himakeit.skylark.util.LogUtils;
 import online.himakeit.skylark.util.NetUtils;
 import online.himakeit.skylark.util.NotifyUtil;
 import online.himakeit.skylark.util.PreferencesUtils;
+import online.himakeit.skylark.util.StatusBarUtils;
 import online.himakeit.skylark.util.Toasts;
 
 public class MainActivity extends BaseActivity
@@ -90,7 +91,11 @@ public class MainActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        StatusBarUtils.with(this)
+                .setDrawerLayoutContentId(true, R.id.main)
+                .setColor(getResources().getColor(R.color.colorPrimary))
+                .clearActionBarShadow()
+                .init();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -36,8 +36,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mContext = this;
-        //设置StatuBar和BottomBar透明
-//        StatusBarUtils.setStatuBarAndBottomBarTranslucent(this);
         super.onCreate(savedInstanceState);
 
         initDialog();

@@ -24,14 +24,14 @@ import butterknife.OnClick;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.Constant;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
-import online.himakeit.skylark.model.kuaichuan.FileInfo;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.fragment.FileInfoFragment;
+import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.receiver.SeletedFileListChangedBroadcastReceiver;
-import online.himakeit.skylark.util.NavigatorUtils;
-import online.himakeit.skylark.view.ShowSelectedFileInfoDialog;
 import online.himakeit.skylark.util.LogUtils;
+import online.himakeit.skylark.util.NavigatorUtils;
 import online.himakeit.skylark.util.Toasts;
+import online.himakeit.skylark.view.ShowSelectedFileInfoDialog;
 
 /**
  * Created by：LiXueLong 李雪龙 on 17-6-13 下午6:52
@@ -40,7 +40,7 @@ import online.himakeit.skylark.util.Toasts;
  * <p>
  * Description:
  */
-public class ChooseFileActivity extends BaseActivity {
+public class ChooseFileActivity extends OtherBaseActivity {
 
     /**
      * 获取文件的请求码

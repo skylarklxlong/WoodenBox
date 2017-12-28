@@ -26,8 +26,8 @@ import butterknife.OnClick;
 import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.Constant;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.adapter.FileReceiverAdapter;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.kuaichuan.FileInfo;
 import online.himakeit.skylark.model.kuaichuan.IpPortInfo;
 import online.himakeit.skylark.util.ApMgr;
@@ -52,7 +52,7 @@ import online.himakeit.skylark.util.Toasts;
  *      如果是在文件发送UDP的话，那么应该在ReceiverWaitingActivity里面去监听
  * 2.
  */
-public class FileReceiverActivity extends BaseActivity {
+public class FileReceiverActivity extends OtherBaseActivity {
 
     private static final String TAG = FileReceiverActivity.class.getSimpleName();
 

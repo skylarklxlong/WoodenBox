@@ -14,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/12/7 14:14
@@ -23,7 +23,7 @@ import online.himakeit.skylark.common.BaseActivity;
  * <p>
  * Description:
  */
-public class FxcSalaryActivity extends BaseActivity {
+public class FxcSalaryActivity extends OtherBaseActivity {
 
     private static final String TAG = "FxcSalaryActivity";
     @Bind(R.id.tv_title)

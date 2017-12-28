@@ -24,9 +24,9 @@ import online.himakeit.skylark.AppContext;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.adapter.MobCookListRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
-import online.himakeit.skylark.common.BaseActivity;
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.callback.OnItemClickListener;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobCookCategoryEntity;
 import online.himakeit.skylark.model.mob.MobCookDetailEntity;
 
@@ -37,7 +37,7 @@ import online.himakeit.skylark.model.mob.MobCookDetailEntity;
  * <p>
  * Description:
  */
-public class CookListActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener {
+public class CookListActivity extends OtherBaseActivity implements OnRefreshListener, OnLoadMoreListener {
 
     public static final String IntentKey_Cook = "IntentKey_Cook";
     private static final String TAG = "CookListActivity";

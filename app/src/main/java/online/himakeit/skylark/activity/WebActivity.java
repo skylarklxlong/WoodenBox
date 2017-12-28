@@ -206,11 +206,13 @@ public class WebActivity extends ToolBarActivity {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
-            mNumberProgressBar.setProgress(newProgress);
-            if (newProgress == 100) {
-                mNumberProgressBar.setVisibility(View.GONE);
-            } else {
-                mNumberProgressBar.setVisibility(View.VISIBLE);
+            if (mNumberProgressBar != null){
+                mNumberProgressBar.setProgress(newProgress);
+                if (newProgress == 100) {
+                    mNumberProgressBar.setVisibility(View.GONE);
+                } else {
+                    mNumberProgressBar.setVisibility(View.VISIBLE);
+                }
             }
         }
 

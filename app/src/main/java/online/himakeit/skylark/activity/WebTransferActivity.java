@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import online.himakeit.skylark.R;
-import online.himakeit.skylark.common.BaseActivity;
+import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.receiver.WifiAPBroadcastReceiver;
 import online.himakeit.skylark.util.LogUtils;
 
@@ -17,7 +17,7 @@ import online.himakeit.skylark.util.LogUtils;
  * <p>
  * Description:
  */
-public class WebTransferActivity extends BaseActivity {
+public class WebTransferActivity extends OtherBaseActivity {
 
     private static final String TAG = WebTransferActivity.class.getSimpleName();
 
