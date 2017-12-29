@@ -5,8 +5,11 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:openDrawer="start">
+    <!--
+    若使用StatusBarUtils使状态栏沉浸，则不能使用
+    android:fitsSystemWindows="true"
+    -->
 
     <include
         android:id="@+id/main"
