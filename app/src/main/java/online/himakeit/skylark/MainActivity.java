@@ -63,16 +63,23 @@ import online.himakeit.skylark.util.NotifyUtil;
 import online.himakeit.skylark.util.PreferencesUtils;
 import online.himakeit.skylark.util.StatusBarUtils;
 import online.himakeit.skylark.util.Toasts;
-
+/**
+ * @author：LiXueLong
+ * @date:2018/1/3-15:41
+ * @mail1：skylarklxlong@outlook.com
+ * @mail2：li_xuelong@126.com
+ * @des：MainActivity
+ */
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, IZuiMeiPic{
 
     private static final String TAG = "MainActivity";
-    public static boolean isForeground = false;
-
-    FragmentManager fragmentManager;
-    //FragmentTransaction fragmentTransaction;  FragmentTransaction只能被提交一次，最好不要用全局的
+    /**
+     * FragmentTransaction fragmentTransaction;  FragmentTransaction只能被提交一次，最好不要用全局的
+     */
     ArrayList<Fragment> fragmentArrayList;
+    public static boolean isForeground = false;
+    FragmentManager fragmentManager;
     NeiHanFragment neiHanFragment;
     ReadFragment readFragment;
     GankFragment gankFragment;

@@ -181,6 +181,8 @@
         <activity
             android:name=".activity.mob.LotteryCategoryActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.mob.LotteryDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.mob.OilPriceActivity"
             android:screenOrientation="portrait" />
