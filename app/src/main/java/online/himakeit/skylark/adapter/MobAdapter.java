@@ -23,13 +23,8 @@ import online.himakeit.skylark.activity.mob.BankCardActivity;
 import online.himakeit.skylark.activity.mob.CarListActivity;
 import online.himakeit.skylark.activity.mob.ChineseCalendarActivity;
 import online.himakeit.skylark.activity.mob.CookMenuActivity;
-import online.himakeit.skylark.activity.mob.CurrencyRateActivity;
 import online.himakeit.skylark.activity.mob.DictionaryActivity;
-import online.himakeit.skylark.activity.mob.DrivingExamActivity;
 import online.himakeit.skylark.activity.mob.FlightActivity;
-import online.himakeit.skylark.activity.mob.FootballLeagueActivity;
-import online.himakeit.skylark.activity.mob.GlobalStockActivity;
-import online.himakeit.skylark.activity.mob.GoldDataActivity;
 import online.himakeit.skylark.activity.mob.HealthActivity;
 import online.himakeit.skylark.activity.mob.HistoryTodayActivity;
 import online.himakeit.skylark.activity.mob.IDCardQueryActivity;
@@ -38,13 +33,11 @@ import online.himakeit.skylark.activity.mob.IdiomActivity;
 import online.himakeit.skylark.activity.mob.LotteryCategoryActivity;
 import online.himakeit.skylark.activity.mob.OilPriceActivity;
 import online.himakeit.skylark.activity.mob.PhoneAddressActivity;
-import online.himakeit.skylark.activity.mob.PiaoFangVipActivity;
 import online.himakeit.skylark.activity.mob.PostCodeActivity;
-import online.himakeit.skylark.activity.mob.PreciousMetalActivity;
-import online.himakeit.skylark.activity.mob.SilverDataActivity;
 import online.himakeit.skylark.activity.mob.TrainActivity;
 import online.himakeit.skylark.activity.mob.WXArticleActivity;
 import online.himakeit.skylark.callback.OnItemClickListener;
+import online.himakeit.skylark.util.Toasts;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/10/17 19:59
@@ -148,33 +141,41 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (title.equals("银行卡信息")) {
                         mContext.startActivity(new Intent(mContext, BankCardActivity.class));
                     } else if (title.equals("白银数据")) {
-                        mContext.startActivity(new Intent(mContext, SilverDataActivity.class));
+//                        mContext.startActivity(new Intent(mContext, SilverDataActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("黄金数据")) {
-                        mContext.startActivity(new Intent(mContext, GoldDataActivity.class));
+//                        mContext.startActivity(new Intent(mContext, GoldDataActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("货币汇率")) {
-                        mContext.startActivity(new Intent(mContext, CurrencyRateActivity.class));
+//                        mContext.startActivity(new Intent(mContext, CurrencyRateActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("国内现货交易所贵金属")) {
-                        mContext.startActivity(new Intent(mContext, PreciousMetalActivity.class));
+//                        mContext.startActivity(new Intent(mContext, PreciousMetalActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("全球股指查询")) {
-                        mContext.startActivity(new Intent(mContext, GlobalStockActivity.class));
+//                        mContext.startActivity(new Intent(mContext, GlobalStockActivity.class));
+                        Toasts.showShort("努力开发中。。。");
 //-------------------------------------------------------------------
                     } else if (title.equals("周公解梦")) {
                         mContext.startActivity(WebActivity.newTntent(mContext, "http://tools.2345.com/zhgjm.htm", "周公解梦"));
                     } else if (title.equals("婚姻匹配")) {
                         mContext.startActivity(WebActivity.newTntent(mContext, "http://www.jjdzc.com/peidui/hehun.html", "婚姻匹配"));
                     } else if (title.equals("手机号码查吉凶")) {
+                        mContext.startActivity(WebActivity.newTntent(mContext, "http://mobile.9om.com/", "手机号码查吉凶"));
                     } else if (title.equals("八字算命")) {
                         mContext.startActivity(WebActivity.newTntent(mContext, "http://www.jjdzc.com/sm/bz.html", "八字算命"));
                     } else if (title.equals("老黄历")) {
                         mContext.startActivity(new Intent(mContext, ChineseCalendarActivity.class));
                     } else if (title.equals("电影票房")) {
-                        mContext.startActivity(new Intent(mContext, PiaoFangVipActivity.class));
+//                        mContext.startActivity(new Intent(mContext, PiaoFangVipActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("火车票查询")) {
                         mContext.startActivity(new Intent(mContext, TrainActivity.class));
                     } else if (title.equals("航班信息查询")) {
                         mContext.startActivity(new Intent(mContext, FlightActivity.class));
                     } else if (title.equals("足球五大联赛")) {
-                        mContext.startActivity(new Intent(mContext, FootballLeagueActivity.class));
+//                        mContext.startActivity(new Intent(mContext, FootballLeagueActivity.class));
+                        Toasts.showShort("努力开发中。。。");
 //-------------------------------------------------------------------
                     } else if (title.equals("健康知识")) {
                         mContext.startActivity(new Intent(mContext, HealthActivity.class));
@@ -189,7 +190,8 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (title.equals("汽车信息查询")) {
                         mContext.startActivity(new Intent(mContext, CarListActivity.class));
                     } else if (title.equals("驾考题库")) {
-                        mContext.startActivity(new Intent(mContext, DrivingExamActivity.class));
+//                        mContext.startActivity(new Intent(mContext, DrivingExamActivity.class));
+                        Toasts.showShort("努力开发中。。。");
 //-------------------------------------------------------------------
                     } else if (title.equals("文件快传")) {
                         mContext.startActivity(new Intent(mContext, KuaiChuanActivity.class));
