@@ -137,4 +137,10 @@ public class LotteryDetailActivity extends OtherBaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
 }
