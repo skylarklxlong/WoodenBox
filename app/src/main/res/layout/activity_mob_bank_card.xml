@@ -49,44 +49,10 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/tv_bank_name"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="所属银行：" />
-
-    <TextView
-        android:id="@+id/tv_bank_carname"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="卡名：" />
-
-    <TextView
-        android:id="@+id/tv_bank_cartype"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="卡片类型：" />
-
-    <TextView
-        android:id="@+id/tv_bank_carnum"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="卡号长度：" />
-
-    <TextView
-        android:id="@+id/tv_bank_carbin"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="bin码：" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_bank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

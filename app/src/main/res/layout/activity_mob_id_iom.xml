@@ -48,44 +48,10 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/tv_idiom_pinyin"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="拼音：" />
-
-    <TextView
-        android:id="@+id/tv_idiom_definition"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="释义：" />
-
-    <TextView
-        android:id="@+id/tv_idiom_from"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="出自：" />
-
-    <TextView
-        android:id="@+id/tv_idiom_sample"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="示例：" />
-
-    <TextView
-        android:id="@+id/tv_idiom_sample_from"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="示例出自：" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_idiom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

@@ -3,6 +3,9 @@ package online.himakeit.skylark.activity.mob;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,16 +13,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
+import online.himakeit.skylark.adapter.MobQueryRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.common.OtherBaseActivity;
+import online.himakeit.skylark.model.mob.MobItemEntity;
 import online.himakeit.skylark.model.mob.MobPhoneAddressEntity;
+import online.himakeit.skylark.util.KeyboardUtils;
 import online.himakeit.skylark.util.TextStrUtils;
 
 /**
@@ -48,15 +55,10 @@ public class PhoneAddressActivity extends OtherBaseActivity {
     EditText ed_phone_address_query;
     @Bind(R.id.iv_phone_address_query)
     ImageView iv_phone_address_query;
-    @Bind(R.id.tv_phone_yys)
-    TextView tv_phone_yys;
-    @Bind(R.id.tv_phone_city)
-    TextView tv_phone_city;
-    @Bind(R.id.tv_phone_city_num)
-    TextView tv_phone_city_num;
-    @Bind(R.id.tv_phone_post)
-    TextView tv_phone_post;
+    @Bind(R.id.recycler_phone)
+    RecyclerView recyclerView;
 
+    MobQueryRecyclerAdapter recyclerAdapter;
     String phoneNumber = null;
 
     @Override
@@ -67,13 +69,18 @@ public class PhoneAddressActivity extends OtherBaseActivity {
 
         init();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
     }
+
     private void init() {
         tv_title.setText("手机号码归属地查询");
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @OnClick({R.id.tv_back, R.id.iv_phone_address_query, R.id.btn_phone_address_query})
@@ -89,6 +96,7 @@ public class PhoneAddressActivity extends OtherBaseActivity {
                 }
                 break;
             case R.id.btn_phone_address_query:
+                KeyboardUtils.hideSoftInput(this);
                 phoneNumber = ed_phone_address_query.getText().toString().trim();
                 if (TextUtils.isEmpty(phoneNumber)) {
                     Snackbar.make(btn_phone_address_query, "手机号码不能为空", Snackbar.LENGTH_SHORT).show();
@@ -105,11 +113,7 @@ public class PhoneAddressActivity extends OtherBaseActivity {
                         dissmissProgressDialog();
                         if (result != null) {
                             MobPhoneAddressEntity phoneAddressEntity = (MobPhoneAddressEntity) result;
-
-                            tv_phone_yys.setText("运营商：     " + phoneAddressEntity.getOperator());
-                            tv_phone_city.setText("城市：         " + phoneAddressEntity.getProvince() + " " + phoneAddressEntity.getCity());
-                            tv_phone_city_num.setText("城市区号： " + phoneAddressEntity.getCityCode());
-                            tv_phone_post.setText("邮政编码： " + phoneAddressEntity.getZipCode());
+                            initAdapter(phoneAddressEntity);
                         }
                     }
 
@@ -125,6 +129,21 @@ public class PhoneAddressActivity extends OtherBaseActivity {
                     }
                 });
                 break;
+        }
+    }
+
+    private void initAdapter(MobPhoneAddressEntity phoneAddressEntity) {
+        HashMap<String, Object> mDatas = new HashMap<>();
+        mDatas.put("0", new MobItemEntity("运营商:", phoneAddressEntity.getOperator()));
+        mDatas.put("1", new MobItemEntity("城市:", phoneAddressEntity.getProvince() + " " + phoneAddressEntity.getCity()));
+        mDatas.put("2", new MobItemEntity("城市区号:", phoneAddressEntity.getCityCode()));
+        mDatas.put("3", new MobItemEntity("邮政编码:", phoneAddressEntity.getZipCode()));
+
+        if (recyclerAdapter == null) {
+            recyclerAdapter = new MobQueryRecyclerAdapter(this, mDatas);
+            recyclerView.setAdapter(recyclerAdapter);
+        } else {
+            recyclerAdapter.updateDatas(mDatas);
         }
     }
 }

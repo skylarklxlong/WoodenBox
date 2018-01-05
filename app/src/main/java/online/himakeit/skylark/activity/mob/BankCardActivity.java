@@ -2,6 +2,9 @@ package online.himakeit.skylark.activity.mob;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -9,16 +12,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import online.himakeit.skylark.R;
+import online.himakeit.skylark.adapter.MobQueryRecyclerAdapter;
 import online.himakeit.skylark.api.MobApiImpl;
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.common.OtherBaseActivity;
 import online.himakeit.skylark.model.mob.MobBankCard;
+import online.himakeit.skylark.model.mob.MobItemEntity;
+import online.himakeit.skylark.util.KeyboardUtils;
 
 /**
  * Created by：LiXueLong 李雪龙 on 2017/10/24 18:44
@@ -40,16 +47,10 @@ public class BankCardActivity extends OtherBaseActivity {
     EditText ed_bank_num_query;
     @Bind(R.id.iv_bank_num_query)
     ImageView iv_bank_num_query;
-    @Bind(R.id.tv_bank_name)
-    TextView tv_bank_name;
-    @Bind(R.id.tv_bank_carname)
-    TextView tv_bank_carname;
-    @Bind(R.id.tv_bank_carnum)
-    TextView tv_bank_carnum;
-    @Bind(R.id.tv_bank_cartype)
-    TextView tv_bank_cartype;
-    @Bind(R.id.tv_bank_carbin)
-    TextView tv_bank_carbin;
+    @Bind(R.id.recycler_bank)
+    RecyclerView recyclerView;
+
+    MobQueryRecyclerAdapter recyclerAdapter;
 
     String bankNumber = null;
 
@@ -64,6 +65,9 @@ public class BankCardActivity extends OtherBaseActivity {
 
     private void init() {
         tv_title.setText("银行卡号码查询");
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @OnClick({R.id.tv_back, R.id.btn_bank_num_query, R.id.iv_bank_num_query})
@@ -79,6 +83,7 @@ public class BankCardActivity extends OtherBaseActivity {
                 }
                 break;
             case R.id.btn_bank_num_query:
+                KeyboardUtils.hideSoftInput(this);
                 bankNumber = ed_bank_num_query.getText().toString().trim();
                 if (TextUtils.isEmpty(bankNumber)) {
                     Snackbar.make(btn_bank_num_query, "银行卡号码不能为空", Snackbar.LENGTH_SHORT).show();
@@ -91,11 +96,7 @@ public class BankCardActivity extends OtherBaseActivity {
                         dissmissProgressDialog();
                         if (result != null) {
                             MobBankCard mobBankCard = (MobBankCard) result;
-                            tv_bank_name.setText("所属银行:" + mobBankCard.getBank());
-                            tv_bank_carname.setText("卡名:" + mobBankCard.getCardName());
-                            tv_bank_carnum.setText("卡号长度:" + mobBankCard.getCardNumber());
-                            tv_bank_cartype.setText("卡片类型:" + mobBankCard.getCardType());
-                            tv_bank_carbin.setText("bin码:" + mobBankCard.getBin());
+                            initAdapter(mobBankCard);
                         }
                     }
 
@@ -111,6 +112,22 @@ public class BankCardActivity extends OtherBaseActivity {
                     }
                 });
                 break;
+        }
+    }
+
+    private void initAdapter(MobBankCard mobBankCard) {
+        HashMap<String, Object> mDatas = new HashMap<>();
+        mDatas.put("0", new MobItemEntity("所属银行:", mobBankCard.getBank()));
+        mDatas.put("1", new MobItemEntity("卡名:", mobBankCard.getCardName()));
+        mDatas.put("2", new MobItemEntity("卡号长度:", String.valueOf(mobBankCard.getCardNumber())));
+        mDatas.put("3", new MobItemEntity("卡片类型:", mobBankCard.getCardType()));
+        mDatas.put("4", new MobItemEntity("bin码:", mobBankCard.getBin()));
+
+        if (recyclerAdapter == null) {
+            recyclerAdapter = new MobQueryRecyclerAdapter(this, mDatas);
+            recyclerView.setAdapter(recyclerAdapter);
+        } else {
+            recyclerAdapter.updateDatas(mDatas);
         }
     }
 

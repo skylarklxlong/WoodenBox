@@ -48,57 +48,10 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_post_code_pro"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="省份：" />
-
-    <TextView
-        android:id="@+id/tv_post_code_city"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="城市：" />
-
-    <TextView
-        android:id="@+id/tv_post_code_qx"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_vertical"
-        android:text="区县：" />
-
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_postcode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="15dp">
-
-        <TextView
-            android:text="详细地址："
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center_vertical" />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_post_code_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"/>
-        </ScrollView>
-
-
-    </LinearLayout>
-
-
-
-
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
