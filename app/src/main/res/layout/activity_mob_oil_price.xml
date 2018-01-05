@@ -8,4 +8,9 @@
         android:id="@+id/layout_toolbar"
         layout="@layout/layout_search_bar" />
 
+    <com.kelin.scrollablepanel.library.ScrollablePanel
+        android:id="@+id/scrollable_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

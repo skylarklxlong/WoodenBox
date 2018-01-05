@@ -321,4 +321,9 @@ dependencies {
      * jiaozivideoplayer 视频播放
      */
     compile 'cn.jzvd:jiaozivideoplayer:6.2.3'
+
+    /**
+     * 表格
+     */
+    compile 'com.kelin.scrollablepanel:library:1.2.0'
 }
