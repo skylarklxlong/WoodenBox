@@ -1,7 +1,13 @@
 package online.himakeit.skylark.activity.mob;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import online.himakeit.skylark.R;
 import online.himakeit.skylark.common.OtherBaseActivity;
 
@@ -14,9 +20,37 @@ import online.himakeit.skylark.common.OtherBaseActivity;
  */
 public class DictionaryActivity extends OtherBaseActivity {
 
+    @Bind(R.id.tv_back)
+    ImageView tv_back;
+    @Bind(R.id.tv_title)
+    TextView tv_title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mob_dictionary);
+
+        ButterKnife.bind(this);
+
+        initView();
+    }
+
+    private void initView() {
+        tv_title.setText("新华字典");
+    }
+
+    @OnClick({R.id.tv_back})
+    public void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_back:
+                finish();
+                break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }

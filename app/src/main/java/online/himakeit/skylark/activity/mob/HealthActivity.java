@@ -73,7 +73,7 @@ public class HealthActivity extends OtherBaseActivity implements OnRefreshListen
     }
 
     private void initView() {
-        tv_title.setText("健康");
+        tv_title.setText("健康知识");
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -189,5 +189,11 @@ public class HealthActivity extends OtherBaseActivity implements OnRefreshListen
     @Override
     public void onLoadMore() {
         queryDatas(0x002);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }
