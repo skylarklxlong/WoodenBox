@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,5 +8,84 @@
     <include
         android:id="@+id/layout_toolbar"
         layout="@layout/layout_search_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <Button
+            android:id="@+id/btn_idiom_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="查询" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/btn_idiom_query">
+
+            <EditText
+                android:id="@+id/ed_idiom_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:focusable="true"
+                android:hint="输入要查询的成语"
+                android:inputType="text"
+                android:lines="1" />
+
+            <ImageView
+                android:id="@+id/iv_idiom_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                app:srcCompat="@drawable/ic_icon_clean_edit" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_idiom_pinyin"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="拼音：" />
+
+    <TextView
+        android:id="@+id/tv_idiom_definition"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="释义：" />
+
+    <TextView
+        android:id="@+id/tv_idiom_from"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="出自：" />
+
+    <TextView
+        android:id="@+id/tv_idiom_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="示例：" />
+
+    <TextView
+        android:id="@+id/tv_idiom_sample_from"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="示例出自：" />
 
 </LinearLayout>
