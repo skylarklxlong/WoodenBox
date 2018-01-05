@@ -20,7 +20,6 @@ import online.himakeit.skylark.activity.FxcSalaryActivity;
 import online.himakeit.skylark.activity.KuaiChuanActivity;
 import online.himakeit.skylark.activity.WebActivity;
 import online.himakeit.skylark.activity.mob.BankCardActivity;
-import online.himakeit.skylark.activity.mob.CarListActivity;
 import online.himakeit.skylark.activity.mob.ChineseCalendarActivity;
 import online.himakeit.skylark.activity.mob.CookMenuActivity;
 import online.himakeit.skylark.activity.mob.DictionaryActivity;
@@ -188,7 +187,8 @@ public class MobAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (title.equals("全国省市今日油价")) {
                         mContext.startActivity(new Intent(mContext, OilPriceActivity.class));
                     } else if (title.equals("汽车信息查询")) {
-                        mContext.startActivity(new Intent(mContext, CarListActivity.class));
+//                        mContext.startActivity(new Intent(mContext, CarListActivity.class));
+                        Toasts.showShort("努力开发中。。。");
                     } else if (title.equals("驾考题库")) {
 //                        mContext.startActivity(new Intent(mContext, DrivingExamActivity.class));
                         Toasts.showShort("努力开发中。。。");
