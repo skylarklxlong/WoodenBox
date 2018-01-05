@@ -243,8 +243,8 @@ public interface WebServiceApi {
             @Query("page") int page, @Query("size") int size);
 
     //新华字典查询
-    //http://apicloud.mob.com/appstore/dicionary/query?key=215df9177263d&name=李
-    @GET(Config.MOB_BASE_URL + "/appstore/dicionary/query")
+    //http://apicloud.mob.com/appstore/dictionary/query?key=215df9177263d&name=李
+    @GET(Config.MOB_BASE_URL + "/appstore/dictionary/query")
     Call<MobBaseEntity<MobDictEntity>> queryMobDict(
             @Query("key") String appkey, @Query("name") String name);
 

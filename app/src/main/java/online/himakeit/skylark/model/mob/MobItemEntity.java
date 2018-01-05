@@ -12,6 +12,11 @@ public class MobItemEntity {
     private String title;
     private String desc;
 
+    public MobItemEntity(String title, String desc) {
+        this.title = title;
+        this.desc = desc;
+    }
+
     public String getTitle() {
         return title;
     }
