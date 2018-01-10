@@ -1,12 +1,12 @@
 package online.himakeit.skylark.api;
 
 import android.content.Context;
-import android.util.Log;
 
 import online.himakeit.skylark.callback.MobCallBack;
 import online.himakeit.skylark.model.neihan.NeiHanBaseEntity;
 import online.himakeit.skylark.util.DensityUtils;
 import online.himakeit.skylark.util.DeviceUtils;
+import online.himakeit.skylark.util.LogUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +56,7 @@ public class NeiHanApiImpl {
             @Override
             public void onFailure(Call<NeiHanBaseEntity> call, Throwable t) {
                 callBack.onFail(what, NET_FAIL);
-                Log.e(TAG, "onFailure: " + t);
+                LogUtils.show(TAG, "onFailure: " + t);
             }
         });
 

@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.litesuits.orm.db.assit.QueryBuilder;
 import com.litesuits.orm.db.model.ConflictAlgorithm;
@@ -39,8 +38,6 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
     MultiSwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.recycle_zhihu)
     RecyclerView recyclerView;
-    @Bind(R.id.progress)
-    ProgressBar progressBar;
     @Bind(R.id.iv_tip_fail)
     ImageView mIvTipFail;
 
@@ -52,11 +49,6 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
     boolean loading;
     private String currentLoadDate;
-
-    /**
-     * 是否已被加载过一次，第二次就不再去请求数据了
-     */
-    private boolean mHasLoadedOnce = false;
 
     @Override
     public View initViews() {
@@ -84,6 +76,7 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
                     int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
                     if (!mSwipeRefreshLayout.isRefreshing() && !loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                         loading = true;
+                        mIvTipFail.setVisibility(View.GONE);
                         mSwipeRefreshLayout.setRefreshing(true);
                         loadMoreData();
                     }
@@ -102,16 +95,16 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
         QueryBuilder queryBuilder = new QueryBuilder(ZhiHuDailyItem.class);
         queryBuilder.appendOrderDescBy("date");
-        queryBuilder.limit(0,10);
-        if (AppContext.liteOrmDB.query(queryBuilder).size() > 0){
+        queryBuilder.limit(0, 10);
+        if (AppContext.liteOrmDB.query(queryBuilder).size() > 0) {
             zhiHuAdapter.addItems(AppContext.liteOrmDB.query(queryBuilder));
         }
 
         trySetupSwipeRefresh();
     }
 
-    private void trySetupSwipeRefresh(){
-        if (mSwipeRefreshLayout != null){
+    private void trySetupSwipeRefresh() {
+        if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_progress_3,
                     R.color.refresh_progress_2, R.color.refresh_progress_1);
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -122,6 +115,7 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
                         @Override
                         public void run() {
                             if (mSwipeRefreshLayout != null) {
+                                mIvTipFail.setVisibility(View.GONE);
                                 mSwipeRefreshLayout.setRefreshing(true);
                                 loadData();
                             }
@@ -148,18 +142,13 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
 
     @Override
     public void showProgressDialog() {
-        if (progressBar != null && !mHasLoadedOnce) {
-            progressBar.setVisibility(View.VISIBLE);
-            mHasLoadedOnce = true;
-        }
+        mIvTipFail.setVisibility(View.GONE);
         mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideProgressDialog() {
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
-        }
+        mIvTipFail.setVisibility(View.GONE);
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
@@ -186,6 +175,7 @@ public class ZhiHuFragment extends BaseFragment implements IZhiHuFragment {
             }
         });*/
         if (recyclerView != null) {
+            mIvTipFail.setVisibility(View.GONE);
             Snackbar.make(recyclerView, "请检查网络！", Snackbar.LENGTH_LONG)
                     .setAction("重试", new View.OnClickListener() {
                         @Override

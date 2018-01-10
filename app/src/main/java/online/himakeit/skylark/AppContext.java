@@ -114,7 +114,7 @@ public class AppContext extends Application{
 
     private void initJPush() {
         try {
-            JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
+            JPushInterface.setDebugMode(BuildConfig.DEBUG);    // 设置开启日志,发布时请关闭日志
             JPushInterface.init(this);            // 初始化 JPush
         } catch (Exception e) {
             LogUtils.e(e);
@@ -250,7 +250,7 @@ public class AppContext extends Application{
             long t2 = System.nanoTime();
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            LogUtils.e(TAG, "-----LoggingInterceptor----- :\nrequest url:" + request.url() + "\ntime:" + (t2 - t1) / 1e6d + "\nbody:" + content + "\n");
+            LogUtils.show(TAG, "-----LoggingInterceptor----- :\nrequest url:" + request.url() + "\ntime:" + (t2 - t1) / 1e6d + "\nbody:" + content + "\n");
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))
                     .build();

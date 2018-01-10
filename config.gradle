@@ -4,6 +4,6 @@ ext {
                applicationId    : "online.himakeit.skylark",
                minSdkVersion    : 17,
                targetSdkVersion : 23,
-               versionCode      : 8,
-               versionName      : "3.20180105"]
+               versionCode      : 9,
+               versionName      : "3.201801010"]
 }

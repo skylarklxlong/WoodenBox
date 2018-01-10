@@ -40,7 +40,7 @@
     android:indeterminateTintMode="src_in"
     两个一起控制progressbar的颜色
     -->
-    <ProgressBar
+    <!--<ProgressBar
         android:visibility="gone"
         android:id="@+id/progress"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTint="?android:colorAccent"
-        android:indeterminateTintMode="src_in" />
+        android:indeterminateTintMode="src_in" />-->
 
     <ImageView
         android:id="@+id/iv_tip_fail"
@@ -56,5 +56,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/ic_tip_fail"
-        android:visibility="invisible" />
+        android:visibility="gone"/>
 </FrameLayout>

@@ -113,12 +113,12 @@ public class FileUtils {
                     }
                     fileInfoList.add(fileInfo);
                 } catch (Exception e) {
-                    Log.i("FileUtils", "------>>>" + e.getMessage());
+                    LogUtils.show("FileUtils", "------>>>" + e.getMessage());
                 }
 
             }
         }
-        Log.i(TAG, "getSize ===>>> " + fileInfoList.size());
+        LogUtils.show(TAG, "getSize ===>>> " + fileInfoList.size());
         return fileInfoList;
     }
 

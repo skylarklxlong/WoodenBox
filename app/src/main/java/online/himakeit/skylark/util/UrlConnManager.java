@@ -1,7 +1,6 @@
 package online.himakeit.skylark.util;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -116,7 +115,7 @@ public class UrlConnManager {
             if (null != mHttpEntity) {
                 InputStream mInputStream = mHttpEntity.getContent();
                 String respose = converStreamToString(mInputStream);
-                Log.i("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
+                LogUtils.show("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
                 mInputStream.close();
             }
         } catch (IOException e) {
@@ -144,7 +143,7 @@ public class UrlConnManager {
             if (null != mHttpEntity) {
                 InputStream mInputStream = mHttpEntity.getContent();
                 String respose = converStreamToString(mInputStream);
-                Log.i("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
+                LogUtils.show("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
                 mInputStream.close();
             }
         } catch (IOException e) {
@@ -169,7 +168,7 @@ public class UrlConnManager {
             mInputStream = mHttpURLConnection.getInputStream();
             int code = mHttpURLConnection.getResponseCode();
             String respose = converStreamToString(mInputStream);
-            Log.i("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
+            LogUtils.show("wangshu", "请求状态码:" + code + "\n请求结果:\n" + respose);
             mInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();

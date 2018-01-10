@@ -13,30 +13,47 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import online.himakeit.skylark.BuildConfig;
+
 /**
- * Created by：LiXueLong 李雪龙 on 17-7-5 下午2:37
- * <p>
- * Mail : skylarklxlong@outlook.com
- * <p>
- * Description:
+ * @author：LiXueLong
+ * @date:2018/1/10-8:39
+ * @mail1：skylarklxlong@outlook.com
+ * @mail2：li_xuelong@126.com
+ * @des：LogUtils
  */
 public class LogUtils {
 
     public static final String CACHE_DIR_NAME = "Skylark/MyLog";
     public static final String TAG = "Skylark";
-    public static boolean isDebugModel = true;// 是否输出日志
-    public static boolean isSaveDebugInfo = true;// 是否保存调试日志
-    public static boolean isSaveCrashInfo = true;// 是否保存报错日志
+    /**
+     * 是否输出日志
+     */
+    public static boolean isDebugModel = BuildConfig.DEBUG;
+    /**
+     * 是否保存调试日志
+     */
+    public static boolean isSaveDebugInfo = true;
+    /**
+     * 是否保存报错日志
+     */
+    public static boolean isSaveCrashInfo = true;
 
-    // 使用Log来显示调试信息,因为log在实现上每个message有4k字符长度限制
-    // 所以这里使用自己分节的方式来输出足够长度的message
+    /**
+     * 使用Log来显示调试信息,因为log在实现上每个message有4k字符长度限制
+     * 所以这里使用自己分节的方式来输出足够长度的message
+     *
+     * @param str
+     */
     public static void show(String str) {
         str = str.trim();
         int index = 0;
         int maxLength = 40000;
         String sub;
         while (index < str.length()) {
-            // java的字符不允许指定超过总的长度end
+            /**
+             * java的字符不允许指定超过总的长度end
+             */
             if (str.length() <= index + maxLength) {
                 sub = str.substring(index);
             } else {
@@ -44,11 +61,11 @@ public class LogUtils {
             }
 
             index += maxLength;
-            Log.e("skylark", sub.trim());
+            e("skylark", sub.trim());
         }
     }
 
-    public static void show(String tag ,String str) {
+    public static void show(String tag, String str) {
         str = str.trim();
         int index = 0;
         int maxLength = 40000;
@@ -62,7 +79,7 @@ public class LogUtils {
             }
 
             index += maxLength;
-            Log.e(tag, sub.trim());
+            e(tag, sub.trim());
         }
     }
 
@@ -78,6 +95,7 @@ public class LogUtils {
         }
         if (isSaveDebugInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + tag + " --> " + msg + "\n");
                 }
@@ -110,6 +128,7 @@ public class LogUtils {
 
         if (isSaveCrashInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + tag + " [CRASH] --> " + msg + "\n");
                 }
@@ -126,6 +145,7 @@ public class LogUtils {
     public static void e(final String tag, final Throwable tr) {
         if (isSaveCrashInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + tag + " [CRASH] --> " + getStackTraceString(tr) + "\n");
                 }
@@ -145,6 +165,7 @@ public class LogUtils {
         }
         if (isSaveDebugInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + TAG + " --> " + msg + "\n");
                 }
@@ -176,6 +197,7 @@ public class LogUtils {
 
         if (isSaveCrashInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + TAG + "[CRASH] --> " + msg + "\n");
                 }
@@ -191,6 +213,7 @@ public class LogUtils {
     public static void e(final Throwable tr) {
         if (isSaveCrashInfo) {
             new Thread() {
+                @Override
                 public void run() {
                     write(time() + TAG + " [CRASH] --> " + getStackTraceString(tr) + "\n");
                 }
@@ -204,7 +227,7 @@ public class LogUtils {
      * @param tr
      * @return
      */
-    public static String getStackTraceString(Throwable tr) {
+    private static String getStackTraceString(Throwable tr) {
         if (tr == null) {
             return "";
         }
@@ -246,7 +269,7 @@ public class LogUtils {
      *
      * @param content
      */
-    public static synchronized void write(String content) {
+    private static synchronized void write(String content) {
         try {
             FileWriter writer = new FileWriter(getFile(), true);
             writer.write(content);
@@ -261,15 +284,17 @@ public class LogUtils {
      *
      * @return
      */
-    public static String getFile() {
+    private static String getFile() {
         File sdDir = null;
 
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             sdDir = Environment.getExternalStorageDirectory();
+        }
 
         File cacheDir = new File(sdDir + File.separator + CACHE_DIR_NAME);
-        if (!cacheDir.exists())
+        if (!cacheDir.exists()) {
             cacheDir.mkdir();
+        }
 
         File filePath = new File(cacheDir + File.separator + date() + ".log");
 
